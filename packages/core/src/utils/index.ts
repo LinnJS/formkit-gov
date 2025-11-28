@@ -2,7 +2,7 @@
  * Utility functions for form handling
  */
 
-import { type z, type ZodError } from 'zod';
+import { z, type ZodError } from 'zod';
 
 import { type ValidationError, type ValidationResult } from '../types';
 
@@ -27,7 +27,7 @@ export function flattenZodErrors(error: ZodError): Record<string, string> {
  */
 export function zodToValidationErrors(error: ZodError): ValidationError[] {
   return error.issues.map(issue => ({
-    path: issue.path,
+    path: issue.path.filter((p): p is string | number => typeof p !== 'symbol'),
     message: issue.message,
     code: issue.code,
   }));
@@ -36,7 +36,7 @@ export function zodToValidationErrors(error: ZodError): ValidationError[] {
 /**
  * Validates data against a schema and returns a ValidationResult
  */
-export function validateWithSchema<T extends z.ZodTypeAny>(
+export function validateWithSchema<T extends z.ZodType>(
   schema: T,
   data: unknown
 ): ValidationResult<z.infer<T>> {
@@ -61,7 +61,11 @@ export function validateWithSchema<T extends z.ZodTypeAny>(
 export function combineSchemas<T extends z.ZodRawShape[]>(
   ...schemas: { [K in keyof T]: z.ZodObject<T[K]> }
 ): z.ZodObject<T[number]> {
-  return schemas.reduce((acc, schema) => acc.merge(schema)) as z.ZodObject<T[number]>;
+  const combinedShape = schemas.reduce(
+    (acc, schema) => ({ ...acc, ...schema.shape }),
+    {} as T[number]
+  );
+  return z.object(combinedShape) as z.ZodObject<T[number]>;
 }
 
 /**

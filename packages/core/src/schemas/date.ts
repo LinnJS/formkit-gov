@@ -1,4 +1,4 @@
-import { z, type ZodTypeAny } from 'zod';
+import { z } from 'zod';
 
 export interface DateSchemaOptions {
   /** Whether the field is required */
@@ -41,8 +41,8 @@ export function createDateSchema(options: DateSchemaOptions = {}) {
     messages = {},
   } = options;
 
-  const buildRefinements = <T extends ZodTypeAny>(base: T) => {
-    let schema: ZodTypeAny = base.refine(
+  const buildRefinements = (base: z.ZodString) => {
+    let schema = base.refine(
       (value: string) => {
         if (!value) return !required;
         const date = new Date(value);

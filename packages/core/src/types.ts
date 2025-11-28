@@ -3,7 +3,7 @@ import { type z } from 'zod';
 /**
  * Generic form schema type
  */
-export type FormSchema<T extends z.ZodTypeAny = z.ZodTypeAny> = T;
+export type FormSchema<T extends z.ZodType = z.ZodType> = T;
 
 /**
  * Result of a validation operation
@@ -33,7 +33,7 @@ export interface FieldConfig {
   required?: boolean;
   placeholder?: string;
   hint?: string;
-  validation?: z.ZodTypeAny;
+  validation?: z.ZodType;
   defaultValue?: unknown;
 }
 

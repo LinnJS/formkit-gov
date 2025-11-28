@@ -133,16 +133,16 @@ describe('SelectField', () => {
       const { container } = render(<SelectField label="Test" />);
 
       const select = container.querySelector('va-select');
-      // React 19: false boolean props don't render as attributes on custom elements
-      expect(select).not.toHaveAttribute('required');
+      // React 18: false boolean props render as attribute="false" on custom elements
+      expect(select).toHaveAttribute('required', 'false');
     });
 
     it('defaults disabled to false', () => {
       const { container } = render(<SelectField label="Test" />);
 
       const select = container.querySelector('va-select');
-      // React 19: false boolean props don't render as attributes on custom elements
-      expect(select).not.toHaveAttribute('disabled');
+      // React 18: false boolean props render as attribute="false" on custom elements
+      expect(select).toHaveAttribute('disabled', 'false');
     });
 
     it('defaults value to empty string', () => {
