@@ -37,6 +37,7 @@ export default {
         'deps',
         'release',
         'repo',
+        'ci',
       ],
     ],
     'scope-empty': [1, 'never'],

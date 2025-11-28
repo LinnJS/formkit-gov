@@ -1,8 +1,11 @@
 name: Release
 
+# Disabled until NPM_TOKEN is configured
+# on:
+#   push:
+#     branches: [main]
 on:
-  push:
-    branches: [main]
+  workflow_dispatch: # Manual trigger only until NPM_TOKEN is configured
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -48,8 +51,8 @@ jobs:
         with:
           version: pnpm version-packages
           publish: pnpm release
-          commit: 'chore(release): version packages'
-          title: 'chore(release): version packages'
+          commit: 'chore(release): Version packages'
+          title: 'chore(release): Version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

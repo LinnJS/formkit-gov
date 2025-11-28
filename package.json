@@ -35,6 +35,7 @@
     "changeset": "changeset",
     "clean": "turbo clean && rm -rf node_modules",
     "dev": "turbo dev",
+    "e2e": "echo 'No E2E tests configured yet'",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json}\"",
     "lint": "turbo lint",

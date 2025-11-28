@@ -1,12 +1,15 @@
 name: Docs
 
+# Disabled until apps/docs is created
+# on:
+#   push:
+#     branches: [main]
+#     paths:
+#       - 'apps/docs/**'
+#       - 'packages/*/README.md'
+#       - '.github/workflows/docs.yml'
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'apps/docs/**'
-      - 'packages/*/README.md'
-      - '.github/workflows/docs.yml'
+  workflow_dispatch: # Manual trigger only until docs app exists
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
