@@ -46,7 +46,8 @@ describe('TextInputField', () => {
     const { container } = render(<TextInputField required label="Required field" />);
 
     const input = container.querySelector('va-text-input');
-    expect(input).toHaveAttribute('required', 'true');
+    // React 19: boolean true renders as presence attribute
+    expect(input).toHaveAttribute('required');
   });
 
   it('forwards ref correctly', () => {
@@ -81,7 +82,8 @@ describe('TextInputField', () => {
     const { container } = render(<TextInputField disabled label="Disabled" />);
 
     const input = container.querySelector('va-text-input');
-    expect(input).toHaveAttribute('disabled', 'true');
+    // React 19: boolean true renders as presence attribute
+    expect(input).toHaveAttribute('disabled');
   });
 
   it('passes maxlength prop to web component', () => {
@@ -173,7 +175,8 @@ describe('TextInputField', () => {
       const input = container.querySelector('va-text-input');
       expect(input).toHaveAttribute('name', 'firstName');
       expect(input).toHaveAttribute('value', 'John');
-      expect(input).toHaveAttribute('required', 'true');
+      // React 19: boolean true renders as presence attribute
+      expect(input).toHaveAttribute('required');
     });
 
     it('displays validation error from React Hook Form', () => {
@@ -189,14 +192,16 @@ describe('TextInputField', () => {
       const { container } = render(<TextInputField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      expect(input).toHaveAttribute('disabled', 'false');
+      // React 19: false boolean props don't render as attributes on custom elements
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<TextInputField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      expect(input).toHaveAttribute('required', 'false');
+      // React 19: false boolean props don't render as attributes on custom elements
+      expect(input).not.toHaveAttribute('required');
     });
   });
 });

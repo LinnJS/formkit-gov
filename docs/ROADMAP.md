@@ -33,6 +33,7 @@
 - [ ] @formkit-gov/react molecular components
 - [ ] Unit tests for all components
 - [ ] Accessibility tests
+- [ ] Playwright E2E test setup (re-enable CI e2e job)
 
 ### Phase 2: Core Components (v0.2.0)
 
@@ -48,6 +49,7 @@
 
 #### Tasks
 
+- [ ] Chromatic visual regression setup (re-enable CI chromatic workflow)
 - [ ] TextInputField component
 - [ ] TextareaField component
 - [ ] SelectField component
@@ -165,6 +167,7 @@
 #### Tasks
 
 - [ ] Nextra documentation site
+- [ ] Documentation site deployment (re-enable CI docs workflow)
 - [ ] Getting started guide
 - [ ] Component API docs
 - [ ] Pattern guides
@@ -172,11 +175,10 @@
 - [ ] Example: Next.js JavaScript
 - [ ] Example: Vite TypeScript
 - [ ] Example: Multi-step wizard
-- [ ] Chromatic visual regression
 - [ ] Performance benchmarks
 - [ ] Security audit
 - [ ] Accessibility audit
-- [ ] npm publishing setup
+- [ ] npm publishing setup (re-enable CI release workflow)
 
 ## Future Considerations (Post v1.0)
 
