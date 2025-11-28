@@ -192,16 +192,16 @@ describe('TextInputField', () => {
       const { container } = render(<TextInputField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      // React 19: false boolean props don't render as attributes on custom elements
-      expect(input).not.toHaveAttribute('disabled');
+      // React 18: false boolean props render as attribute="false" on custom elements
+      expect(input).toHaveAttribute('disabled', 'false');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<TextInputField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      // React 19: false boolean props don't render as attributes on custom elements
-      expect(input).not.toHaveAttribute('required');
+      // React 18: false boolean props render as attribute="false" on custom elements
+      expect(input).toHaveAttribute('required', 'false');
     });
   });
 });

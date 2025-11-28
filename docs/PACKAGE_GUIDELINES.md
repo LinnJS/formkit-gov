@@ -105,7 +105,7 @@ Use meaningful generic names:
 
 ```typescript
 // Good
-function validateData<TSchema extends z.ZodTypeAny>(
+function validateData<TSchema extends z.ZodType>(
   schema: TSchema,
   data: unknown
 ): z.infer<TSchema> {}
