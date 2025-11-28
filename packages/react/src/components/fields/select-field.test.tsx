@@ -47,14 +47,16 @@ describe('SelectField', () => {
     const { container } = render(<SelectField required label="Required field" />);
 
     const select = container.querySelector('va-select');
-    expect(select).toHaveAttribute('required', 'true');
+    // React 19: boolean true renders as presence attribute
+    expect(select).toHaveAttribute('required');
   });
 
   it('passes disabled prop to web component', () => {
     const { container } = render(<SelectField disabled label="Disabled field" />);
 
     const select = container.querySelector('va-select');
-    expect(select).toHaveAttribute('disabled', 'true');
+    // React 19: boolean true renders as presence attribute
+    expect(select).toHaveAttribute('disabled');
   });
 
   it('passes value prop to web component', () => {
@@ -131,14 +133,16 @@ describe('SelectField', () => {
       const { container } = render(<SelectField label="Test" />);
 
       const select = container.querySelector('va-select');
-      expect(select).toHaveAttribute('required', 'false');
+      // React 19: false boolean props don't render as attributes on custom elements
+      expect(select).not.toHaveAttribute('required');
     });
 
     it('defaults disabled to false', () => {
       const { container } = render(<SelectField label="Test" />);
 
       const select = container.querySelector('va-select');
-      expect(select).toHaveAttribute('disabled', 'false');
+      // React 19: false boolean props don't render as attributes on custom elements
+      expect(select).not.toHaveAttribute('disabled');
     });
 
     it('defaults value to empty string', () => {
@@ -244,7 +248,8 @@ describe('SelectField', () => {
       const select = container.querySelector('va-select');
       expect(select).toHaveAttribute('name', 'country');
       expect(select).toHaveAttribute('value', 'US');
-      expect(select).toHaveAttribute('required', 'true');
+      // React 19: boolean true renders as presence attribute
+      expect(select).toHaveAttribute('required');
     });
 
     it('displays validation error from React Hook Form', () => {

@@ -1,62 +1,68 @@
 /**
  * Type definitions for VA Design System web components
+ * Updated for React 19 JSX namespace changes
  */
 
 import type * as React from 'react';
 
-declare global {
+type VATextInputProps = React.DetailedHTMLProps<
+  Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
+    label?: string | undefined;
+    error?: string | undefined;
+    name?: string | undefined;
+    value?: string | undefined;
+    required?: boolean | undefined;
+    type?: string | undefined;
+    maxlength?: number | undefined;
+    hint?: string | undefined;
+  },
+  HTMLElement
+>;
+
+type VATextareaProps = React.DetailedHTMLProps<
+  Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
+    label?: string | undefined;
+    error?: string | undefined;
+    name?: string | undefined;
+    value?: string | undefined;
+    required?: boolean | undefined;
+    maxlength?: number | undefined;
+    hint?: string | undefined;
+  },
+  HTMLElement
+>;
+
+type VACheckboxProps = React.DetailedHTMLProps<
+  Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
+    label?: string | undefined;
+    error?: string | undefined;
+    name?: string | undefined;
+    checked?: boolean | undefined;
+    required?: boolean | undefined;
+    hint?: string | undefined;
+  },
+  HTMLElement
+>;
+
+type VASelectProps = React.DetailedHTMLProps<
+  Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
+    label?: string | undefined;
+    error?: string | undefined;
+    name?: string | undefined;
+    value?: string | undefined;
+    required?: boolean | undefined;
+    hint?: string | undefined;
+  },
+  HTMLElement
+>;
+
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      'va-text-input': React.DetailedHTMLProps<
-        Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
-          label?: string | undefined;
-          error?: string | undefined;
-          name?: string | undefined;
-          value?: string | undefined;
-          required?: boolean | undefined;
-          type?: string | undefined;
-          maxlength?: number | undefined;
-          hint?: string | undefined;
-        },
-        HTMLElement
-      >;
-
-      'va-textarea': React.DetailedHTMLProps<
-        Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
-          label?: string | undefined;
-          error?: string | undefined;
-          name?: string | undefined;
-          value?: string | undefined;
-          required?: boolean | undefined;
-          maxlength?: number | undefined;
-          hint?: string | undefined;
-        },
-        HTMLElement
-      >;
-
-      'va-checkbox': React.DetailedHTMLProps<
-        Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
-          label?: string | undefined;
-          error?: string | undefined;
-          name?: string | undefined;
-          checked?: boolean | undefined;
-          required?: boolean | undefined;
-          hint?: string | undefined;
-        },
-        HTMLElement
-      >;
-
-      'va-select': React.DetailedHTMLProps<
-        Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'onBlur'> & {
-          label?: string | undefined;
-          error?: string | undefined;
-          name?: string | undefined;
-          value?: string | undefined;
-          required?: boolean | undefined;
-          hint?: string | undefined;
-        },
-        HTMLElement
-      >;
+      'va-text-input': VATextInputProps;
+      'va-textarea': VATextareaProps;
+      'va-checkbox': VACheckboxProps;
+      'va-select': VASelectProps;
     }
   }
 }

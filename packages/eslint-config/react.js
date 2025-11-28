@@ -49,6 +49,8 @@ export default [
 
       // React Hooks
       ...reactHooks.configs.recommended.rules,
+      // Disable refs rule - we pass refs to web components, not reading them during render
+      'react-hooks/refs': 'off',
 
       // Accessibility
       ...jsxA11y.configs.recommended.rules,
