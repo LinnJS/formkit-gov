@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node.js Library",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "lib": ["ES2020"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true
+  }
+}

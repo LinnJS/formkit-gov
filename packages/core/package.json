@@ -1,0 +1,106 @@
+{
+  "name": "@formkit-gov/core",
+  "version": "0.0.0",
+  "description": "Framework-agnostic form primitives, Zod schemas, and validation utilities for government applications",
+  "keywords": [
+    "forms",
+    "zod",
+    "validation",
+    "government",
+    "ssn",
+    "address",
+    "schemas"
+  ],
+  "homepage": "https://formkit-gov.vercel.app/docs/core",
+  "bugs": {
+    "url": "https://github.com/LinnJS/formkit-gov/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinnJS/formkit-gov.git",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "author": "LinnJS",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./schemas": {
+      "import": {
+        "types": "./dist/schemas/index.d.ts",
+        "default": "./dist/schemas/index.js"
+      },
+      "require": {
+        "types": "./dist/schemas/index.d.cts",
+        "default": "./dist/schemas/index.cjs"
+      }
+    },
+    "./validators": {
+      "import": {
+        "types": "./dist/validators/index.d.ts",
+        "default": "./dist/validators/index.js"
+      },
+      "require": {
+        "types": "./dist/validators/index.d.cts",
+        "default": "./dist/validators/index.cjs"
+      }
+    },
+    "./patterns": {
+      "import": {
+        "types": "./dist/patterns/index.d.ts",
+        "default": "./dist/patterns/index.js"
+      },
+      "require": {
+        "types": "./dist/patterns/index.d.cts",
+        "default": "./dist/patterns/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist .turbo",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@formkit-gov/typescript-config": "workspace:*",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.16.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "zod": ">=3.20.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,23 @@
+# Default owners for everything in the repo
+* @LinnJS
+
+# Package-specific owners
+/packages/core/ @LinnJS
+/packages/react/ @LinnJS
+/packages/store/ @LinnJS
+/packages/wizard/ @LinnJS
+/packages/openapi/ @LinnJS
+/packages/validators/ @LinnJS
+/packages/test-utils/ @LinnJS
+
+# Documentation
+/apps/docs/ @LinnJS
+*.md @LinnJS
+
+# CI/CD
+/.github/ @LinnJS
+
+# Configuration
+*.json @LinnJS
+*.yaml @LinnJS
+*.yml @LinnJS

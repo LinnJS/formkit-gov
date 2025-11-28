@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    open-pull-requests-limit: 10
+    groups:
+      dependencies:
+        patterns:
+          - '*'
+        exclude-patterns:
+          - '@types/*'
+          - 'typescript'
+          - 'eslint*'
+          - 'prettier'
+      types:
+        patterns:
+          - '@types/*'
+      linting:
+        patterns:
+          - 'eslint*'
+          - 'prettier*'
+          - '@typescript-eslint/*'
+    commit-message:
+      prefix: 'chore(deps)'
+    labels:
+      - 'dependencies'
+      - 'automated'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    commit-message:
+      prefix: 'ci(deps)'
+    labels:
+      - 'ci'
+      - 'dependencies'
+      - 'automated'

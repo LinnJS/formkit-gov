@@ -1,0 +1,25 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "LinnJS/formkit-gov" }],
+  "commit": false,
+  "fixed": [],
+  "linked": [
+    [
+      "@formkit-gov/core",
+      "@formkit-gov/react",
+      "@formkit-gov/store",
+      "@formkit-gov/wizard",
+      "@formkit-gov/openapi",
+      "@formkit-gov/validators",
+      "@formkit-gov/test-utils"
+    ]
+  ],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [],
+  "privatePackages": {
+    "version": false,
+    "tag": false
+  }
+}

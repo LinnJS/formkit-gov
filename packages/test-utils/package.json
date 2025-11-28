@@ -1,0 +1,98 @@
+{
+  "name": "@formkit-gov/test-utils",
+  "version": "0.0.0",
+  "description": "Testing utilities for forms built with FormKit Gov including render helpers, interaction utilities, and accessibility testing",
+  "keywords": [
+    "testing",
+    "forms",
+    "react-testing-library",
+    "vitest",
+    "accessibility",
+    "a11y"
+  ],
+  "homepage": "https://formkit-gov.vercel.app/docs/test-utils",
+  "bugs": {
+    "url": "https://github.com/LinnJS/formkit-gov/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinnJS/formkit-gov.git",
+    "directory": "packages/test-utils"
+  },
+  "license": "MIT",
+  "author": "LinnJS",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist .turbo",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@formkit-gov/core": "workspace:*",
+    "@formkit-gov/react": "workspace:*",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "axe-core": "^4.10.2"
+  },
+  "devDependencies": {
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@formkit-gov/typescript-config": "workspace:*",
+    "@hookform/resolvers": "^3.9.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@types/react": "^18.3.14",
+    "@types/react-dom": "^18.3.4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.16.0",
+    "happy-dom": "^15.11.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "@testing-library/jest-dom": ">=6.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "vitest": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@testing-library/jest-dom": {
+      "optional": true
+    },
+    "vitest": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

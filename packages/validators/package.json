@@ -1,0 +1,76 @@
+{
+  "name": "@formkit-gov/validators",
+  "version": "0.0.0",
+  "description": "Extended validation library with government-specific rules for SSN, addresses, military dates, and more",
+  "keywords": [
+    "validation",
+    "zod",
+    "ssn",
+    "address",
+    "government",
+    "military",
+    "va"
+  ],
+  "homepage": "https://formkit-gov.vercel.app/docs/validators",
+  "bugs": {
+    "url": "https://github.com/LinnJS/formkit-gov/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinnJS/formkit-gov.git",
+    "directory": "packages/validators"
+  },
+  "license": "MIT",
+  "author": "LinnJS",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist .turbo",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@formkit-gov/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@formkit-gov/typescript-config": "workspace:*",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.16.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "zod": ">=3.20.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

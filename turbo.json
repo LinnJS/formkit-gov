@@ -1,0 +1,48 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalDependencies": [".prettierrc", ".prettierignore", "tsconfig.json"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".eslintrc*", "eslint.config.*"],
+      "outputs": []
+    },
+    "lint:fix": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".eslintrc*", "eslint.config.*"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*"],
+      "outputs": []
+    },
+    "test:coverage": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*"],
+      "outputs": ["coverage/**"]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "tsconfig.json"],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

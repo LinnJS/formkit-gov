@@ -1,0 +1,51 @@
+name: Size Limit
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  size:
+    name: Check Bundle Size
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Calculate sizes
+        id: sizes
+        run: |
+          echo "## Bundle Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Package | Size (gzip) |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-------------|" >> $GITHUB_STEP_SUMMARY
+
+          for pkg in packages/*/dist; do
+            if [ -d "$pkg" ]; then
+              name=$(dirname "$pkg" | xargs basename)
+              # Get gzipped size of the main bundle
+              if [ -f "$pkg/index.js" ]; then
+                gzip_size=$(gzip -c "$pkg/index.js" | wc -c | numfmt --to=iec-i --suffix=B)
+                echo "| @formkit-gov/$name | $gzip_size |" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done

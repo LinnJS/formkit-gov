@@ -1,0 +1,63 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.next
+out
+storybook-static
+
+# Test coverage
+coverage
+
+# Turbo
+.turbo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+*.local
+*.cache
+.eslintcache
+.claude/settings.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Chromatic
+/chromatic-archives
+
+# Vercel
+.vercel

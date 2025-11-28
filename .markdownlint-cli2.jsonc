@@ -1,0 +1,41 @@
+{
+  // Global configuration
+  "config": {
+    "default": true,
+    // MD040: Fenced code blocks should have a language specified
+    "MD040": true,
+    // MD033: Inline HTML - disabled (used in root README for badges)
+    "MD033": false,
+    // MD013: Line length - disabled for flexibility
+    "MD013": false,
+    // MD024: Multiple headings with same content - disabled for ADRs and docs
+    "MD024": false,
+    // MD029: Ordered list prefix style - disabled for flexibility
+    "MD029": false,
+    // MD034: Bare URLs - disabled (URLs in code examples)
+    "MD034": false,
+    // MD041: First line should be a top-level heading - allow frontmatter
+    "MD041": false,
+    // MD051: Link fragments - disabled (auto-generated anchors vary)
+    "MD051": false
+  },
+  // File-specific overrides
+  "overrides": [
+    {
+      // Allow inline HTML in root README for badges and formatting
+      "files": ["./README.md", "README.md"],
+      "config": {
+        "MD033": false
+      }
+    }
+  ],
+  // Files to ignore
+  "ignores": [
+    "node_modules",
+    "**/node_modules",
+    "dist",
+    "**/dist",
+    "**/CHANGELOG.md",
+    ".changeset/**"
+  ]
+}

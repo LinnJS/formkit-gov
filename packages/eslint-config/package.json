@@ -1,0 +1,35 @@
+{
+  "name": "@formkit-gov/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared ESLint configurations for FormKit Gov",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./react": "./react.js",
+    "./next": "./next.js"
+  },
+  "files": [
+    "*.js"
+  ],
+  "dependencies": {
+    "@eslint/js": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-turbo": "^2.3.3",
+    "eslint-plugin-import-x": "^4.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.13.0",
+    "typescript-eslint": "^8.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
+  }
+}

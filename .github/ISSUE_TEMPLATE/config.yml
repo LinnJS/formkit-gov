@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://formkit-gov.vercel.app
+    about: Check out the documentation for guides and API reference
+  - name: Discussions
+    url: https://github.com/LinnJS/formkit-gov/discussions
+    about: Ask questions and discuss features
+  - name: Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/formkit-gov
+    about: Ask questions on Stack Overflow with the formkit-gov tag

@@ -1,0 +1,129 @@
+{
+  "name": "@formkit-gov/store",
+  "version": "0.0.0",
+  "description": "Pluggable state management with persistence and backend sync for form applications",
+  "keywords": [
+    "forms",
+    "state-management",
+    "zustand",
+    "redux",
+    "tanstack-query",
+    "persistence",
+    "save-in-progress"
+  ],
+  "homepage": "https://formkit-gov.vercel.app/docs/store",
+  "bugs": {
+    "url": "https://github.com/LinnJS/formkit-gov/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinnJS/formkit-gov.git",
+    "directory": "packages/store"
+  },
+  "license": "MIT",
+  "author": "LinnJS",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./adapters/zustand": {
+      "import": {
+        "types": "./dist/adapters/zustand.d.ts",
+        "default": "./dist/adapters/zustand.js"
+      },
+      "require": {
+        "types": "./dist/adapters/zustand.d.cts",
+        "default": "./dist/adapters/zustand.cjs"
+      }
+    },
+    "./adapters/redux": {
+      "import": {
+        "types": "./dist/adapters/redux.d.ts",
+        "default": "./dist/adapters/redux.js"
+      },
+      "require": {
+        "types": "./dist/adapters/redux.d.cts",
+        "default": "./dist/adapters/redux.cjs"
+      }
+    },
+    "./adapters/tanstack-query": {
+      "import": {
+        "types": "./dist/adapters/tanstack-query.d.ts",
+        "default": "./dist/adapters/tanstack-query.js"
+      },
+      "require": {
+        "types": "./dist/adapters/tanstack-query.d.cts",
+        "default": "./dist/adapters/tanstack-query.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist .turbo",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@formkit-gov/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@formkit-gov/typescript-config": "workspace:*",
+    "@reduxjs/toolkit": "^2.5.0",
+    "@tanstack/react-query": "^5.62.7",
+    "@types/react": "^18.3.14",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.16.0",
+    "react": "^18.3.1",
+    "redux": "^5.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zustand": "^5.0.2"
+  },
+  "peerDependencies": {
+    "@reduxjs/toolkit": ">=2.0.0",
+    "@tanstack/react-query": ">=5.0.0",
+    "react": ">=17.0.0",
+    "redux": ">=5.0.0",
+    "zustand": ">=4.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@reduxjs/toolkit": {
+      "optional": true
+    },
+    "@tanstack/react-query": {
+      "optional": true
+    },
+    "redux": {
+      "optional": true
+    },
+    "zustand": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

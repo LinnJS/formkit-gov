@@ -1,0 +1,107 @@
+{
+  "name": "@formkit-gov/react",
+  "version": "0.0.0",
+  "description": "React components wrapping VA Design System with React Hook Form integration",
+  "keywords": [
+    "react",
+    "forms",
+    "react-hook-form",
+    "va-design-system",
+    "uswds",
+    "accessibility",
+    "government"
+  ],
+  "homepage": "https://formkit-gov.vercel.app/docs/react",
+  "bugs": {
+    "url": "https://github.com/LinnJS/formkit-gov/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinnJS/formkit-gov.git",
+    "directory": "packages/react"
+  },
+  "license": "MIT",
+  "author": "LinnJS",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./components": {
+      "import": {
+        "types": "./dist/components/index.d.ts",
+        "default": "./dist/components/index.js"
+      },
+      "require": {
+        "types": "./dist/components/index.d.cts",
+        "default": "./dist/components/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist .turbo",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@formkit-gov/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@department-of-veterans-affairs/component-library": "^54.2.0",
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@formkit-gov/typescript-config": "workspace:*",
+    "@hookform/resolvers": "^3.9.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.14",
+    "@types/react-dom": "^18.3.4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.16.0",
+    "happy-dom": "^15.11.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "@department-of-veterans-affairs/component-library": ">=50.0.0",
+    "@hookform/resolvers": ">=3.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "react-hook-form": ">=7.45.0",
+    "zod": ">=3.20.0"
+  },
+  "peerDependenciesMeta": {
+    "@department-of-veterans-affairs/component-library": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

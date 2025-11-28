@@ -1,0 +1,20 @@
+{
+  "name": "@formkit-gov/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared TypeScript configurations for FormKit Gov",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./base.json": "./base.json",
+    "./react-library.json": "./react-library.json",
+    "./nextjs.json": "./nextjs.json",
+    "./node.json": "./node.json"
+  },
+  "files": [
+    "*.json"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
