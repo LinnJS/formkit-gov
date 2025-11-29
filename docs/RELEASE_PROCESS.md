@@ -61,7 +61,7 @@ Add a changeset when your PR includes:
 
 Generated changeset files look like:
 
-`````markdown
+```markdown
 ---
 '@formkit-gov/react': minor
 ---
@@ -71,8 +71,7 @@ Add TextInputField component with VA Design System integration
 - Wraps va-text-input web component
 - Integrates with React Hook Form
 - Supports all VA text input variants
-
-````text
+```
 
 ## Version Bumps
 
@@ -110,14 +109,12 @@ Breaking changes:
 1. **PR with Changesets Merged**
 
    When a PR with changesets is merged to `main`, the release workflow:
-
    - Collects all changesets
    - Creates a "Version Packages" PR
 
 2. **Version Packages PR**
 
    The automated PR:
-
    - Updates package versions
    - Updates CHANGELOG.md files
    - Removes consumed changesets
@@ -125,7 +122,6 @@ Breaking changes:
 3. **Merge Version PR**
 
    When the Version Packages PR is merged:
-
    - Packages are published to npm
    - Git tags are created
    - GitHub release is created
@@ -150,7 +146,7 @@ pnpm build
 
 # Publish (requires npm auth)
 pnpm release
-```text
+```
 
 ## Pre-release Versions
 
@@ -278,5 +274,3 @@ To edit release notes:
 3. Edit release notes
 4. Highlight breaking changes
 5. Add migration instructions if needed
-````
-`````

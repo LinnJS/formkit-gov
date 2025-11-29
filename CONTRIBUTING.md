@@ -65,13 +65,8 @@ to uphold this code.
 
 ## Project Structure
 
-````text
+```text
 formkit-gov/
-├── apps/
-│   ├── docs/           # Documentation site (Nextra)
-│   ├── storybook/      # Component documentation
-│   ├── demo-nextjs/    # Next.js demo application
-│   └── demo-vite/      # Vite demo application
 ├── packages/
 │   ├── core/           # @formkit-gov/core - Zod schemas & utilities
 │   ├── react/          # @formkit-gov/react - React components
@@ -80,8 +75,9 @@ formkit-gov/
 │   ├── openapi/        # @formkit-gov/openapi - OpenAPI integration
 │   ├── validators/     # @formkit-gov/validators - Extended validators
 │   └── test-utils/     # @formkit-gov/test-utils - Testing utilities
+├── docs/               # Internal documentation
 └── ...config files
-```text
+```
 
 ## Making Changes
 
@@ -91,7 +87,7 @@ Create a branch for your changes:
 
 ```bash
 git checkout -b <type>/<scope>/<description>
-```text
+```
 
 Examples:
 
@@ -111,7 +107,7 @@ Examples:
 
    # Run a specific package
    pnpm --filter @formkit-gov/react dev
-````
+   ```
 
 3. Test your changes:
 
@@ -146,13 +142,13 @@ have a type, optional scope, and description.
 
 ### Format
 
-````text
+```text
 <type>(<scope>): <description>
 
 [optional body]
 
 [optional footer(s)]
-```text
+```
 
 ### Types
 
@@ -184,7 +180,7 @@ fix(core): correct SSN regex pattern for edge cases
 docs(wizard): add save-in-progress guide
 
 chore(deps): update zod to v3.23
-```text
+```
 
 ## Pull Request Process
 
@@ -192,9 +188,9 @@ chore(deps): update zod to v3.23
 
    ```bash
    pnpm changeset
-````
+   ```
 
-Follow the prompts to describe your changes.
+   Follow the prompts to describe your changes.
 
 2. **Update documentation** if needed.
 
@@ -212,9 +208,9 @@ Follow the prompts to describe your changes.
 
 Follow the same format as commit messages:
 
-````text
-<type>(<scope>): <description>
 ```text
+<type>(<scope>): <description>
+```
 
 ### PR Description Template
 
@@ -242,12 +238,11 @@ pnpm test:watch
 
 # Specific package
 pnpm --filter @formkit-gov/react test
-```text
+```
 
 ### Writing Tests
 
-- Place test files next to the source files with `.test.ts` or `.test.tsx`
-  extension.
+- Place test files next to the source files with `.test.ts` or `.test.tsx` extension.
 - Use descriptive test names.
 - Test both happy paths and edge cases.
 - Include accessibility tests for components.
@@ -275,7 +270,7 @@ describe('createSSNSchema', () => {
     expect(result.error?.issues[0].message).toContain('Social Security');
   });
 });
-```text
+```
 
 ## Documentation
 
@@ -289,11 +284,8 @@ Each package should have:
 
 ### Docs Site
 
-The documentation site is in `apps/docs/`. To run locally:
-
-```bash
-pnpm --filter docs dev
-```text
+Internal documentation is in the `docs/` directory. For package usage documentation, see each
+package's README.
 
 ## Questions?
 
@@ -303,4 +295,3 @@ If you have questions, feel free to:
 - Check existing [Issues](https://github.com/LinnJS/formkit-gov/issues)
 
 Thank you for contributing!
-````

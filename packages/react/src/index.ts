@@ -4,17 +4,18 @@
  * React components for government form applications
  * using the VA Design System.
  *
- * @example Basic usage with React Hook Form
+ * @example Using Form components (recommended)
  * ```tsx
- * import { useForm, Controller } from 'react-hook-form';
+ * import { useForm } from 'react-hook-form';
  * import { zodResolver } from '@hookform/resolvers/zod';
  * import { z } from 'zod';
  * import {
- *   Field,
- *   FieldGroup,
- *   FieldLabel,
- *   FieldDescription,
- *   FieldError,
+ *   Form,
+ *   FormField,
+ *   FormItem,
+ *   FormLabel,
+ *   FormControl,
+ *   FormMessage,
  *   TextInputField,
  * } from '@formkit-gov/react';
  *
@@ -29,28 +30,53 @@
  *   });
  *
  *   return (
- *     <form onSubmit={form.handleSubmit(console.log)}>
- *       <FieldGroup>
- *         <Controller
- *           name="email"
- *           control={form.control}
- *           render={({ field, fieldState }) => (
- *             <Field data-invalid={fieldState.invalid}>
- *               <TextInputField
- *                 {...field}
- *                 label="Email"
- *                 error={fieldState.error?.message}
- *               />
- *             </Field>
- *           )}
- *         />
- *       </FieldGroup>
+ *     <Form form={form} onSubmit={(data) => console.log(data)}>
+ *       <FormField
+ *         control={form.control}
+ *         name="email"
+ *         render={({ field, fieldState }) => (
+ *           <FormItem>
+ *             <FormLabel>Email</FormLabel>
+ *             <FormControl>
+ *               <TextInputField {...field} label="Email" />
+ *             </FormControl>
+ *             <FormMessage />
+ *           </FormItem>
+ *         )}
+ *       />
  *       <button type="submit">Submit</button>
- *     </form>
+ *     </Form>
  *   );
  * }
  * ```
  */
+
+// Form components (shadcn/ui pattern with context)
+export {
+  Form,
+  FormField,
+  FormItem,
+  FormControl,
+  FormLabel,
+  FormDescription,
+  FormMessage,
+  useFormContext,
+  useFormField,
+} from './components/form';
+
+export type {
+  FormProps,
+  FormFieldProps,
+  FormFieldRenderProps,
+  FormItemProps,
+  FormControlProps,
+  FormLabelProps,
+  FormDescriptionProps,
+  FormMessageProps,
+  FormContextValue,
+  FormFieldContextValue,
+  FormItemContextValue,
+} from './components/form';
 
 // Field layout primitives
 export {
@@ -89,6 +115,16 @@ export type {
   SelectFieldProps,
   SelectOption,
 } from './components/fields';
+
+// Molecular components
+export { FullNameField } from './components/molecules';
+
+export type {
+  FullNameFieldProps,
+  NameFieldConfig,
+  SuffixFieldConfig,
+  FullNameValues,
+} from './components/molecules';
 
 // Re-export all components
 export * from './components';

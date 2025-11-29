@@ -4,7 +4,7 @@ Comprehensive testing approach for FormKit Gov packages.
 
 ## Testing Pyramid
 
-````text
+```text
          /\
         /  \
        / E2E \        <- Few, critical user flows
@@ -15,7 +15,7 @@ Comprehensive testing approach for FormKit Gov packages.
   /                \
  /      Unit        \  <- Schema validation, utilities
 /--------------------\
-```text
+```
 
 ## Test Types
 
@@ -60,7 +60,7 @@ describe('createSSNSchema', () => {
     }
   });
 });
-```text
+```
 
 ### Integration Tests
 
@@ -112,7 +112,7 @@ describe('TextInputField', () => {
     expect(input).toHaveValue('John');
   });
 });
-```text
+```
 
 ### Accessibility Tests
 
@@ -155,7 +155,7 @@ describe('TextInputField Accessibility', () => {
     expect(document.getElementById(errorId!)).toHaveTextContent('Required');
   });
 });
-```text
+```
 
 ### E2E Tests
 
@@ -210,7 +210,7 @@ test.describe('Multi-Step Form', () => {
     await expect(page.locator('[name="firstName"]')).toHaveValue('John');
   });
 });
-```text
+```
 
 ### Visual Regression Tests
 
@@ -255,7 +255,7 @@ export default defineConfig({
     },
   },
 });
-```text
+```
 
 ### Test Setup
 
@@ -268,21 +268,21 @@ import { afterEach } from 'vitest';
 afterEach(() => {
   cleanup();
 });
-```text
+```
 
 ## Coverage Requirements
 
 ### Minimum Coverage
 
-| Package | Lines | Branches | Functions |
-|---------|-------|----------|-----------|
-| core | 90% | 85% | 90% |
-| react | 80% | 75% | 80% |
-| store | 85% | 80% | 85% |
-| wizard | 80% | 75% | 80% |
-| openapi | 85% | 80% | 85% |
-| validators | 90% | 85% | 90% |
-| test-utils | 70% | 65% | 70% |
+| Package    | Lines | Branches | Functions |
+| ---------- | ----- | -------- | --------- |
+| core       | 90%   | 85%      | 90%       |
+| react      | 80%   | 75%      | 80%       |
+| store      | 85%   | 80%      | 85%       |
+| wizard     | 80%   | 75%      | 80%       |
+| openapi    | 85%   | 80%      | 85%       |
+| validators | 90%   | 85%      | 90%       |
+| test-utils | 70%   | 65%      | 70%       |
 
 ### Critical Paths
 
@@ -299,31 +299,31 @@ afterEach(() => {
 
 ```bash
 pnpm test
-```text
+```
 
 ### With Coverage
 
 ```bash
 pnpm test:coverage
-```text
+```
 
 ### Watch Mode
 
 ```bash
 pnpm test:watch
-```text
+```
 
 ### Specific Package
 
 ```bash
 pnpm --filter @formkit-gov/core test
-```text
+```
 
 ### E2E Tests
 
 ```bash
 pnpm e2e
-```text
+```
 
 ## CI Integration
 
@@ -342,7 +342,7 @@ test:
     - run: pnpm install
     - run: pnpm test:coverage
     - uses: codecov/codecov-action@v4
-```text
+```
 
 ### Required Checks
 
@@ -369,7 +369,7 @@ describe('createSSNSchema', () => {
     it('rejects SSN with letters', () => {});
   });
 });
-```text
+```
 
 ### Arrange-Act-Assert
 
@@ -386,7 +386,7 @@ it('shows error when validation fails', async () => {
   // Assert
   expect(screen.getByText(/valid email/i)).toBeInTheDocument();
 });
-```text
+```
 
 ### Avoid Implementation Details
 
@@ -396,7 +396,7 @@ expect(wrapper.state('isValid')).toBe(false);
 
 // Good - tests behavior
 expect(screen.getByText('Invalid email')).toBeInTheDocument();
-```text
+```
 
 ### Use Testing Library Queries
 
@@ -416,5 +416,4 @@ screen.getByLabelText('Email');
 
 // Avoid - implementation detail
 screen.getByTestId('email-input');
-```text
-````
+```
