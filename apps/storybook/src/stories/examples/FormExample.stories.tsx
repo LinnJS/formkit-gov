@@ -95,7 +95,8 @@ export const BasicForm: Story = {
 
       // Handle form submission
       const onSubmit = (data: FormData) => {
-        // In a real application, you would send this to your API
+        // ⚠️ DEMO ONLY - In production, send data securely to your API over HTTPS
+        // Never display PII in alerts or console logs
         alert(JSON.stringify(data, null, 2));
       };
 
@@ -270,6 +271,8 @@ export const CompleteForm: Story = {
       });
 
       const onSubmit = (data: FormData) => {
+        // ⚠️ DEMO ONLY - In production, send data securely to your API over HTTPS
+        // Never display PII (SSN, etc.) in alerts or console logs
         alert(JSON.stringify(data, null, 2));
       };
 
@@ -611,6 +614,7 @@ export const WithValidationErrors: Story = {
       });
 
       const onSubmit = (data: FormData) => {
+        // ⚠️ DEMO ONLY - In production, send data securely to your API
         alert('Form is valid!\n\n' + JSON.stringify(data, null, 2));
       };
 
