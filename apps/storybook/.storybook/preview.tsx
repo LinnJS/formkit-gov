@@ -1,15 +1,24 @@
+// Import and register VA Design System web components
+import {
+  applyPolyfills,
+  defineCustomElements,
+} from '@department-of-veterans-affairs/web-components/loader';
 import React from 'react';
 
 import type { Preview } from '@storybook/react';
 
-// Import VA Design System styles
+// Import VA CSS Library base styles (typography, utilities, core)
+import '@department-of-veterans-affairs/css-library/dist/stylesheets/core.css';
+import '@department-of-veterans-affairs/css-library/dist/stylesheets/uswds-typography.css';
+import '@department-of-veterans-affairs/css-library/dist/stylesheets/utilities.css';
+
+// Import VA Design System component styles
 import '@department-of-veterans-affairs/component-library/dist/main.css';
 
-// Define custom components for VA Design System web components
-if (typeof window !== 'undefined') {
-  // Dynamically import VA web components
-  import('@department-of-veterans-affairs/component-library');
-}
+// Register all VADS web components
+applyPolyfills().then(() => {
+  defineCustomElements();
+});
 
 const preview: Preview = {
   parameters: {

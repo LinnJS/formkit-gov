@@ -18,6 +18,17 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+  staticDirs: [
+    // Serve VA Design System icons and images
+    {
+      from: '../node_modules/@department-of-veterans-affairs/css-library/dist/img',
+      to: '/img',
+    },
+    {
+      from: '../node_modules/@department-of-veterans-affairs/css-library/dist/fonts',
+      to: '/fonts',
+    },
+  ],
 };
 
 export default config;

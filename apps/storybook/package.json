@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@department-of-veterans-affairs/component-library": "^54.2.0",
+    "@department-of-veterans-affairs/css-library": "^0.27.0",
+    "@department-of-veterans-affairs/web-components": "^22.2.0",
     "@hookform/resolvers": "^5.2.2",
     "@playwright/test": "^1.49.1",
     "@storybook/addon-a11y": "^8.6.14",
@@ -27,6 +29,8 @@
     "@storybook/react-vite": "^8.6.14",
     "@storybook/test": "^8.6.14",
     "http-server": "^14.1.1",
+    "i18next": "^21.10.0",
+    "i18next-browser-languagedetector": "^6.1.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.58.0",
