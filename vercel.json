@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm build",
+  "buildCommand": "pnpm turbo run build --filter=@formkit-gov/storybook...",
   "outputDirectory": "apps/storybook/storybook-static",
   "installCommand": "pnpm install"
 }
