@@ -51,7 +51,9 @@ an appointed representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community
-leaders responsible for enforcement at [INSERT CONTACT METHOD].
+leaders responsible for enforcement by opening an issue at
+[GitHub Issues](https://github.com/LinnJS/formkit-gov/issues) or contacting the maintainers
+directly.
 
 All complaints will be reviewed and investigated promptly and fairly.
 

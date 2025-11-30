@@ -1,0 +1,81 @@
+{/* Introduction.mdx */}
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# FormKit Gov
+
+Production-quality, open-source form system for government applications.
+
+FormKit Gov integrates VA Design System web components with Zod validation and React Hook Form,
+following shadcn/ui composable patterns.
+
+## Getting Started
+
+Install the packages:
+
+```bash
+npm install @formkit-gov/react @formkit-gov/core
+npm install @department-of-veterans-affairs/component-library
+npm install react-hook-form @hookform/resolvers zod
+```
+
+## Basic Usage
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { z } from 'zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  TextInputField,
+} from '@formkit-gov/react';
+import { createEmailSchema } from '@formkit-gov/core';
+
+const schema = z.object({
+  email: createEmailSchema(),
+});
+
+function MyForm() {
+  const form = useForm({
+    resolver: standardSchemaResolver(schema),
+    defaultValues: { email: '' },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <FormItem>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <TextInputField {...field} label="Email" error={fieldState.error?.message} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+```
+
+## Packages
+
+- **@formkit-gov/core** - Zod schemas, patterns, validators
+- **@formkit-gov/react** - React components wrapping VA Design System
+
+## Resources
+
+- [GitHub Repository](https://github.com/LinnJS/formkit-gov)
+- [VA Design System](https://design.va.gov/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
