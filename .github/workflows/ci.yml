@@ -148,7 +148,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm --filter @formkit-gov/storybook exec playwright install --with-deps chromium
 
       - name: Build packages
         run: pnpm build
@@ -185,7 +185,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm --filter @formkit-gov/storybook exec playwright install --with-deps chromium
 
       - name: Build packages
         run: pnpm build
