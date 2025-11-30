@@ -46,6 +46,8 @@
     "release": "turbo build && changeset publish",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
+    "test:storybook": "pnpm --filter @formkit-gov/storybook test:storybook",
+    "test:storybook:ci": "pnpm --filter @formkit-gov/storybook test:storybook:ci",
     "test:watch": "turbo test:watch",
     "typecheck": "turbo typecheck",
     "version-packages": "changeset version"

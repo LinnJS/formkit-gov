@@ -144,15 +144,15 @@ export const WithCustomElements: Story = {
     <ReviewSection title="Application Status">
       <ReviewItem
         label="Status"
-        value={<span style={{ color: '#008000', fontWeight: 'bold' }}>Approved</span>}
+        value={<span style={{ color: '#216e1f', fontWeight: 'bold' }}>Approved</span>}
       />
       <ReviewItem
         label="Priority"
-        value={<span style={{ color: '#d83933', fontWeight: 'bold' }}>High</span>}
+        value={<span style={{ color: '#b50909', fontWeight: 'bold' }}>High</span>}
       />
       <ReviewItem
         label="Completion"
-        value={<span style={{ color: '#0050d8' }}>75% Complete</span>}
+        value={<span style={{ color: '#004795' }}>75% Complete</span>}
       />
     </ReviewSection>
   ),
