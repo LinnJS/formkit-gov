@@ -2,13 +2,13 @@
 
 ## Current Status
 
-**Version**: 0.0.0 (Pre-release) **Phase**: Foundation
+**Version**: 0.1.0 (Pre-release) **Phase**: Phase 1 Complete
 
 ## Release Timeline
 
-### Phase 1: Foundation (Current)
+### Phase 1: Foundation (Complete)
 
-**Target**: v0.1.0 **Status**: In Progress
+**Target**: v0.1.0 **Status**: Complete
 
 #### Completed
 
@@ -19,60 +19,36 @@
 - [x] Core package scaffolding
 - [x] Zod schema factories (SSN, phone, address, date, etc.)
 - [x] Validation patterns and utilities
+- [x] @formkit-gov/react Form context components (shadcn/ui pattern)
+- [x] @formkit-gov/react atomic components (15 field components)
+- [x] @formkit-gov/react molecular components (FullNameField, AddressField)
+- [x] @formkit-gov/react review components (ReviewSection, ReviewItem, ReviewList)
+- [x] Storybook setup with VA Design System
+- [x] Unit tests (87% coverage, 80% per-file threshold)
+- [x] Accessibility: Shadow DOM focus delegation for shouldFocusError
+- [x] Playwright E2E tests for Storybook
 
-#### In Progress
+### Phase 2: Enhanced Components (v0.2.0)
 
-- [ ] @formkit-gov/react Form context components
-- [ ] @formkit-gov/react atomic components (TextInputField, etc.)
-- [ ] Storybook setup
-- [ ] Initial documentation site
-
-#### Remaining
-
-- [ ] @formkit-gov/react review components
-- [ ] @formkit-gov/react molecular components
-- [ ] Unit tests for all components
-- [ ] Accessibility tests
-- [ ] Playwright E2E test setup (re-enable CI e2e job)
-
-### Phase 2: Core Components (v0.2.0)
-
-**Target**: v0.2.0 **Status**: Planned
+**Target**: v0.2.0 **Status**: Next
 
 #### Goals
 
-- Complete all 19 atomic form components
-- Complete review component variants
-- Full Storybook documentation
-- 80%+ test coverage
-- Accessibility audit pass
+- Additional field components
+- Review component variants
+- Visual regression testing
+- Enhanced documentation
 
 #### Tasks
 
 - [ ] Chromatic visual regression setup (re-enable CI chromatic workflow)
-- [ ] TextInputField component
-- [ ] TextareaField component
-- [ ] SelectField component
-- [ ] ComboBoxField component
-- [ ] CheckboxField component
-- [ ] CheckboxGroupField component
-- [ ] RadioField component
-- [ ] DateField component
-- [ ] MemorableDateField component
-- [ ] PhoneField component
-- [ ] SSNField component
-- [ ] FileUploadField component
-- [ ] CurrencyField component
-- [ ] NumberField component
 - [ ] SignatureField component
-- [ ] PrivacyAgreementField component
 - [ ] ReviewField component
 - [ ] ReviewAddressField component
 - [ ] ReviewDateField component
 - [ ] ReviewFullNameField component
-- [ ] FullNameField (molecular)
-- [ ] AddressField (molecular)
 - [ ] NavigationButtons component
+- [ ] Enhanced Storybook documentation
 
 ### Phase 3: State Management (v0.3.0)
 

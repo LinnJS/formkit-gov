@@ -1,4 +1,6 @@
-import React from 'react';
+import * as React from 'react';
+
+import { createFocusableRef } from './focus-utils';
 
 import type { HTMLVaSelectElement } from '../../types/va-components';
 
@@ -169,8 +171,22 @@ export const SelectField = React.forwardRef<HTMLVaSelectElement, SelectFieldProp
       [onBlur]
     );
 
+    // Create a focusable ref that handles shadow DOM focus
+    const focusableRef = createFocusableRef(ref, 'select');
+
+    // Use a local ref to attach event listeners
+    const elementRef = React.useRef<HTMLVaSelectElement | null>(null);
+
+    const combinedRef = React.useCallback(
+      (element: HTMLVaSelectElement | null) => {
+        elementRef.current = element;
+        focusableRef(element);
+      },
+      [focusableRef]
+    );
+
     React.useEffect(() => {
-      const element = ref && 'current' in ref ? ref.current : null;
+      const element = elementRef.current;
       if (!element) return;
 
       if (onChange) {
@@ -188,7 +204,7 @@ export const SelectField = React.forwardRef<HTMLVaSelectElement, SelectFieldProp
           element.removeEventListener('blur', handleBlur);
         }
       };
-    }, [ref, onChange, onBlur, handleChange, handleBlur]);
+    }, [onChange, onBlur, handleChange, handleBlur]);
 
     // Render options from options prop if provided
     const optionElements = options
@@ -200,7 +216,7 @@ export const SelectField = React.forwardRef<HTMLVaSelectElement, SelectFieldProp
     return React.createElement(
       'va-select',
       {
-        ref,
+        ref: combinedRef,
         label,
         error: error || undefined,
         hint,

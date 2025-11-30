@@ -35,7 +35,7 @@
     "changeset": "changeset",
     "clean": "turbo clean && rm -rf node_modules",
     "dev": "turbo dev",
-    "e2e": "echo 'No E2E tests configured yet'",
+    "e2e": "pnpm --filter @formkit-gov/storybook test:e2e",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json}\"",
     "lint": "turbo lint",
@@ -46,6 +46,8 @@
     "release": "turbo build && changeset publish",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
+    "test:storybook": "pnpm --filter @formkit-gov/storybook test:storybook",
+    "test:storybook:ci": "pnpm --filter @formkit-gov/storybook test:storybook:ci",
     "test:watch": "turbo test:watch",
     "typecheck": "turbo typecheck",
     "version-packages": "changeset version"

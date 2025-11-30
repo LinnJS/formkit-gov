@@ -6,10 +6,12 @@
 
 import * as React from 'react';
 
+import { createFocusableRef } from './focus-utils';
+
 /**
- * VA Design System text input element
+ * VA Design System text input element with focus support
  */
-interface HTMLVaTextInputElement extends HTMLElement {
+export interface HTMLVaTextInputElement extends HTMLElement {
   label?: string;
   error?: string;
   hint?: string;
@@ -23,7 +25,6 @@ interface HTMLVaTextInputElement extends HTMLElement {
   disabled?: boolean;
   autocomplete?: string;
   inputmode?: string;
-  success?: string;
 }
 
 /**
@@ -84,17 +85,9 @@ export interface TextInputFieldProps {
    */
   inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
   /**
-   * Success message
-   */
-  success?: string;
-  /**
    * Message aria-describedby ID
    */
   messageAriaDescribedby?: string;
-  /**
-   * Message aria-labelledby ID
-   */
-  messageAriaLabelledby?: string;
   /**
    * Whether to use forms pattern
    */
@@ -104,7 +97,7 @@ export interface TextInputFieldProps {
    */
   enableAnalytics?: boolean;
   /**
-   * Change event handler
+   * Change event handler - called on vaInput custom event
    */
   onChange?: (event: CustomEvent | Event) => void;
   /**
@@ -185,9 +178,7 @@ export const TextInputField = React.forwardRef<HTMLVaTextInputElement, TextInput
       disabled = false,
       autocomplete,
       inputmode,
-      success,
       messageAriaDescribedby,
-      messageAriaLabelledby,
       useFormsPattern,
       enableAnalytics,
       onChange,
@@ -214,8 +205,22 @@ export const TextInputField = React.forwardRef<HTMLVaTextInputElement, TextInput
       [onBlur]
     );
 
+    // Create a focusable ref that handles shadow DOM focus
+    const focusableRef = createFocusableRef(ref);
+
+    // Use a local ref to attach event listeners
+    const elementRef = React.useRef<HTMLVaTextInputElement | null>(null);
+
+    const combinedRef = React.useCallback(
+      (element: HTMLVaTextInputElement | null) => {
+        elementRef.current = element;
+        focusableRef(element);
+      },
+      [focusableRef]
+    );
+
     React.useEffect(() => {
-      const element = ref && 'current' in ref ? ref.current : null;
+      const element = elementRef.current;
       if (!element) return;
 
       if (onChange) {
@@ -233,10 +238,10 @@ export const TextInputField = React.forwardRef<HTMLVaTextInputElement, TextInput
           element.removeEventListener('blur', handleBlur);
         }
       };
-    }, [ref, onChange, onBlur, handleChange, handleBlur]);
+    }, [onChange, onBlur, handleChange, handleBlur]);
 
     return React.createElement('va-text-input', {
-      ref,
+      ref: combinedRef,
       label,
       error: error || undefined,
       hint,
@@ -250,9 +255,7 @@ export const TextInputField = React.forwardRef<HTMLVaTextInputElement, TextInput
       disabled,
       autocomplete,
       inputmode,
-      success,
       'message-aria-describedby': messageAriaDescribedby,
-      'message-aria-labelledby': messageAriaLabelledby,
       'use-forms-pattern': useFormsPattern,
       'enable-analytics': enableAnalytics,
       ...props,

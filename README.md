@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://via.placeholder.com/200x60?text=FormKit+Gov" alt="FormKit Gov" />
+  <img src="./formkit-gov.png" alt="FormKit Gov" width="120" />
 </p>
 
 <h1 align="center">FormKit Gov</h1>
@@ -229,13 +229,6 @@ const form = useForm({
   resolver: zodResolver(VeteranInfoSchema),
 });
 ```
-
-## Examples
-
-- [Next.js TypeScript](./examples/nextjs-typescript) - Full-featured Next.js example
-- [Vite TypeScript](./examples/vite-typescript) - Client-side React with Vite
-- [Next.js JavaScript](./examples/nextjs-javascript) - JavaScript usage example
-- [Multi-Step Wizard](./apps/demo-nextjs) - Complete wizard implementation
 
 ## Documentation
 
