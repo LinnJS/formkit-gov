@@ -6,6 +6,7 @@
   "scripts": {
     "build": "storybook build",
     "dev": "storybook dev -p 6006",
+    "postinstall": "node scripts/fix-va-sourcemaps.cjs",
     "preview": "http-server storybook-static -p 6006",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",

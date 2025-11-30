@@ -7,6 +7,10 @@ import React from 'react';
 
 import type { Preview } from '@storybook/react';
 
+// Suppress React act() warnings in Storybook environment
+// @ts-expect-error React internals
+globalThis.IS_REACT_ACT_ENVIRONMENT = false;
+
 // Import VA CSS Library base styles (typography, utilities, core)
 import '@department-of-veterans-affairs/css-library/dist/stylesheets/core.css';
 import '@department-of-veterans-affairs/css-library/dist/stylesheets/uswds-typography.css';
