@@ -6,7 +6,7 @@ Standards and best practices for developing packages in the FormKit Gov monorepo
 
 Every package should follow this structure:
 
-````text
+```text
 packages/[name]/
 ├── src/
 │   ├── index.ts           # Main entry point
@@ -22,7 +22,7 @@ packages/[name]/
 ├── vitest.config.ts
 ├── eslint.config.js
 └── README.md
-```text
+```
 
 ## Naming Conventions
 
@@ -52,7 +52,7 @@ export { validateSSN } from './validators';
 
 // Type exports
 export type { SSNSchemaOptions } from './schemas/ssn';
-```text
+```
 
 ### Sub-path Exports
 
@@ -66,7 +66,7 @@ Use sub-path exports for logical groupings:
     "./validators": "./dist/validators/index.js"
   }
 }
-```text
+```
 
 ## TypeScript
 
@@ -82,7 +82,7 @@ All packages use strict TypeScript:
     "exactOptionalPropertyTypes": true
   }
 }
-```text
+```
 
 ### Type Exports
 
@@ -97,7 +97,7 @@ export interface CreateSchemaOptions {
 export function createSchema(options: CreateSchemaOptions = {}) {
   // ...
 }
-```text
+```
 
 ### Generics
 
@@ -112,7 +112,7 @@ function validateData<TSchema extends z.ZodType>(
 
 // Bad
 function validateData<T>(schema: T, data: unknown) {}
-```text
+```
 
 ## Documentation
 
@@ -120,7 +120,7 @@ function validateData<T>(schema: T, data: unknown) {}
 
 All public APIs must have JSDoc:
 
-```typescript
+````typescript
 /**
  * Creates a Social Security Number schema with validation
  *
@@ -134,7 +134,7 @@ All public APIs must have JSDoc:
  * ```
  */
 export function createSSNSchema(options: SSNSchemaOptions = {}) {}
-```text
+````
 
 ### README
 
@@ -157,7 +157,7 @@ src/
 ├── schemas/
 │   ├── ssn.ts
 │   └── ssn.test.ts
-```text
+```
 
 ### Test Structure
 
@@ -177,7 +177,7 @@ describe('createSSNSchema', () => {
     it('supports flexible mode', () => {});
   });
 });
-```text
+```
 
 ### Coverage Requirements
 
@@ -197,11 +197,11 @@ Error messages should be:
 
 ```typescript
 // Good
-'Enter a valid Social Security number (like 123-45-6789)'
+'Enter a valid Social Security number (like 123-45-6789)';
 
 // Bad
-'Invalid SSN format'
-```text
+'Invalid SSN format';
+```
 
 ### Customizable Messages
 
@@ -214,7 +214,7 @@ interface SchemaOptions {
     invalid?: string;
   };
 }
-```text
+```
 
 ## Dependencies
 
@@ -229,7 +229,7 @@ External libraries used by consumers should be peer dependencies:
     "zod": ">=3.20.0"
   }
 }
-```text
+```
 
 ### Internal Dependencies
 
@@ -241,7 +241,7 @@ Use workspace protocol for internal packages:
     "@formkit-gov/core": "workspace:*"
   }
 }
-```text
+```
 
 ### Minimal Dependencies
 
@@ -288,7 +288,7 @@ Every user-facing change needs a changeset:
 
 ```bash
 pnpm changeset
-```text
+```
 
 ### Breaking Changes
 
@@ -310,4 +310,3 @@ Before submitting PR:
 - [ ] No console.log statements
 - [ ] Error messages are user-friendly
 - [ ] Accessibility is maintained
-````

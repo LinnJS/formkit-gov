@@ -230,13 +230,6 @@ const form = useForm({
 });
 ```
 
-## Examples
-
-- [Next.js TypeScript](./examples/nextjs-typescript) - Full-featured Next.js example
-- [Vite TypeScript](./examples/vite-typescript) - Client-side React with Vite
-- [Next.js JavaScript](./examples/nextjs-javascript) - JavaScript usage example
-- [Multi-Step Wizard](./apps/demo-nextjs) - Complete wizard implementation
-
 ## Documentation
 
 Visit [formkit-gov.vercel.app](https://formkit-gov.vercel.app) for full documentation:
