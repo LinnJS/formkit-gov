@@ -27,6 +27,7 @@
 - [x] Unit tests (87% coverage, 80% per-file threshold)
 - [x] Accessibility: Shadow DOM focus delegation for shouldFocusError
 - [x] Playwright E2E tests for Storybook
+- [x] Storybook deployment (storybook.formkit-gov.org)
 
 ### Phase 2: Enhanced Components (v0.2.0)
 
@@ -142,7 +143,8 @@
 
 #### Tasks
 
-- [ ] Nextra documentation site
+- [ ] Landing page (formkit-gov.org)
+- [ ] Nextra documentation site (docs.formkit-gov.org)
 - [ ] Documentation site deployment (re-enable CI docs workflow)
 - [ ] Getting started guide
 - [ ] Component API docs

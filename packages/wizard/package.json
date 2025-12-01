@@ -11,7 +11,7 @@
     "government",
     "va-forms"
   ],
-  "homepage": "https://formkit-gov.vercel.app/docs/wizard",
+  "homepage": "https://docs.formkit-gov.org/wizard",
   "bugs": {
     "url": "https://github.com/LinnJS/formkit-gov/issues"
   },

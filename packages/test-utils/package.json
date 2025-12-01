@@ -10,7 +10,7 @@
     "accessibility",
     "a11y"
   ],
-  "homepage": "https://formkit-gov.vercel.app/docs/test-utils",
+  "homepage": "https://docs.formkit-gov.org/test-utils",
   "bugs": {
     "url": "https://github.com/LinnJS/formkit-gov/issues"
   },

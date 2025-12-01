@@ -231,8 +231,8 @@ import { ReviewSection, ReviewItem, ReviewList } from '@formkit-gov/react';
 
 ## API Reference
 
-See the [documentation site](https://formkit-gov.vercel.app) for detailed API reference and
-examples.
+See the [Storybook](https://storybook.formkit-gov.org) for interactive component demos and the
+[documentation site](https://docs.formkit-gov.org) for detailed API reference.
 
 ## License
 

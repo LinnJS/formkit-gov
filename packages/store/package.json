@@ -11,7 +11,7 @@
     "persistence",
     "save-in-progress"
   ],
-  "homepage": "https://formkit-gov.vercel.app/docs/store",
+  "homepage": "https://docs.formkit-gov.org/store",
   "bugs": {
     "url": "https://github.com/LinnJS/formkit-gov/issues"
   },
