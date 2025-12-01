@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 4003",
+    "dev:open": "open http://localhost:4003 && next dev -p 4003",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "start": "next start -p 3001"
+    "start": "next start -p 4003",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@formkit-gov/core": "workspace:*",

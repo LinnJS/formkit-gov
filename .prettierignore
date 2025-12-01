@@ -2,6 +2,9 @@ node_modules
 dist
 build
 .next
+out
 coverage
 pnpm-lock.yaml
 CHANGELOG.md
+storybook-static
+test-results

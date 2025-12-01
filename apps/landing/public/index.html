@@ -11,6 +11,11 @@
     <meta property="og:description" content="Production-quality form components for government applications" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formkit-gov.org" />
+    <meta property="og:image" content="https://formkit-gov.org/formkit-gov.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://formkit-gov.org/formkit-gov.png" />
     <style>
       :root {
         --color-primary: #112e51;
@@ -257,17 +262,17 @@
         </div>
 
         <div class="cta-buttons">
-          <a href="https://storybook.formkit-gov.org" class="btn btn-primary">
+          <a href="https://storybook.formkit-gov.org" class="btn btn-primary" data-app="storybook">
             View Storybook
             <span>&rarr;</span>
           </a>
-          <a href="https://nextjs-demo.formkit-gov.org" class="btn btn-secondary">
+          <a href="https://nextjs-demo.formkit-gov.org" class="btn btn-secondary" data-app="demo-nextjs">
             Next.js Demo
           </a>
-          <a href="https://vite-demo.formkit-gov.org" class="btn btn-secondary">
+          <a href="https://vite-demo.formkit-gov.org" class="btn btn-secondary" data-app="demo-vite">
             Vite Demo
           </a>
-          <a href="https://github.com/LinnJS/formkit-gov" class="btn btn-secondary">
+          <a href="https://github.com/LinnJS/formkit-gov" class="btn btn-secondary" data-app="github">
             GitHub
           </a>
         </div>
@@ -295,17 +300,44 @@
 
     <footer class="footer">
       <div class="footer-links">
-        <a href="https://docs.formkit-gov.org">Documentation</a>
-        <a href="https://storybook.formkit-gov.org">Storybook</a>
-        <a href="https://nextjs-demo.formkit-gov.org">Next.js Demo</a>
-        <a href="https://vite-demo.formkit-gov.org">Vite Demo</a>
-        <a href="https://github.com/LinnJS/formkit-gov">GitHub</a>
+        <a href="https://docs.formkit-gov.org" data-app="docs">Documentation</a>
+        <a href="https://storybook.formkit-gov.org" data-app="storybook">Storybook</a>
+        <a href="https://nextjs-demo.formkit-gov.org" data-app="demo-nextjs">Next.js Demo</a>
+        <a href="https://vite-demo.formkit-gov.org" data-app="demo-vite">Vite Demo</a>
+        <a href="https://github.com/LinnJS/formkit-gov" data-app="github">GitHub</a>
         <a href="https://github.com/LinnJS/formkit-gov/blob/main/CONTRIBUTING.md">Contributing</a>
       </div>
       <p>
         MIT License &bull;
-        <a href="https://github.com/LinnJS/formkit-gov">FormKit Gov</a> is not affiliated with the U.S. Department of Veterans Affairs.
+        <a href="https://github.com/LinnJS/formkit-gov" data-app="github">FormKit Gov</a> is not affiliated with the U.S. Department of Veterans Affairs.
       </p>
     </footer>
+
+    <script>
+      // Environment-aware URL configuration for FormKit Gov apps
+      (function() {
+        var isDev = window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1' ||
+                    window.location.hostname.startsWith('192.168.');
+
+        if (!isDev) return; // Only modify links in development
+
+        var devUrls = {
+          'landing': 'http://localhost:4000',
+          'docs': 'http://localhost:4001',
+          'storybook': 'http://localhost:4002',
+          'demo-nextjs': 'http://localhost:4003',
+          'demo-vite': 'http://localhost:4004',
+          'github': 'https://github.com/LinnJS/formkit-gov'
+        };
+
+        document.querySelectorAll('[data-app]').forEach(function(link) {
+          var app = link.getAttribute('data-app');
+          if (devUrls[app]) {
+            link.href = devUrls[app];
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

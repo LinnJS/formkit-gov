@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
-    "dev": "vite --port 3002",
+    "dev": "vite --port 4004",
+    "dev:open": "open http://localhost:4004 && vite --port 4004",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview --port 3002"
+    "preview": "vite preview --port 4004",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@formkit-gov/core": "workspace:*",

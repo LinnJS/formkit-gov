@@ -14,6 +14,11 @@
       content="Documentation for FormKit Gov - Production-quality form components for government applications." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://docs.formkit-gov.org" />
+    <meta property="og:image" content="https://docs.formkit-gov.org/formkit-gov.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://docs.formkit-gov.org/formkit-gov.png" />
     <style>
       :root {
         --color-primary: #112e51;
@@ -186,19 +191,19 @@
         </p>
 
         <div class="links">
-          <a href="https://storybook.formkit-gov.org" class="link">
+          <a href="https://storybook.formkit-gov.org" class="link" data-app="storybook">
             <span class="link-text">View Storybook</span>
             <span class="link-arrow">&rarr;</span>
           </a>
-          <a href="https://nextjs-demo.formkit-gov.org" class="link">
+          <a href="https://nextjs-demo.formkit-gov.org" class="link" data-app="demo-nextjs">
             <span class="link-text">Next.js Demo</span>
             <span class="link-arrow">&rarr;</span>
           </a>
-          <a href="https://vite-demo.formkit-gov.org" class="link">
+          <a href="https://vite-demo.formkit-gov.org" class="link" data-app="demo-vite">
             <span class="link-text">Vite Demo</span>
             <span class="link-arrow">&rarr;</span>
           </a>
-          <a href="https://github.com/LinnJS/formkit-gov" class="link">
+          <a href="https://github.com/LinnJS/formkit-gov" class="link" data-app="github">
             <span class="link-text">GitHub Repository</span>
             <span class="link-arrow">&rarr;</span>
           </a>
@@ -206,10 +211,37 @@
       </div>
 
       <p class="footer">
-        <a href="https://github.com/LinnJS/formkit-gov">GitHub</a> &bull;
+        <a href="https://github.com/LinnJS/formkit-gov" data-app="github">GitHub</a> &bull;
         <a href="https://github.com/LinnJS/formkit-gov/blob/main/LICENSE">MIT License</a>
       </p>
     </div>
+
+    <script>
+      // Environment-aware URL configuration for FormKit Gov apps
+      (function() {
+        var isDev = window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1' ||
+                    window.location.hostname.startsWith('192.168.');
+
+        if (!isDev) return; // Only modify links in development
+
+        var devUrls = {
+          'landing': 'http://localhost:4000',
+          'docs': 'http://localhost:4001',
+          'storybook': 'http://localhost:4002',
+          'demo-nextjs': 'http://localhost:4003',
+          'demo-vite': 'http://localhost:4004',
+          'github': 'https://github.com/LinnJS/formkit-gov'
+        };
+
+        document.querySelectorAll('[data-app]').forEach(function(link) {
+          var app = link.getAttribute('data-app');
+          if (devUrls[app]) {
+            link.href = devUrls[app];
+          }
+        });
+      })();
+    </script>
   </body>
 
 </html>

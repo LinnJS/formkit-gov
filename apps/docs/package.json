@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "build": "mkdir -p dist && cp -r public/* dist/",
-    "dev": "pnpm build && npx http-server dist -p 3000",
-    "preview": "npx http-server dist -p 3000"
+    "dev": "pnpm build && npx http-server dist -p 4001",
+    "dev:open": "open http://localhost:4001 && pnpm build && npx http-server dist -p 4001",
+    "lint": "echo 'Static HTML - no linting required'",
+    "lint:fix": "echo 'Static HTML - no linting required'",
+    "preview": "npx http-server dist -p 4001",
+    "typecheck": "echo 'Static HTML - no type checking required'"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

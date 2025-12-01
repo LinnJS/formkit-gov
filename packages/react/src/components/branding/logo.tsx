@@ -1,17 +1,48 @@
+'use client';
+
+import * as React from 'react';
+
+/**
+ * Props for the Logo component
+ */
+export interface LogoProps extends React.SVGProps<SVGSVGElement> {
+  /**
+   * Optional CSS class name for styling
+   */
+  className?: string;
+}
+
 /**
  * FormKit Gov Logo Component
  *
- * Shared SVG logo for consistent branding across demo apps.
+ * Official SVG logo for consistent branding across FormKit Gov applications.
+ * Uses VA Design System colors.
+ *
+ * @example
+ * ```tsx
+ * import { Logo } from '@formkit-gov/react';
+ *
+ * function Header() {
+ *   return (
+ *     <header>
+ *       <Logo className="h-12 w-12" />
+ *       <span>FormKit Gov</span>
+ *     </header>
+ *   );
+ * }
+ * ```
  */
-export function Logo({ className }: { className?: string }) {
+export const Logo = React.forwardRef<SVGSVGElement, LogoProps>(({ className, ...props }, ref) => {
   return (
     <svg
+      ref={ref}
       aria-label="FormKit Gov logo"
       className={className}
       fill="none"
       role="img"
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <rect
         fill="none"
@@ -36,4 +67,6 @@ export function Logo({ className }: { className?: string }) {
       />
     </svg>
   );
-}
+});
+
+Logo.displayName = 'Logo';
