@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
-    "dev": "next dev -p 4001",
-    "dev:open": "open http://localhost:4001 && next dev -p 4001",
+    "build": "next build && mv out dist",
+    "dev": "next dev -p 4003 --turbopack",
+    "dev:open": "open http://localhost:4003 && next dev -p 4003 --turbopack",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "start": "next start -p 4001",
+    "start": "next start -p 4003",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
