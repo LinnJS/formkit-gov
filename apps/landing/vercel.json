@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=@formkit-gov/landing...",
   "outputDirectory": "dist",
   "installCommand": "cd ../.. && pnpm install"

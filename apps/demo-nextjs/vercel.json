@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=@formkit-gov/demo-nextjs...",
-  "outputDirectory": "out",
+  "outputDirectory": "dist",
   "installCommand": "cd ../.. && pnpm install"
 }

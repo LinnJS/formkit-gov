@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=@formkit-gov/demo-vite...",
   "outputDirectory": "dist",
   "installCommand": "cd ../.. && pnpm install"
