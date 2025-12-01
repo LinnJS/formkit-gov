@@ -21,7 +21,8 @@ import type {
  */
 export interface FormContextValue<TFieldValues extends FieldValues = FieldValues> {
   /** React Hook Form instance */
-  form: UseFormReturn<TFieldValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Accept any resolver context/transformed values
+  form: UseFormReturn<TFieldValues, any, any>;
 }
 
 /**
@@ -142,7 +143,8 @@ export function useFormField() {
  */
 export interface FormProviderProps<TFieldValues extends FieldValues = FieldValues> {
   /** React Hook Form instance */
-  form: UseFormReturn<TFieldValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Accept any resolver context/transformed values
+  form: UseFormReturn<TFieldValues, any, any>;
   /** Children */
   children: React.ReactNode;
 }

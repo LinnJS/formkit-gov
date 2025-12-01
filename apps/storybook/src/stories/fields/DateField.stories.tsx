@@ -154,10 +154,10 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <DateField
                     {...field}
-                    label="Date of birth"
-                    hint="Must be a date in the past"
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Must be a date in the past"
+                    label="Date of birth"
                   />
                 </FormControl>
               </FormItem>
@@ -218,10 +218,10 @@ export const WithDateRangeValidation: Story = {
                 <FormControl>
                   <DateField
                     {...field}
-                    label="Event date"
-                    hint="Must be between January 1, 2020 and December 31, 2025"
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Must be between January 1, 2020 and December 31, 2025"
+                    label="Event date"
                   />
                 </FormControl>
               </FormItem>
@@ -285,10 +285,10 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <DateField
                       {...field}
-                      label="Date of birth"
-                      hint="Enter your date of birth"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Enter your date of birth"
+                      label="Date of birth"
                     />
                   </FormControl>
                 </FormItem>
@@ -303,9 +303,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <DateField
                       {...field}
-                      label="Start date"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Start date"
                     />
                   </FormControl>
                 </FormItem>
@@ -320,9 +320,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <DateField
                       {...field}
-                      label="Expected completion (optional)"
                       monthYearOnly
                       error={fieldState.error?.message}
+                      label="Expected completion (optional)"
                     />
                   </FormControl>
                   <FormDescription>This is an optional field. Month and year only.</FormDescription>

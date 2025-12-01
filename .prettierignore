@@ -2,9 +2,11 @@ node_modules
 dist
 build
 .next
+.astro
 out
 coverage
 pnpm-lock.yaml
 CHANGELOG.md
 storybook-static
 test-results
+.claude/settings.local.json

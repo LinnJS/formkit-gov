@@ -44,7 +44,8 @@ export interface FormFieldProps<
   /** Field name - must match a key in your form schema */
   name: TName;
   /** Control from useForm() - optional if Form wrapper provides context */
-  control?: Control<TFieldValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Accept any resolver context/transformed values
+  control?: Control<TFieldValues, any, any>;
   /** Render function that receives field and state props */
   render: (props: FormFieldRenderProps<TFieldValues, TName>) => React.ReactElement;
 }
@@ -111,7 +112,8 @@ export function FormField<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({ name, control: controlProp, render, ...props }: FormFieldProps<TFieldValues, TName>) {
   // Always try to get context (hooks must be called unconditionally)
-  let contextControl: Control<TFieldValues> | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Accept any resolver context
+  let contextControl: Control<TFieldValues, any, any> | undefined;
   try {
     const context = useFormContext<TFieldValues>();
     contextControl = context.form.control;

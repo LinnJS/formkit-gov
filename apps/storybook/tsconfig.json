@@ -13,6 +13,6 @@
     "isolatedModules": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", ".storybook/**/*"],
+  "include": ["src/**/*", ".storybook/**/*", "e2e/**/*"],
   "exclude": ["node_modules", "storybook-static"]
 }

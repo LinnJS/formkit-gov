@@ -4,15 +4,22 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp -r public/* dist/",
-    "dev": "pnpm build && npx http-server dist -p 4000",
-    "dev:open": "open http://localhost:4000 && pnpm build && npx http-server dist -p 4000",
-    "lint": "echo 'Static HTML - no linting required'",
-    "lint:fix": "echo 'Static HTML - no linting required'",
-    "preview": "npx http-server dist -p 4000",
-    "typecheck": "echo 'Static HTML - no type checking required'"
+    "build": "astro build",
+    "dev": "astro dev --port 4000",
+    "dev:open": "open http://localhost:4000 && astro dev --port 4000",
+    "lint": "echo 'No JS/TS files to lint in Astro landing page'",
+    "lint:fix": "echo 'No JS/TS files to lint in Astro landing page'",
+    "preview": "astro preview --port 4000",
+    "typecheck": "astro check && tsc --noEmit"
+  },
+  "dependencies": {
+    "astro": "^5.9.0"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "@astrojs/check": "^0.9.6",
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/node": "^22.10.1",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.7.2"
   }
 }

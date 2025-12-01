@@ -140,9 +140,9 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <CurrencyField
                     {...field}
-                    label="Donation amount"
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    label="Donation amount"
                   />
                 </FormControl>
               </FormItem>
@@ -195,10 +195,10 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <CurrencyField
                       {...field}
-                      label="Donation amount"
-                      hint="Minimum $10.00, maximum $10,000.00"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Minimum $10.00, maximum $10,000.00"
+                      label="Donation amount"
                     />
                   </FormControl>
                   <FormDescription>Enter your one-time donation amount.</FormDescription>
@@ -214,10 +214,10 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <CurrencyField
                       {...field}
-                      label="Fundraising goal"
-                      hint="Minimum $100.00, maximum $100,000.00"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Minimum $100.00, maximum $100,000.00"
+                      label="Fundraising goal"
                     />
                   </FormControl>
                   <FormDescription>Set your fundraising goal amount.</FormDescription>

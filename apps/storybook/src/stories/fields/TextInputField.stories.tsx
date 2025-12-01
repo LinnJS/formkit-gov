@@ -148,10 +148,10 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <TextInputField
                     {...field}
+                    required
+                    error={fieldState.error?.message}
                     label="Email address"
                     type="email"
-                    error={fieldState.error?.message}
-                    required
                   />
                 </FormControl>
               </FormItem>
@@ -203,9 +203,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="First name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="First name"
                     />
                   </FormControl>
                 </FormItem>
@@ -220,9 +220,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="Last name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Last name"
                     />
                   </FormControl>
                 </FormItem>
@@ -237,10 +237,10 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
+                      required
+                      error={fieldState.error?.message}
                       label="Email address"
                       type="email"
-                      error={fieldState.error?.message}
-                      required
                     />
                   </FormControl>
                   <FormDescription>We will never share your email.</FormDescription>

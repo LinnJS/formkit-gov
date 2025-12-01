@@ -139,7 +139,7 @@ export const Controlled: Story = {
 
       return (
         <div>
-          <AddressField values={address} onChange={handleChange} legend="Mailing address" />
+          <AddressField legend="Mailing address" values={address} onChange={handleChange} />
           <div style={{ marginTop: '2rem', padding: '1rem', background: '#f0f0f0' }}>
             <h3>Current values:</h3>
             <pre>{JSON.stringify(address, null, 2)}</pre>
@@ -203,10 +203,10 @@ export const WithReactHookForm: Story = {
                     <FormControl>
                       <TextInputField
                         {...field}
-                        label="Street address"
-                        error={fieldState.error?.message}
                         required
                         autocomplete="address-line1"
+                        error={fieldState.error?.message}
+                        label="Street address"
                       />
                     </FormControl>
                   </FormItem>
@@ -221,10 +221,10 @@ export const WithReactHookForm: Story = {
                     <FormControl>
                       <TextInputField
                         {...field}
-                        label="City"
-                        error={fieldState.error?.message}
                         required
                         autocomplete="address-level2"
+                        error={fieldState.error?.message}
+                        label="City"
                       />
                     </FormControl>
                   </FormItem>
@@ -240,10 +240,10 @@ export const WithReactHookForm: Story = {
                       <FormControl>
                         <SelectField
                           {...field}
+                          required
+                          error={fieldState.error?.message}
                           label="State"
                           options={DEFAULT_US_STATES}
-                          error={fieldState.error?.message}
-                          required
                         />
                       </FormControl>
                     </FormItem>
@@ -258,11 +258,11 @@ export const WithReactHookForm: Story = {
                       <FormControl>
                         <TextInputField
                           {...field}
-                          label="ZIP code"
-                          error={fieldState.error?.message}
                           required
                           autocomplete="postal-code"
+                          error={fieldState.error?.message}
                           inputmode="numeric"
+                          label="ZIP code"
                           maxlength={10}
                         />
                       </FormControl>

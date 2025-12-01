@@ -149,10 +149,10 @@ export const Controlled: Story = {
       return (
         <div>
           <FullNameField
-            legend="Your name"
             firstName={{ label: 'First name', required: true }}
-            middleName={{ label: 'Middle name', show: true }}
             lastName={{ label: 'Last name', required: true }}
+            legend="Your name"
+            middleName={{ label: 'Middle name', show: true }}
             suffix={{ label: 'Suffix', show: true }}
             values={values}
             onChange={handleChange}
@@ -217,21 +217,21 @@ export const WithReactHookForm: Story = {
               <FormItem>
                 <FormControl>
                   <FullNameField
-                    legend="Full legal name"
                     firstName={{
                       label: 'First name',
                       required: true,
                       error: nameErrors?.first?.message,
                     }}
-                    middleName={{
-                      label: 'Middle name',
-                      show: true,
-                      error: nameErrors?.middle?.message,
-                    }}
                     lastName={{
                       label: 'Last name',
                       required: true,
                       error: nameErrors?.last?.message,
+                    }}
+                    legend="Full legal name"
+                    middleName={{
+                      label: 'Middle name',
+                      show: true,
+                      error: nameErrors?.middle?.message,
                     }}
                     suffix={{
                       label: 'Suffix',
@@ -258,7 +258,7 @@ export const WithReactHookForm: Story = {
           />
           <div style={{ marginTop: '1rem' }}>
             <button type="submit">Submit</button>
-            <button type="button" onClick={() => form.reset()} style={{ marginLeft: '0.5rem' }}>
+            <button style={{ marginLeft: '0.5rem' }} type="button" onClick={() => form.reset()}>
               Reset
             </button>
           </div>
@@ -303,21 +303,21 @@ export const WithIndividualFields: Story = {
       return (
         <Form form={form} onSubmit={onSubmit}>
           <FullNameField
-            legend="Personal information"
             firstName={{
               label: 'First name',
               required: true,
               error: form.formState.errors.firstName?.message,
             }}
-            middleName={{
-              label: 'Middle name',
-              show: true,
-              error: form.formState.errors.middleName?.message,
-            }}
             lastName={{
               label: 'Last name',
               required: true,
               error: form.formState.errors.lastName?.message,
+            }}
+            legend="Personal information"
+            middleName={{
+              label: 'Middle name',
+              show: true,
+              error: form.formState.errors.middleName?.message,
             }}
             suffix={{
               label: 'Suffix',
@@ -345,7 +345,7 @@ export const WithIndividualFields: Story = {
           />
           <div style={{ marginTop: '1rem' }}>
             <button type="submit">Submit</button>
-            <button type="button" onClick={() => form.reset()} style={{ marginLeft: '0.5rem' }}>
+            <button style={{ marginLeft: '0.5rem' }} type="button" onClick={() => form.reset()}>
               Reset
             </button>
           </div>

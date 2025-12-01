@@ -130,10 +130,10 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <PhoneField
                     {...field}
-                    label="Phone number"
-                    hint="Enter a 10-digit phone number"
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Enter a 10-digit phone number"
+                    label="Phone number"
                   />
                 </FormControl>
               </FormItem>
@@ -181,10 +181,10 @@ export const InternationalPhone: Story = {
                 <FormControl>
                   <PhoneField
                     {...field}
-                    label="Phone number"
-                    hint="Include country code (e.g., +1 555-123-4567)"
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Include country code (e.g., +1 555-123-4567)"
+                    label="Phone number"
                   />
                 </FormControl>
               </FormItem>
@@ -234,10 +234,10 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <PhoneField
                       {...field}
-                      label="Primary phone number"
-                      hint="Enter a 10-digit phone number"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Enter a 10-digit phone number"
+                      label="Primary phone number"
                     />
                   </FormControl>
                   <FormDescription>Your main contact number.</FormDescription>
@@ -253,9 +253,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <PhoneField
                       {...field}
-                      label="Alternate phone number"
-                      hint="Optional alternate contact number"
                       error={fieldState.error?.message}
+                      hint="Optional alternate contact number"
+                      label="Alternate phone number"
                     />
                   </FormControl>
                   <FormDescription>An optional alternate phone number.</FormDescription>

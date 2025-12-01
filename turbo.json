@@ -9,6 +9,20 @@
   ],
   "globalPassThroughEnv": ["CI", "NODE_ENV"],
   "tasks": {
+    "sync:assets": {
+      "inputs": ["assets/**", "scripts/sync-assets.mjs"],
+      "outputs": [
+        "apps/*/public/formkit-gov.png",
+        "apps/*/public/logo.svg",
+        "apps/*/public/favicon.svg",
+        "apps/*/public/favicon.ico",
+        "apps/*/public/favicon-*.png",
+        "apps/*/public/android-chrome-*.png",
+        "apps/*/public/apple-touch-icon.png",
+        "apps/*/public/site.webmanifest"
+      ],
+      "cache": true
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],

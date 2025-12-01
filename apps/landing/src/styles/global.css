@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@theme {
+  /* VA Design System Colors */
+  --color-va-primary: #112e51;
+  --color-va-secondary: #0071bc;
+  --color-va-accent: #02bfe7;
+  --color-va-success: #2e8540;
+  --color-va-text: #212121;
+  --color-va-text-muted: #5b616b;
+  --color-va-bg: #ffffff;
+  --color-va-bg-alt: #f1f1f1;
+}

@@ -110,10 +110,10 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <SelectField
                     {...field}
+                    required
+                    error={fieldState.error?.message}
                     label="State"
                     options={stateOptions}
-                    error={fieldState.error?.message}
-                    required
                   />
                 </FormControl>
               </FormItem>

@@ -1,13 +1,11 @@
-import { Logo } from '@formkit-gov/react/branding';
-
 import { AppLinks } from './components/app-links';
 
 export default function App() {
   return (
     <main className="from-va-primary bg-linear-to-br flex min-h-screen items-center justify-center to-[#1a4480] font-sans">
       <div className="max-w-[600px] p-8 text-center">
-        <div className="mx-auto mb-8 h-[120px] w-[120px] rounded-3xl bg-white p-6 shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
-          <Logo className="h-full w-full" />
+        <div className="bg-va-primary mx-auto mb-8 h-[160px] w-[160px] rounded-[32px] p-6 shadow-[0_25px_50px_rgba(0,0,0,0.3)]">
+          <img alt="FormKit Gov logo" className="h-full w-full" src="/logo.svg" />
         </div>
 
         <h1 className="mb-2 text-4xl font-bold text-white">FormKit Gov</h1>

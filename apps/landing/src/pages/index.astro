@@ -1,0 +1,139 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import AppLinks from '@/components/AppLinks.astro';
+---
+
+<Layout title="FormKit Gov - Production-Quality Form Components for Government Applications">
+  <section class="min-h-screen flex items-center justify-center text-center p-8 bg-gradient-to-br from-va-primary to-[#1a4480]">
+    <div class="max-w-[800px]">
+      <!-- Logo -->
+      <div class="w-[140px] h-[140px] mx-auto mb-8 bg-va-primary rounded-[28px] p-7 shadow-[0_25px_50px_rgba(0,0,0,0.3)]">
+        <img src="/logo.svg" alt="FormKit Gov logo" class="w-full h-full" />
+      </div>
+
+      <!-- Heading -->
+      <h1 class="text-white text-4xl md:text-[3.5rem] font-bold mb-4 tracking-tight">
+        FormKit Gov
+      </h1>
+      <p class="text-white/90 text-xl md:text-2xl mb-4">
+        Production-Quality Form Components for Government Applications
+      </p>
+      <p class="text-white/75 text-lg max-w-[600px] mx-auto mb-10">
+        Open-source form system integrating VA Design System with Zod validation and React Hook Form.
+        Build accessible, WCAG 2.1 AA compliant government forms faster.
+      </p>
+
+      <!-- Badges -->
+      <div class="flex gap-2 justify-center flex-wrap mb-10">
+        <span class="inline-block bg-va-accent text-va-primary px-4 py-2 rounded-full text-sm font-medium">
+          v0.1.0
+        </span>
+        <span class="inline-block bg-white/15 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+          React 17+
+        </span>
+        <span class="inline-block bg-white/15 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+          TypeScript
+        </span>
+        <span class="inline-block bg-white/15 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+          WCAG 2.1 AA
+        </span>
+        <span class="inline-block bg-white/15 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+          MIT License
+        </span>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a
+          href="https://storybook.formkit-gov.org"
+          data-app="storybook"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-semibold bg-white text-va-primary hover:bg-va-bg-alt hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2"
+        >
+          View Storybook
+          <span>&rarr;</span>
+        </a>
+        <a
+          href="https://nextjs-demo.formkit-gov.org"
+          data-app="demo-nextjs"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-semibold bg-white/15 text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 transition-all focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2"
+        >
+          Next.js Demo
+        </a>
+        <a
+          href="https://vite-demo.formkit-gov.org"
+          data-app="demo-vite"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-semibold bg-white/15 text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 transition-all focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2"
+        >
+          Vite Demo
+        </a>
+        <a
+          href="https://github.com/LinnJS/formkit-gov"
+          data-app="github"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-semibold bg-white/15 text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 transition-all focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2"
+        >
+          GitHub
+        </a>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 text-left">
+        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <h3 class="text-white text-lg font-semibold mb-2">VA Design System</h3>
+          <p class="text-white/75 text-[0.9375rem]">
+            Pre-built components wrapping official VA web components for consistent government UX.
+          </p>
+        </div>
+        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <h3 class="text-white text-lg font-semibold mb-2">Zod Validation</h3>
+          <p class="text-white/75 text-[0.9375rem]">
+            Type-safe validation schemas for SSN, phone numbers, addresses, dates, and more.
+          </p>
+        </div>
+        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <h3 class="text-white text-lg font-semibold mb-2">React Hook Form</h3>
+          <p class="text-white/75 text-[0.9375rem]">
+            Seamless integration with React Hook Form using the shadcn/ui composable pattern.
+          </p>
+        </div>
+        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <h3 class="text-white text-lg font-semibold mb-2">Accessibility First</h3>
+          <p class="text-white/75 text-[0.9375rem]">
+            WCAG 2.1 AA compliant with keyboard navigation and screen reader support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-va-primary p-8 text-center text-white/70 text-sm">
+    <div class="mb-4">
+      <a href="https://docs.formkit-gov.org" data-app="docs" class="mx-4 text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        Documentation
+      </a>
+      <a href="https://storybook.formkit-gov.org" data-app="storybook" class="mx-4 text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        Storybook
+      </a>
+      <a href="https://nextjs-demo.formkit-gov.org" data-app="demo-nextjs" class="mx-4 text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        Next.js Demo
+      </a>
+      <a href="https://vite-demo.formkit-gov.org" data-app="demo-vite" class="mx-4 text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        Vite Demo
+      </a>
+      <a href="https://github.com/LinnJS/formkit-gov" data-app="github" class="mx-4 text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        GitHub
+      </a>
+      <a href="https://github.com/LinnJS/formkit-gov/blob/main/CONTRIBUTING.md" class="mx-4 text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        Contributing
+      </a>
+    </div>
+    <p>
+      MIT License &bull;
+      <a href="https://github.com/LinnJS/formkit-gov" data-app="github" class="text-white/90 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-va-accent focus-visible:outline-offset-2">
+        FormKit Gov
+      </a> is not affiliated with the U.S. Department of Veterans Affairs.
+    </p>
+  </footer>
+
+  <AppLinks />
+</Layout>

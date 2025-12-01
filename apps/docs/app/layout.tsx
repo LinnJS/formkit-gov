@@ -1,4 +1,3 @@
-import { Logo } from '@formkit-gov/react/branding';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
@@ -35,7 +34,20 @@ export const metadata = {
 
 const logo = (
   <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-    <Logo height={24} width={24} />
+    <span
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '28px',
+        height: '28px',
+        backgroundColor: '#112e51',
+        borderRadius: '6px',
+        padding: '4px',
+      }}
+    >
+      <img alt="FormKit Gov logo" height={20} src="/logo.svg" width={20} />
+    </span>
     <strong>FormKit Gov</strong>
   </span>
 );
