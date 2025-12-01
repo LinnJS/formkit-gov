@@ -1,0 +1,14 @@
+{
+  "name": "@formkit-gov/landing",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r public/* dist/",
+    "dev": "pnpm build && npx http-server dist -p 3003",
+    "preview": "npx http-server dist -p 3003"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

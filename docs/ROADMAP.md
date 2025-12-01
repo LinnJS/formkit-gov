@@ -149,9 +149,8 @@
 - [ ] Getting started guide
 - [ ] Component API docs
 - [ ] Pattern guides
-- [ ] Example: Next.js TypeScript
-- [ ] Example: Next.js JavaScript
-- [ ] Example: Vite TypeScript
+- [ ] Next.js demo app (nextjs-demo.formkit-gov.org)
+- [ ] Vite demo app (vite-demo.formkit-gov.org)
 - [ ] Example: Multi-step wizard
 - [ ] Performance benchmarks
 - [ ] Security audit

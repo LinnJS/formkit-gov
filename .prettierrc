@@ -7,7 +7,7 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-packagejson"],
+  "plugins": ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"],
   "overrides": [
     {
       "files": "*.md",

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormKit Gov - Production-Quality Form Components for Government Applications</title>
+    <meta name="description" content="Open-source form system integrating VA Design System with Zod validation and React Hook Form. Build accessible, compliant government forms faster." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://formkit-gov.org" />
+    <meta property="og:title" content="FormKit Gov" />
+    <meta property="og:description" content="Production-quality form components for government applications" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://formkit-gov.org" />
+    <style>
+      :root {
+        --color-primary: #112e51;
+        --color-secondary: #0071bc;
+        --color-accent: #02bfe7;
+        --color-success: #2e8540;
+        --color-text: #212121;
+        --color-text-muted: #5b616b;
+        --color-bg: #ffffff;
+        --color-bg-alt: #f1f1f1;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, var(--color-primary) 0%, #1a4480 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .logo {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 2rem;
+        background: white;
+        border-radius: 28px;
+        padding: 1.75rem;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .hero .tagline {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 400;
+      }
+
+      .hero .description {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1.125rem;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .badge-row {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+
+      .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+      }
+
+      .badge.accent {
+        background: var(--color-accent);
+        color: var(--color-primary);
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 1.125rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary {
+        background: white;
+        color: var(--color-primary);
+      }
+
+      .btn-primary:hover {
+        background: var(--color-bg-alt);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+        text-align: left;
+      }
+
+      .feature {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .feature h3 {
+        color: white;
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9375rem;
+      }
+
+      .footer {
+        background: var(--color-primary);
+        padding: 2rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.875rem;
+      }
+
+      .footer a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      .footer a:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      .footer-links {
+        margin-bottom: 1rem;
+      }
+
+      .footer-links a {
+        margin: 0 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .hero .tagline {
+          font-size: 1.25rem;
+        }
+        .features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="logo">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="20" width="80" height="60" rx="4" stroke="#112e51" stroke-width="4" fill="none"/>
+            <line x1="10" y1="35" x2="90" y2="35" stroke="#112e51" stroke-width="4"/>
+            <rect x="20" y="45" width="25" height="8" rx="2" fill="#0071bc"/>
+            <rect x="20" y="58" width="60" height="8" rx="2" fill="#0071bc"/>
+            <circle cx="75" cy="49" r="8" fill="#02bfe7"/>
+            <path d="M72 49L74 51L78 47" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <h1>FormKit Gov</h1>
+        <p class="tagline">Production-Quality Form Components for Government Applications</p>
+        <p class="description">
+          Open-source form system integrating VA Design System with Zod validation and React Hook Form.
+          Build accessible, WCAG 2.1 AA compliant government forms faster.
+        </p>
+
+        <div class="badge-row">
+          <span class="badge accent">v0.1.0</span>
+          <span class="badge">React 17+</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">WCAG 2.1 AA</span>
+          <span class="badge">MIT License</span>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="https://storybook.formkit-gov.org" class="btn btn-primary">
+            View Storybook
+            <span>&rarr;</span>
+          </a>
+          <a href="https://nextjs-demo.formkit-gov.org" class="btn btn-secondary">
+            Next.js Demo
+          </a>
+          <a href="https://vite-demo.formkit-gov.org" class="btn btn-secondary">
+            Vite Demo
+          </a>
+          <a href="https://github.com/LinnJS/formkit-gov" class="btn btn-secondary">
+            GitHub
+          </a>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <h3>VA Design System</h3>
+            <p>Pre-built components wrapping official VA web components for consistent government UX.</p>
+          </div>
+          <div class="feature">
+            <h3>Zod Validation</h3>
+            <p>Type-safe validation schemas for SSN, phone numbers, addresses, dates, and more.</p>
+          </div>
+          <div class="feature">
+            <h3>React Hook Form</h3>
+            <p>Seamless integration with React Hook Form using the shadcn/ui composable pattern.</p>
+          </div>
+          <div class="feature">
+            <h3>Accessibility First</h3>
+            <p>WCAG 2.1 AA compliant with keyboard navigation and screen reader support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://docs.formkit-gov.org">Documentation</a>
+        <a href="https://storybook.formkit-gov.org">Storybook</a>
+        <a href="https://nextjs-demo.formkit-gov.org">Next.js Demo</a>
+        <a href="https://vite-demo.formkit-gov.org">Vite Demo</a>
+        <a href="https://github.com/LinnJS/formkit-gov">GitHub</a>
+        <a href="https://github.com/LinnJS/formkit-gov/blob/main/CONTRIBUTING.md">Contributing</a>
+      </div>
+      <p>
+        MIT License &bull;
+        <a href="https://github.com/LinnJS/formkit-gov">FormKit Gov</a> is not affiliated with the U.S. Department of Veterans Affairs.
+      </p>
+    </footer>
+  </body>
+</html>
