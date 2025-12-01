@@ -133,11 +133,11 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <MemorableDateField
                     {...field}
-                    label="Date of birth"
-                    hint="This date must be in the past"
-                    error={fieldState.error?.message}
                     monthSelect
                     required
+                    error={fieldState.error?.message}
+                    hint="This date must be in the past"
+                    label="Date of birth"
                   />
                 </FormControl>
               </FormItem>
@@ -200,11 +200,11 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <MemorableDateField
                       {...field}
-                      label="Date of birth"
-                      hint="This should be a date you know well"
-                      error={fieldState.error?.message}
                       monthSelect
                       required
+                      error={fieldState.error?.message}
+                      hint="This should be a date you know well"
+                      label="Date of birth"
                     />
                   </FormControl>
                   <FormDescription>
@@ -222,10 +222,10 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <MemorableDateField
                       {...field}
-                      label="Start date"
-                      hint="When did you start?"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="When did you start?"
+                      label="Start date"
                     />
                   </FormControl>
                 </FormItem>

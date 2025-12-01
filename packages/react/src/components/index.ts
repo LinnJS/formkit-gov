@@ -3,6 +3,7 @@
  * @module components
  */
 
+export * from './branding';
 export * from './form';
 export * from './fields';
 export * from './molecules';

@@ -160,12 +160,12 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <NumberField
                     {...field}
-                    label="Age"
-                    hint="Enter your age in years"
-                    error={fieldState.error?.message}
                     required
-                    min={0}
+                    error={fieldState.error?.message}
+                    hint="Enter your age in years"
+                    label="Age"
                     max={120}
+                    min={0}
                   />
                 </FormControl>
               </FormItem>
@@ -217,12 +217,12 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <NumberField
                       {...field}
-                      label="Age"
-                      hint="Must be at least 18 years old"
-                      error={fieldState.error?.message}
                       required
-                      min={18}
+                      error={fieldState.error?.message}
+                      hint="Must be at least 18 years old"
+                      label="Age"
                       max={120}
+                      min={18}
                     />
                   </FormControl>
                 </FormItem>
@@ -237,13 +237,13 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <NumberField
                       {...field}
-                      label="Number of dependents"
-                      hint="Enter the number of dependents you have"
                       error={fieldState.error?.message}
-                      min={0}
-                      max={20}
-                      step={1}
+                      hint="Enter the number of dependents you have"
                       inputmode="numeric"
+                      label="Number of dependents"
+                      max={20}
+                      min={0}
+                      step={1}
                     />
                   </FormControl>
                 </FormItem>
@@ -258,13 +258,13 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <NumberField
                       {...field}
-                      label="Annual income"
-                      hint="Enter your annual income in dollars"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Enter your annual income in dollars"
+                      inputmode="decimal"
+                      label="Annual income"
                       min={0}
                       step={0.01}
-                      inputmode="decimal"
                     />
                   </FormControl>
                   <FormDescription>This information is confidential.</FormDescription>

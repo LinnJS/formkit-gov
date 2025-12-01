@@ -39,7 +39,7 @@ export const BasicReview: Story = {
  */
 export const WithEditButton: Story = {
   render: () => (
-    <ReviewSection title="Contact Information" editHref="/edit/contact">
+    <ReviewSection editHref="/edit/contact" title="Contact Information">
       <ReviewItem label="Email" value="john.doe@example.com" />
       <ReviewItem label="Phone" value="(555) 123-4567" />
       <ReviewItem label="Preferred contact method" value="Email" />
@@ -53,9 +53,9 @@ export const WithEditButton: Story = {
 export const WithEditCallback: Story = {
   render: () => (
     <ReviewSection
+      editLabel="Update service info"
       title="Military Service"
       onEdit={() => alert('Edit clicked - navigate to edit page')}
-      editLabel="Update service info"
     >
       <ReviewItem label="Branch" value="Army" />
       <ReviewItem label="Service dates" value="2005 - 2010" />
@@ -70,20 +70,20 @@ export const WithEditCallback: Story = {
 export const CompleteFormReview: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <ReviewSection title="Personal Information" editHref="/edit/personal">
+      <ReviewSection editHref="/edit/personal" title="Personal Information">
         <ReviewItem label="Full name" value="John Michael Doe" />
         <ReviewItem label="Social Security Number" value="***-**-1234" />
         <ReviewItem label="Date of birth" value="January 15, 1980" />
         <ReviewItem label="Gender" value="Male" />
       </ReviewSection>
 
-      <ReviewSection title="Contact Information" editHref="/edit/contact">
+      <ReviewSection editHref="/edit/contact" title="Contact Information">
         <ReviewItem label="Email address" value="john.doe@example.com" />
         <ReviewItem label="Phone number" value="(555) 123-4567" />
         <ReviewItem label="Preferred contact method" value="Email" />
       </ReviewSection>
 
-      <ReviewSection title="Address" editHref="/edit/address">
+      <ReviewSection editHref="/edit/address" title="Address">
         <ReviewItem label="Street address" value="123 Main Street" />
         <ReviewItem label="Apartment/Unit" value="Apt 4B" />
         <ReviewItem label="City" value="Springfield" />
@@ -91,7 +91,7 @@ export const CompleteFormReview: Story = {
         <ReviewItem label="ZIP code" value="62701" />
       </ReviewSection>
 
-      <ReviewSection title="Military Service" editHref="/edit/service">
+      <ReviewSection editHref="/edit/service" title="Military Service">
         <ReviewItem label="Branch of service" value="Army" />
         <ReviewItem label="Service dates" value="January 2005 - December 2010" />
         <ReviewItem label="Rank at discharge" value="E-5 Sergeant" />
@@ -106,17 +106,17 @@ export const CompleteFormReview: Story = {
  */
 export const WithLists: Story = {
   render: () => (
-    <ReviewSection title="Additional Information" editHref="/edit/additional">
+    <ReviewSection editHref="/edit/additional" title="Additional Information">
       <ReviewItem label="Languages spoken" value={['English', 'Spanish', 'French']} />
       <ReviewItem
+        valueList
         label="Education levels"
         value={['High School Diploma', "Bachelor's Degree", "Master's Degree"]}
-        valueList
       />
       <ReviewItem
+        valueList
         label="Medical conditions"
         value={['Hypertension', 'Type 2 Diabetes', 'Anxiety']}
-        valueList
       />
     </ReviewSection>
   ),
@@ -225,13 +225,13 @@ export const ListWithoutMarkers: Story = {
 export const MixedComponents: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <ReviewSection title="Applicant Information" editHref="/edit/applicant">
+      <ReviewSection editHref="/edit/applicant" title="Applicant Information">
         <ReviewItem label="Full name" value="Jane Smith" />
         <ReviewItem label="SSN" value="***-**-5678" />
         <ReviewItem label="Date of birth" value="March 22, 1985" />
       </ReviewSection>
 
-      <ReviewSection title="Dependents" editHref="/edit/dependents">
+      <ReviewSection editHref="/edit/dependents" title="Dependents">
         <ReviewList
           items={[
             { label: 'Dependent 1', value: 'John Smith Jr. (Son, Age 12)' },
@@ -241,13 +241,13 @@ export const MixedComponents: Story = {
         />
       </ReviewSection>
 
-      <ReviewSection title="Education History" editHref="/edit/education">
+      <ReviewSection editHref="/edit/education" title="Education History">
         <ReviewItem
+          valueList
           label="Degrees earned"
           value={["Bachelor's in Computer Science", "Master's in Software Engineering"]}
-          valueList
         />
-        <ReviewItem label="Institutions" value={['State University', 'Tech Institute']} valueList />
+        <ReviewItem valueList label="Institutions" value={['State University', 'Tech Institute']} />
       </ReviewSection>
     </div>
   ),
@@ -258,20 +258,20 @@ export const MixedComponents: Story = {
  */
 export const WithLongContent: Story = {
   render: () => (
-    <ReviewSection title="Detailed Information" editHref="/edit/details">
+    <ReviewSection editHref="/edit/details" title="Detailed Information">
       <ReviewItem label="Full legal name" value="Johnathan Michael Christopher Doe-Smith III" />
       <ReviewItem
         label="Current employment"
         value="Senior Software Engineer at Technology Solutions International Corporation"
       />
       <ReviewItem
+        valueList
         label="Previous addresses"
         value={[
           '123 Main Street, Apartment 4B, Springfield, IL 62701',
           '456 Oak Avenue, Unit 201, Chicago, IL 60614',
           '789 Pine Road, Suite 15, Naperville, IL 60540',
         ]}
-        valueList
       />
       <ReviewItem
         label="Additional notes"
@@ -297,7 +297,7 @@ export const EmptySection: Story = {
  */
 export const WithSpecialCharacters: Story = {
   render: () => (
-    <ReviewSection title="Contact & Communication" editHref="/edit/contact">
+    <ReviewSection editHref="/edit/contact" title="Contact & Communication">
       <ReviewItem label="Email" value="john.doe+va@example.com" />
       <ReviewItem label="Phone (Work)" value="+1 (555) 123-4567 ext. 890" />
       <ReviewItem label="Phone (Mobile)" value="+1 (555) 987-6543" />

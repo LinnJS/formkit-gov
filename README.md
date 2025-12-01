@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./formkit-gov.png" alt="FormKit Gov" width="120" />
+  <img src="./assets/formkit-gov.png" alt="FormKit Gov" width="120" />
 </p>
 
 <h1 align="center">FormKit Gov</h1>
@@ -34,7 +34,8 @@
   <a href="https://formkit-gov.org">Home</a> •
   <a href="https://docs.formkit-gov.org">Documentation</a> •
   <a href="https://storybook.formkit-gov.org">Storybook</a> •
-  <a href="https://github.com/LinnJS/formkit-gov/tree/main/examples">Examples</a> •
+  <a href="https://nextjs-demo.formkit-gov.org">Next.js Demo</a> •
+  <a href="https://vite-demo.formkit-gov.org">Vite Demo</a> •
   <a href="https://github.com/LinnJS/formkit-gov/blob/main/CONTRIBUTING.md">Contributing</a>
 </p>
 

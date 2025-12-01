@@ -1,25 +1,48 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
-  "globalDependencies": [".prettierrc", ".prettierignore", "tsconfig.json"],
-  "globalPassThroughEnv": ["CI"],
+  "globalDependencies": [
+    ".prettierrc",
+    ".prettierignore",
+    ".markdownlint-cli2.jsonc",
+    "tsconfig.json"
+  ],
+  "globalPassThroughEnv": ["CI", "NODE_ENV"],
   "tasks": {
+    "sync:assets": {
+      "inputs": ["assets/**", "scripts/sync-assets.mjs"],
+      "outputs": [
+        "apps/*/public/formkit-gov.png",
+        "apps/*/public/logo.svg",
+        "apps/*/public/favicon.svg",
+        "apps/*/public/favicon.ico",
+        "apps/*/public/favicon-*.png",
+        "apps/*/public/android-chrome-*.png",
+        "apps/*/public/apple-touch-icon.png",
+        "apps/*/public/site.webmanifest"
+      ],
+      "cache": true
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "storybook-static/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "out/**", "storybook-static/**"]
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "interruptible": true
+    },
+    "dev:open": {
+      "cache": false,
+      "persistent": true,
+      "interruptible": true
     },
     "lint": {
-      "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".eslintrc*", "eslint.config.*"],
       "outputs": []
     },
     "lint:fix": {
-      "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".eslintrc*", "eslint.config.*"],
       "cache": false
     },
@@ -35,7 +58,8 @@
     },
     "test:watch": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "interruptible": true
     },
     "typecheck": {
       "dependsOn": ["^build"],

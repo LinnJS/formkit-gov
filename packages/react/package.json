@@ -44,6 +44,16 @@
         "types": "./dist/components/index.d.cts",
         "default": "./dist/components/index.cjs"
       }
+    },
+    "./branding": {
+      "import": {
+        "types": "./dist/branding/index.d.ts",
+        "default": "./dist/branding/index.js"
+      },
+      "require": {
+        "types": "./dist/branding/index.d.cts",
+        "default": "./dist/branding/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",
@@ -57,6 +67,7 @@
     "build": "tsup",
     "clean": "rm -rf dist .turbo",
     "dev": "tsup --watch",
+    "dev:open": "tsup --watch",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "test": "vitest run",

@@ -2,9 +2,18 @@
 
 Standards and best practices for developing packages in the FormKit Gov monorepo.
 
+## Package Types
+
+The monorepo contains two types of packages:
+
+| Type     | Location                                                           | Published | Purpose              |
+| -------- | ------------------------------------------------------------------ | --------- | -------------------- |
+| Public   | `packages/{core,react,store,wizard,openapi,validators,test-utils}` | Yes       | User-facing packages |
+| Internal | `packages/{eslint-config,typescript-config}`                       | No        | Shared tooling       |
+
 ## Package Structure
 
-Every package should follow this structure:
+Every public package should follow this structure:
 
 ```text
 packages/[name]/

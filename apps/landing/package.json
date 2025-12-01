@@ -1,0 +1,25 @@
+{
+  "name": "@formkit-gov/landing",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev --port 4000",
+    "dev:open": "open http://localhost:4000 && astro dev --port 4000",
+    "lint": "echo 'No JS/TS files to lint in Astro landing page'",
+    "lint:fix": "echo 'No JS/TS files to lint in Astro landing page'",
+    "preview": "astro preview --port 4000",
+    "typecheck": "astro check && tsc --noEmit"
+  },
+  "dependencies": {
+    "astro": "^5.9.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/node": "^22.10.1",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.7.2"
+  }
+}

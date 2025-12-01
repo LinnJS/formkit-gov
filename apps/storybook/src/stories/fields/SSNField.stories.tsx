@@ -117,7 +117,7 @@ export const WithReactHookForm: Story = {
             render={({ field, fieldState }) => (
               <FormItem>
                 <FormControl>
-                  <SSNField {...field} error={fieldState.error?.message} required />
+                  <SSNField {...field} required error={fieldState.error?.message} />
                 </FormControl>
               </FormItem>
             )}
@@ -165,8 +165,8 @@ export const OptionalSSN: Story = {
                 <FormControl>
                   <SSNField
                     {...field}
-                    hint="Optional - only provide if you have one"
                     error={fieldState.error?.message}
+                    hint="Optional - only provide if you have one"
                   />
                 </FormControl>
               </FormItem>
@@ -218,9 +218,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <va-text-input
                       {...field}
-                      label="First name"
-                      error={fieldState.error?.message || undefined}
                       required
+                      error={fieldState.error?.message || undefined}
+                      label="First name"
                     />
                   </FormControl>
                 </FormItem>
@@ -235,9 +235,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <va-text-input
                       {...field}
-                      label="Last name"
-                      error={fieldState.error?.message || undefined}
                       required
+                      error={fieldState.error?.message || undefined}
+                      label="Last name"
                     />
                   </FormControl>
                 </FormItem>
@@ -250,7 +250,7 @@ export const CompleteFormExample: Story = {
               render={({ field, fieldState }) => (
                 <FormItem>
                   <FormControl>
-                    <SSNField {...field} error={fieldState.error?.message} required />
+                    <SSNField {...field} required error={fieldState.error?.message} />
                   </FormControl>
                   <FormDescription>Your SSN is needed for identity verification.</FormDescription>
                 </FormItem>

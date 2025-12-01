@@ -1,0 +1,32 @@
+{
+  "name": "@formkit-gov/demo-vite",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite --port 4004",
+    "dev:open": "open http://localhost:4004 && vite --port 4004",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview --port 4004",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@formkit-gov/core": "workspace:*",
+    "@formkit-gov/react": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.16.0",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.7.2",
+    "vite": "^6.3.5"
+  }
+}

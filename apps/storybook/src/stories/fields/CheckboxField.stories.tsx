@@ -107,10 +107,10 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <CheckboxField
                     {...field}
-                    checked={field.value}
-                    label="I agree to the terms and conditions"
-                    error={fieldState.error?.message}
                     required
+                    checked={field.value}
+                    error={fieldState.error?.message}
+                    label="I agree to the terms and conditions"
                   />
                 </FormControl>
               </FormItem>

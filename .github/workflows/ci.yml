@@ -15,18 +15,71 @@ env:
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
+  # Detect which apps/packages changed
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.filter.outputs.packages }}
+      core: ${{ steps.filter.outputs.core }}
+      react: ${{ steps.filter.outputs.react }}
+      docs: ${{ steps.filter.outputs.docs }}
+      storybook: ${{ steps.filter.outputs.storybook }}
+      landing: ${{ steps.filter.outputs.landing }}
+      demo-nextjs: ${{ steps.filter.outputs.demo-nextjs }}
+      demo-vite: ${{ steps.filter.outputs.demo-vite }}
+      any-app: ${{ steps.filter.outputs.any-app }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changes
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            packages:
+              - 'packages/**'
+              - 'pnpm-lock.yaml'
+              - 'turbo.json'
+            core:
+              - 'packages/core/**'
+            react:
+              - 'packages/react/**'
+              - 'packages/core/**'
+            docs:
+              - 'apps/docs/**'
+              - 'packages/**'
+            storybook:
+              - 'apps/storybook/**'
+              - 'packages/react/**'
+              - 'packages/core/**'
+            landing:
+              - 'apps/landing/**'
+              - 'assets/**'
+            demo-nextjs:
+              - 'apps/demo-nextjs/**'
+              - 'packages/**'
+            demo-vite:
+              - 'apps/demo-vite/**'
+              - 'packages/**'
+            any-app:
+              - 'apps/**'
+              - 'packages/**'
+
+  # Quality checks run first - these are fast and catch issues early
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -40,6 +93,25 @@ jobs:
       - name: Lint Markdown
         run: pnpm lint:md
 
+  format:
+    name: Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Check formatting
         run: pnpm format:check
 
@@ -48,13 +120,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -65,18 +137,20 @@ jobs:
       - name: Type check
         run: pnpm typecheck
 
+  # Tests run after quality checks pass
   test:
     name: Test
     runs-on: ubuntu-latest
+    needs: [lint, format, typecheck]
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -94,18 +168,21 @@ jobs:
           files: ./packages/*/coverage/coverage-final.json
           fail_ci_if_error: false
 
-  build:
-    name: Build
+  # Build packages (always needed as dependencies for apps)
+  build-packages:
+    name: Build Packages
     runs-on: ubuntu-latest
+    needs: [lint, format, typecheck, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.packages == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -113,8 +190,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
+      - name: Build packages
+        run: pnpm turbo build --filter='./packages/*'
 
       - name: Check package sizes
         run: |
@@ -127,19 +204,142 @@ jobs:
             fi
           done
 
-  e2e:
-    name: E2E Tests
+  # App builds - only run if that app changed (on PR) or always on main
+  build-docs:
+    name: Build Docs
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [lint, format, typecheck, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.docs == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build docs
+        run: pnpm turbo build --filter=@formkit-gov/docs
+
+  build-storybook:
+    name: Build Storybook
+    runs-on: ubuntu-latest
+    needs: [lint, format, typecheck, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.storybook == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build storybook
+        run: pnpm turbo build --filter=@formkit-gov/storybook
+
+  build-landing:
+    name: Build Landing
+    runs-on: ubuntu-latest
+    needs: [lint, format, typecheck, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.landing == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build landing
+        run: pnpm turbo build --filter=@formkit-gov/landing
+
+  build-demo-nextjs:
+    name: Build Demo (Next.js)
+    runs-on: ubuntu-latest
+    needs: [lint, format, typecheck, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.demo-nextjs == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build demo-nextjs
+        run: pnpm turbo build --filter=@formkit-gov/demo-nextjs
+
+  build-demo-vite:
+    name: Build Demo (Vite)
+    runs-on: ubuntu-latest
+    needs: [lint, format, typecheck, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.demo-vite == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build demo-vite
+        run: pnpm turbo build --filter=@formkit-gov/demo-vite
+
+  # E2E tests run after storybook builds
+  e2e:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: [build-storybook, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.storybook == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -151,7 +351,7 @@ jobs:
         run: pnpm --filter @formkit-gov/storybook exec playwright install --with-deps chromium
 
       - name: Build packages
-        run: pnpm build
+        run: pnpm turbo build --filter='./packages/*'
 
       - name: Run E2E tests
         run: pnpm e2e
@@ -164,19 +364,21 @@ jobs:
           path: apps/storybook/playwright-report/
           retention-days: 30
 
-  storybook:
+  # Storybook interaction tests
+  storybook-tests:
     name: Storybook Tests
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [build-storybook, changes]
+    if: github.event_name == 'push' || needs.changes.outputs.storybook == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -188,7 +390,7 @@ jobs:
         run: pnpm --filter @formkit-gov/storybook exec playwright install --with-deps chromium
 
       - name: Build packages
-        run: pnpm build
+        run: pnpm turbo build --filter='./packages/*'
 
       - name: Run Storybook tests
         run: pnpm test:storybook:ci
@@ -200,3 +402,25 @@ jobs:
           name: storybook-test-results
           path: apps/storybook/__snapshots__/
           retention-days: 30
+
+  # Final status check for branch protection
+  ci-success:
+    name: CI Success
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - format
+      - typecheck
+      - test
+    if: always()
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ needs.lint.result }}" != "success" ]] || \
+             [[ "${{ needs.format.result }}" != "success" ]] || \
+             [[ "${{ needs.typecheck.result }}" != "success" ]] || \
+             [[ "${{ needs.test.result }}" != "success" ]]; then
+            echo "One or more required jobs failed"
+            exit 1
+          fi
+          echo "All required jobs passed!"

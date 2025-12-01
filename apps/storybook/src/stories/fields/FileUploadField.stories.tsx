@@ -150,12 +150,12 @@ export const WithReactHookForm: Story = {
               <FormItem>
                 <FormControl>
                   <FileUploadField
+                    required
+                    error={fieldState.error?.message}
                     label="Upload document"
                     name={name}
-                    error={fieldState.error?.message}
-                    onChange={onChange}
                     onBlur={onBlur}
-                    required
+                    onChange={onChange}
                   />
                 </FormControl>
               </FormItem>
@@ -210,14 +210,14 @@ export const MultipleFilesWithValidation: Story = {
               <FormItem>
                 <FormControl>
                   <FileUploadField
+                    multiple
+                    required
+                    error={fieldState.error?.message}
+                    hint="You can upload up to 5 files"
                     label="Upload documents"
                     name={name}
-                    multiple
-                    error={fieldState.error?.message}
-                    onChange={onChange}
                     onBlur={onBlur}
-                    hint="You can upload up to 5 files"
-                    required
+                    onChange={onChange}
                   />
                 </FormControl>
               </FormItem>
@@ -272,9 +272,9 @@ export const CompleteFormExample: Story = {
                   <FormControl>
                     <va-text-input
                       {...field}
-                      label="Full name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Full name"
                     />
                   </FormControl>
                 </FormItem>
@@ -288,13 +288,13 @@ export const CompleteFormExample: Story = {
                 <FormItem>
                   <FormControl>
                     <FileUploadField
-                      label="Upload supporting document"
-                      name={name}
+                      required
                       accept=".pdf,.jpg,.jpeg,.png"
                       error={fieldState.error?.message}
-                      onChange={onChange}
+                      label="Upload supporting document"
+                      name={name}
                       onBlur={onBlur}
-                      required
+                      onChange={onChange}
                     />
                   </FormControl>
                   <FormDescription>

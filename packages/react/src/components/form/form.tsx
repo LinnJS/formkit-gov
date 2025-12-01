@@ -18,7 +18,8 @@ export interface FormProps<TFieldValues extends FieldValues = FieldValues> exten
   'onSubmit'
 > {
   /** React Hook Form instance from useForm() */
-  form: UseFormReturn<TFieldValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Accept any resolver context/transformed values
+  form: UseFormReturn<TFieldValues, any, any>;
   /** Form submit handler - receives validated data */
   onSubmit?: (data: TFieldValues) => void | Promise<void>;
   /**

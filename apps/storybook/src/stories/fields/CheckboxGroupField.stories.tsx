@@ -158,11 +158,11 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <CheckboxGroupField
                     {...field}
-                    label="Preferred contact methods"
-                    hint="Select all that apply"
-                    options={contactMethodOptions}
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Select all that apply"
+                    label="Preferred contact methods"
+                    options={contactMethodOptions}
                   />
                 </FormControl>
               </FormItem>
@@ -211,11 +211,11 @@ export const WithReactHookFormAndDescriptions: Story = {
                 <FormControl>
                   <CheckboxGroupField
                     {...field}
-                    label="VA Benefits"
-                    hint="Select 1-3 benefits you want to learn more about"
-                    options={benefitOptions}
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Select 1-3 benefits you want to learn more about"
+                    label="VA Benefits"
+                    options={benefitOptions}
                   />
                 </FormControl>
               </FormItem>

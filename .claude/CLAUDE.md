@@ -19,9 +19,16 @@ shadcn/ui composable patterns.
 - **Linting**: ESLint 9 flat config + Prettier
 - **Releases**: Changesets
 
-## Package Structure
+## Project Structure
 
 ```text
+apps/
+  demo-nextjs/    # Next.js demo application
+  demo-vite/      # Vite demo application
+  docs/           # Nextra documentation site
+  landing/        # Landing page (formkit-gov.org)
+  storybook/      # Component documentation
+
 packages/
   core/           # Zod schemas, patterns, validators
   react/          # React components wrapping VA DS
@@ -30,6 +37,10 @@ packages/
   openapi/        # OpenAPI to Zod generation
   validators/     # Extended validation rules
   test-utils/     # Testing utilities
+  eslint-config/  # Shared ESLint configuration
+  typescript-config/ # Shared TypeScript configuration
+
+assets/           # Shared brand assets (logo, favicons)
 ```
 
 ## Code Style Guidelines

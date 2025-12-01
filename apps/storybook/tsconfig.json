@@ -13,6 +13,12 @@
     "isolatedModules": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", ".storybook/**/*"],
-  "exclude": ["node_modules", "storybook-static"]
+  "include": ["src/**/*", ".storybook/**/*", "e2e/**/*"],
+  "exclude": [
+    "node_modules",
+    "storybook-static",
+    // TODO: Remove after @hookform/resolvers types are fixed for react-hook-form@7.67.0
+    // See: https://github.com/react-hook-form/resolvers/issues
+    "src/stories/examples/Form.stories.tsx"
+  ]
 }

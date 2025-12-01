@@ -99,11 +99,11 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <TextareaField
                     {...field}
-                    label="Additional comments"
-                    hint="Minimum 10 characters, maximum 500 characters"
-                    maxlength={500}
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Minimum 10 characters, maximum 500 characters"
+                    label="Additional comments"
+                    maxlength={500}
                   />
                 </FormControl>
               </FormItem>

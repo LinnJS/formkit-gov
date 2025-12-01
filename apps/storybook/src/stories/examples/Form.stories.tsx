@@ -7,7 +7,7 @@
  *
  * Key concepts demonstrated:
  * - React Hook Form setup with useForm
- * - Zod schema validation with standardSchemaResolver
+ * - Zod schema validation with zodResolver
  * - Form components (Form, FormField, FormItem, FormLabel, FormControl, FormMessage)
  * - Multiple field types with validation
  * - Error handling and display
@@ -38,7 +38,7 @@ import {
   TextareaField,
   TextInputField,
 } from '@formkit-gov/react';
-import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -65,7 +65,7 @@ type Story = StoryObj;
  *
  * A simple form demonstrating the fundamental pattern:
  * 1. Define a Zod schema for validation
- * 2. Set up React Hook Form with standardSchemaResolver
+ * 2. Set up React Hook Form with zodResolver
  * 3. Use Form components for layout and error handling
  * 4. Handle form submission
  *
@@ -85,7 +85,7 @@ export const BasicForm: Story = {
     function ContactForm() {
       // Initialize form with React Hook Form
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         defaultValues: {
           firstName: '',
           lastName: '',
@@ -115,9 +115,9 @@ export const BasicForm: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="First name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="First name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -135,9 +135,9 @@ export const BasicForm: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="Last name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Last name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -155,10 +155,10 @@ export const BasicForm: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      type="email"
-                      label="Email address"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Email address"
+                      type="email"
                     />
                   </FormControl>
                   <FormDescription>
@@ -172,7 +172,6 @@ export const BasicForm: Story = {
             {/* Submit Button */}
             <div>
               <button
-                type="submit"
                 style={{
                   padding: '0.75rem 1.5rem',
                   backgroundColor: '#0071bb',
@@ -183,6 +182,7 @@ export const BasicForm: Story = {
                   fontSize: '1rem',
                   fontWeight: 500,
                 }}
+                type="submit"
               >
                 Submit
               </button>
@@ -254,7 +254,7 @@ export const CompleteForm: Story = {
 
     function ApplicationForm() {
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         defaultValues: {
           firstName: '',
           lastName: '',
@@ -313,9 +313,9 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <TextInputField
                           {...field}
-                          label="First name"
-                          error={fieldState.error?.message}
                           required
+                          error={fieldState.error?.message}
+                          label="First name"
                         />
                       </FormControl>
                       <FormMessage />
@@ -331,9 +331,9 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <TextInputField
                           {...field}
-                          label="Last name"
-                          error={fieldState.error?.message}
                           required
+                          error={fieldState.error?.message}
+                          label="Last name"
                         />
                       </FormControl>
                       <FormMessage />
@@ -349,10 +349,10 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <DateField
                           {...field}
-                          label="Date of birth"
-                          hint="Enter your date of birth (MM/DD/YYYY)"
-                          error={fieldState.error?.message}
                           required
+                          error={fieldState.error?.message}
+                          hint="Enter your date of birth (MM/DD/YYYY)"
+                          label="Date of birth"
                         />
                       </FormControl>
                       <FormMessage />
@@ -368,10 +368,10 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <SSNField
                           {...field}
-                          label="Social Security Number"
-                          hint="Enter your 9-digit SSN"
-                          error={fieldState.error?.message}
                           required
+                          error={fieldState.error?.message}
+                          hint="Enter your 9-digit SSN"
+                          label="Social Security Number"
                         />
                       </FormControl>
                       <FormDescription>
@@ -399,10 +399,10 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <TextInputField
                           {...field}
-                          type="email"
-                          label="Email address"
-                          error={fieldState.error?.message}
                           required
+                          error={fieldState.error?.message}
+                          label="Email address"
+                          type="email"
                         />
                       </FormControl>
                       <FormMessage />
@@ -418,10 +418,10 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <PhoneField
                           {...field}
-                          label="Phone number"
-                          hint="Enter a 10-digit phone number"
-                          error={fieldState.error?.message}
                           required
+                          error={fieldState.error?.message}
+                          hint="Enter a 10-digit phone number"
+                          label="Phone number"
                         />
                       </FormControl>
                       <FormMessage />
@@ -437,10 +437,10 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <SelectField
                           {...field}
+                          required
+                          error={fieldState.error?.message}
                           label="State"
                           options={stateOptions}
-                          error={fieldState.error?.message}
-                          required
                         />
                       </FormControl>
                       <FormMessage />
@@ -464,10 +464,10 @@ export const CompleteForm: Story = {
                     <FormControl>
                       <RadioField
                         {...field}
+                        required
+                        error={fieldState.error?.message}
                         label="Are you a veteran?"
                         options={veteranOptions}
-                        error={fieldState.error?.message}
-                        required
                       />
                     </FormControl>
                     <FormMessage />
@@ -491,9 +491,9 @@ export const CompleteForm: Story = {
                       <FormControl>
                         <TextareaField
                           {...field}
-                          label="Additional information (optional)"
-                          hint="Provide any additional information that may be relevant"
                           error={fieldState.error?.message}
+                          hint="Provide any additional information that may be relevant"
+                          label="Additional information (optional)"
                         />
                       </FormControl>
                       <FormMessage />
@@ -510,8 +510,8 @@ export const CompleteForm: Story = {
                         <CheckboxField
                           {...field}
                           checked={field.value}
-                          label="Send me email notifications about my application"
                           error={fieldState.error?.message}
+                          label="Send me email notifications about my application"
                         />
                       </FormControl>
                       <FormMessage />
@@ -531,10 +531,10 @@ export const CompleteForm: Story = {
                     <FormControl>
                       <CheckboxField
                         {...field}
-                        checked={field.value}
-                        label="I agree to the terms and conditions"
-                        error={fieldState.error?.message}
                         required
+                        checked={field.value}
+                        error={fieldState.error?.message}
+                        label="I agree to the terms and conditions"
                       />
                     </FormControl>
                     <FormMessage />
@@ -546,7 +546,6 @@ export const CompleteForm: Story = {
             {/* Submit Button */}
             <div>
               <button
-                type="submit"
                 style={{
                   padding: '0.75rem 1.5rem',
                   backgroundColor: '#0071bb',
@@ -557,6 +556,7 @@ export const CompleteForm: Story = {
                   fontSize: '1rem',
                   fontWeight: 500,
                 }}
+                type="submit"
               >
                 Submit Application
               </button>
@@ -593,7 +593,7 @@ export const WithRealTimeValidation: Story = {
 
     function RealTimeValidationForm() {
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         defaultValues: {
           firstName: '',
           lastName: '',
@@ -645,10 +645,10 @@ export const WithRealTimeValidation: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="First name"
-                      hint="Enter at least 2 characters, then click elsewhere"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Enter at least 2 characters, then click elsewhere"
+                      label="First name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -664,9 +664,9 @@ export const WithRealTimeValidation: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="Last name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Last name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -682,10 +682,10 @@ export const WithRealTimeValidation: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      type="email"
-                      label="Email address"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Email address"
+                      type="email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -695,7 +695,6 @@ export const WithRealTimeValidation: Story = {
 
             <div>
               <button
-                type="submit"
                 style={{
                   padding: '0.75rem 1.5rem',
                   backgroundColor: '#0071bb',
@@ -706,6 +705,7 @@ export const WithRealTimeValidation: Story = {
                   fontSize: '1rem',
                   fontWeight: 500,
                 }}
+                type="submit"
               >
                 Submit
               </button>
@@ -748,7 +748,7 @@ export const WithValidationErrors: Story = {
 
     function FormWithErrors() {
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         // Pre-fill with invalid data to show errors
         defaultValues: {
           firstName: 'J', // Too short (min 2 characters)
@@ -800,10 +800,10 @@ export const WithValidationErrors: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="First name"
-                      hint="Must be at least 2 characters"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Must be at least 2 characters"
+                      label="First name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -819,9 +819,9 @@ export const WithValidationErrors: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      label="Last name"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Last name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -837,10 +837,10 @@ export const WithValidationErrors: Story = {
                   <FormControl>
                     <TextInputField
                       {...field}
-                      type="email"
-                      label="Email address"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      label="Email address"
+                      type="email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -856,10 +856,10 @@ export const WithValidationErrors: Story = {
                   <FormControl>
                     <PhoneField
                       {...field}
-                      label="Phone number"
-                      hint="Must be a valid 10-digit phone number"
-                      error={fieldState.error?.message}
                       required
+                      error={fieldState.error?.message}
+                      hint="Must be a valid 10-digit phone number"
+                      label="Phone number"
                     />
                   </FormControl>
                   <FormMessage />
@@ -875,10 +875,10 @@ export const WithValidationErrors: Story = {
                   <FormControl>
                     <SelectField
                       {...field}
+                      required
+                      error={fieldState.error?.message}
                       label="State"
                       options={stateOptions}
-                      error={fieldState.error?.message}
-                      required
                     />
                   </FormControl>
                   <FormMessage />
@@ -894,10 +894,10 @@ export const WithValidationErrors: Story = {
                   <FormControl>
                     <CheckboxField
                       {...field}
-                      checked={field.value}
-                      label="I agree to the terms and conditions"
-                      error={fieldState.error?.message}
                       required
+                      checked={field.value}
+                      error={fieldState.error?.message}
+                      label="I agree to the terms and conditions"
                     />
                   </FormControl>
                   <FormMessage />
@@ -907,7 +907,6 @@ export const WithValidationErrors: Story = {
 
             <div>
               <button
-                type="submit"
                 style={{
                   padding: '0.75rem 1.5rem',
                   backgroundColor: '#0071bb',
@@ -918,12 +917,11 @@ export const WithValidationErrors: Story = {
                   fontSize: '1rem',
                   fontWeight: 500,
                 }}
+                type="submit"
               >
                 Submit
               </button>
               <button
-                type="button"
-                onClick={() => form.reset()}
                 style={{
                   marginLeft: '1rem',
                   padding: '0.75rem 1.5rem',
@@ -934,6 +932,8 @@ export const WithValidationErrors: Story = {
                   cursor: 'pointer',
                   fontSize: '1rem',
                 }}
+                type="button"
+                onClick={() => form.reset()}
               >
                 Reset
               </button>

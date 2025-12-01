@@ -141,12 +141,12 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <ComboBoxField
                     {...field}
-                    label="Country"
-                    hint="Start typing to search"
-                    placeholder="Search..."
-                    options={countryOptions}
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Start typing to search"
+                    label="Country"
+                    options={countryOptions}
+                    placeholder="Search..."
                   />
                 </FormControl>
               </FormItem>

@@ -132,7 +132,7 @@
 
 ### Phase 6: Documentation & Polish (v1.0.0)
 
-**Target**: v1.0.0 **Status**: Planned
+**Target**: v1.0.0 **Status**: In Progress
 
 #### Goals
 
@@ -143,15 +143,14 @@
 
 #### Tasks
 
-- [ ] Landing page (formkit-gov.org)
-- [ ] Nextra documentation site (docs.formkit-gov.org)
+- [x] Landing page scaffolding (formkit-gov.org)
+- [x] Nextra documentation site scaffolding (docs.formkit-gov.org)
+- [x] Next.js demo app scaffolding (nextjs-demo.formkit-gov.org)
+- [x] Vite demo app scaffolding (vite-demo.formkit-gov.org)
 - [ ] Documentation site deployment (re-enable CI docs workflow)
 - [ ] Getting started guide
 - [ ] Component API docs
 - [ ] Pattern guides
-- [ ] Example: Next.js TypeScript
-- [ ] Example: Next.js JavaScript
-- [ ] Example: Vite TypeScript
 - [ ] Example: Multi-step wizard
 - [ ] Performance benchmarks
 - [ ] Security audit

@@ -1,0 +1,75 @@
+# Components
+
+FormKit Gov provides React components that wrap VA Design System web components with React Hook Form integration.
+
+## Field Components
+
+| Component               | Description                         |
+| ----------------------- | ----------------------------------- |
+| `TextInputField`        | Single-line text input              |
+| `TextareaField`         | Multi-line text input               |
+| `SelectField`           | Dropdown selection                  |
+| `CheckboxField`         | Single checkbox                     |
+| `CheckboxGroupField`    | Multiple checkboxes                 |
+| `RadioField`            | Radio button group                  |
+| `DateField`             | Date picker (month/day/year)        |
+| `MemorableDateField`    | Memorable date with dropdowns       |
+| `NumberField`           | Numeric input                       |
+| `CurrencyField`         | Currency input with formatting      |
+| `PhoneField`            | Phone number with formatting        |
+| `SSNField`              | Social Security Number with masking |
+| `FileUploadField`       | File upload with validation         |
+| `ComboBoxField`         | Searchable dropdown                 |
+| `PrivacyAgreementField` | Privacy policy checkbox             |
+
+## Molecular Components
+
+| Component       | Description                 |
+| --------------- | --------------------------- |
+| `FullNameField` | First, middle, last, suffix |
+| `AddressField`  | Complete address form       |
+
+## Review Components
+
+| Component       | Description              |
+| --------------- | ------------------------ |
+| `ReviewSection` | Section with edit button |
+| `ReviewItem`    | Single field display     |
+| `ReviewList`    | List of review items     |
+
+## Form Components
+
+| Component         | Description                       |
+| ----------------- | --------------------------------- |
+| `Form`            | Form wrapper with React Hook Form |
+| `FormField`       | Field controller wrapper          |
+| `FormItem`        | Field container                   |
+| `FormLabel`       | Field label                       |
+| `FormControl`     | Input wrapper                     |
+| `FormDescription` | Help text                         |
+| `FormMessage`     | Error message                     |
+
+## Usage Example
+
+```tsx
+import { Form, FormField } from '@formkit-gov/react';
+import { TextInputField, SelectField } from '@formkit-gov/react/components';
+
+<Form form={form} onSubmit={handleSubmit}>
+  <FormField
+    control={form.control}
+    name="email"
+    render={({ field, fieldState }) => (
+      <TextInputField
+        {...field}
+        label="Email address"
+        type="email"
+        error={fieldState.error?.message}
+        required
+      />
+    )}
+  />
+</Form>;
+```
+
+For interactive examples, visit [Storybook](https://storybook.formkit-gov.org).

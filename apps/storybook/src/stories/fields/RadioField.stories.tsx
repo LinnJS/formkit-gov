@@ -176,10 +176,10 @@ export const WithReactHookForm: Story = {
                 <FormControl>
                   <RadioField
                     {...field}
+                    required
+                    error={fieldState.error?.message}
                     label="Preferred contact method"
                     options={contactMethods}
-                    error={fieldState.error?.message}
-                    required
                   />
                 </FormControl>
               </FormItem>
@@ -245,11 +245,11 @@ export const WithReactHookFormAndDescriptions: Story = {
                 <FormControl>
                   <RadioField
                     {...field}
-                    label="Notification preferences"
-                    hint="Choose how often you want to receive updates"
-                    options={notificationOptions}
-                    error={fieldState.error?.message}
                     required
+                    error={fieldState.error?.message}
+                    hint="Choose how often you want to receive updates"
+                    label="Notification preferences"
+                    options={notificationOptions}
                   />
                 </FormControl>
               </FormItem>

@@ -1,0 +1,32 @@
+---
+/**
+ * Environment-aware links for FormKit Gov apps.
+ * In development, links point to localhost ports.
+ * In production, links point to production domains.
+ */
+---
+
+<script>
+  const isDev =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1' ||
+    window.location.hostname.startsWith('192.168.');
+
+  if (isDev) {
+    const devUrls: Record<string, string> = {
+      landing: 'http://localhost:4000',
+      docs: 'http://localhost:4001',
+      storybook: 'http://localhost:4002',
+      'demo-nextjs': 'http://localhost:4003',
+      'demo-vite': 'http://localhost:4004',
+      github: 'https://github.com/LinnJS/formkit-gov',
+    };
+
+    document.querySelectorAll<HTMLAnchorElement>('[data-app]').forEach((link) => {
+      const app = link.getAttribute('data-app');
+      if (app && devUrls[app]) {
+        link.href = devUrls[app];
+      }
+    });
+  }
+</script>

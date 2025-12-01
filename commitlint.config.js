@@ -31,6 +31,7 @@ export default {
         'test-utils',
         'docs',
         'storybook',
+        'landing',
         'playground',
         'eslint-config',
         'typescript-config',
