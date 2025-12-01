@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./formkit-gov.png" alt="FormKit Gov" width="120" />
+  <img src="./assets/formkit-gov.png" alt="FormKit Gov" width="120" />
 </p>
 
 <h1 align="center">FormKit Gov</h1>
