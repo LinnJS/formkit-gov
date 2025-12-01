@@ -7,7 +7,7 @@
  *
  * Key concepts demonstrated:
  * - React Hook Form setup with useForm
- * - Zod schema validation with standardSchemaResolver
+ * - Zod schema validation with zodResolver
  * - Form components (Form, FormField, FormItem, FormLabel, FormControl, FormMessage)
  * - Multiple field types with validation
  * - Error handling and display
@@ -38,7 +38,7 @@ import {
   TextareaField,
   TextInputField,
 } from '@formkit-gov/react';
-import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -65,7 +65,7 @@ type Story = StoryObj;
  *
  * A simple form demonstrating the fundamental pattern:
  * 1. Define a Zod schema for validation
- * 2. Set up React Hook Form with standardSchemaResolver
+ * 2. Set up React Hook Form with zodResolver
  * 3. Use Form components for layout and error handling
  * 4. Handle form submission
  *
@@ -85,7 +85,7 @@ export const BasicForm: Story = {
     function ContactForm() {
       // Initialize form with React Hook Form
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         defaultValues: {
           firstName: '',
           lastName: '',
@@ -254,7 +254,7 @@ export const CompleteForm: Story = {
 
     function ApplicationForm() {
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         defaultValues: {
           firstName: '',
           lastName: '',
@@ -593,7 +593,7 @@ export const WithRealTimeValidation: Story = {
 
     function RealTimeValidationForm() {
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         defaultValues: {
           firstName: '',
           lastName: '',
@@ -748,7 +748,7 @@ export const WithValidationErrors: Story = {
 
     function FormWithErrors() {
       const form = useForm<FormData>({
-        resolver: standardSchemaResolver(schema),
+        resolver: zodResolver(schema),
         // Pre-fill with invalid data to show errors
         defaultValues: {
           firstName: 'J', // Too short (min 2 characters)
