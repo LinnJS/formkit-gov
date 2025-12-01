@@ -15,16 +15,16 @@
   "dependencies": {
     "@formkit-gov/core": "workspace:*",
     "@formkit-gov/react": "workspace:*",
-    "next": "^15.1.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "^16.0.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@formkit-gov/eslint-config": "workspace:*",
     "@tailwindcss/postcss": "^4.1.7",
     "@types/node": "^22.10.1",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "eslint": "^9.16.0",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.7.2"
