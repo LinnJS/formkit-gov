@@ -12,7 +12,7 @@
     "preview": "http-server storybook-static -p 4002",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:storybook": "test-storybook --excludeTags play-fn --maxWorkers=1",
+    "test:storybook": "test-storybook --url http://localhost:4002 --excludeTags play-fn --maxWorkers=1",
     "test:storybook:ci": "pnpm build && start-server-and-test preview http://localhost:4002 test:storybook",
     "typecheck": "tsc --noEmit"
   },
