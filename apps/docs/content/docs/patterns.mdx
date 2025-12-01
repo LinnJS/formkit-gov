@@ -1,0 +1,112 @@
+# Patterns
+
+Common form patterns and examples for government applications.
+
+## Basic Form
+
+A simple contact form with validation:
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form, FormField } from '@formkit-gov/react';
+import { TextInputField, PhoneField, TextareaField } from '@formkit-gov/react/components';
+import { createTextSchema, createPhoneSchema } from '@formkit-gov/core/schemas';
+
+const schema = z.object({
+  name: createTextSchema({ required: true, maxLength: 100 }),
+  phone: createPhoneSchema(),
+  message: createTextSchema({ required: true, maxLength: 1000 }),
+});
+
+function ContactForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: { name: '', phone: '', message: '' },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field, fieldState }) => (
+          <TextInputField {...field} label="Your name" error={fieldState.error?.message} required />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="phone"
+        render={({ field, fieldState }) => (
+          <PhoneField {...field} label="Phone number" error={fieldState.error?.message} />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="message"
+        render={({ field, fieldState }) => (
+          <TextareaField {...field} label="Message" error={fieldState.error?.message} required />
+        )}
+      />
+      <va-button type="submit">Submit</va-button>
+    </Form>
+  );
+}
+```
+
+## Personal Information
+
+Collecting name and SSN:
+
+```tsx
+import { FullNameField, SSNField } from '@formkit-gov/react/components';
+import { createFullNameSchema, createSSNSchema } from '@formkit-gov/core/schemas';
+
+const schema = z.object({
+  fullName: createFullNameSchema(),
+  ssn: createSSNSchema(),
+});
+
+// In your form:
+<FormField
+  control={form.control}
+  name="fullName"
+  render={({ field, fieldState }) => (
+    <FullNameField {...field} errors={fieldState.error} />
+  )}
+/>
+<FormField
+  control={form.control}
+  name="ssn"
+  render={({ field, fieldState }) => (
+    <SSNField {...field} label="Social Security Number" error={fieldState.error?.message} required />
+  )}
+/>
+```
+
+## Address Collection
+
+Using the AddressField component:
+
+```tsx
+import { AddressField } from '@formkit-gov/react/components';
+import { createAddressSchema } from '@formkit-gov/core/schemas';
+
+const schema = z.object({
+  mailingAddress: createAddressSchema(),
+});
+
+// In your form:
+<FormField
+  control={form.control}
+  name="mailingAddress"
+  render={({ field, fieldState }) => (
+    <AddressField {...field} legend="Mailing address" errors={fieldState.error} />
+  )}
+/>;
+```
+
+## More Examples
+
+Visit [Storybook](https://storybook.formkit-gov.org) for interactive examples of all components and patterns.

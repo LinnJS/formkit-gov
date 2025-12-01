@@ -4,15 +4,27 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && cp -r public/* dist/",
-    "dev": "pnpm build && npx http-server dist -p 4001",
-    "dev:open": "open http://localhost:4001 && pnpm build && npx http-server dist -p 4001",
-    "lint": "echo 'Static HTML - no linting required'",
-    "lint:fix": "echo 'Static HTML - no linting required'",
-    "preview": "npx http-server dist -p 4001",
-    "typecheck": "echo 'Static HTML - no type checking required'"
+    "build": "next build",
+    "dev": "next dev -p 4001",
+    "dev:open": "open http://localhost:4001 && next dev -p 4001",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "next start -p 4001",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "nextra": "^4.2.16",
+    "nextra-theme-docs": "^4.2.16",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "@formkit-gov/eslint-config": "workspace:*",
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2"
   }
 }

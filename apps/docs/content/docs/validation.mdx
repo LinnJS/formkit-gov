@@ -1,0 +1,83 @@
+# Validation
+
+FormKit Gov provides Zod schema factories for common government form fields.
+
+## Schema Factories
+
+| Factory                | Description             |
+| ---------------------- | ----------------------- |
+| `createTextSchema`     | Text with length limits |
+| `createEmailSchema`    | Email validation        |
+| `createPhoneSchema`    | US phone numbers        |
+| `createSSNSchema`      | Social Security Numbers |
+| `createDateSchema`     | Date validation         |
+| `createCurrencySchema` | Currency amounts        |
+| `createZipCodeSchema`  | US ZIP codes            |
+| `createAddressSchema`  | Complete address        |
+| `createFullNameSchema` | Full name fields        |
+
+## Usage
+
+```tsx
+import { z } from 'zod';
+import {
+  createTextSchema,
+  createEmailSchema,
+  createPhoneSchema,
+  createSSNSchema,
+} from '@formkit-gov/core/schemas';
+
+const contactSchema = z.object({
+  firstName: createTextSchema({ required: true, maxLength: 50 }),
+  lastName: createTextSchema({ required: true, maxLength: 50 }),
+  email: createEmailSchema(),
+  phone: createPhoneSchema({ required: false }),
+  ssn: createSSNSchema(),
+});
+```
+
+## Schema Options
+
+Most schema factories accept an options object:
+
+```tsx
+createTextSchema({
+  required: true, // Is field required?
+  minLength: 2, // Minimum characters
+  maxLength: 100, // Maximum characters
+  messages: {
+    // Custom error messages
+    required: 'Please enter your name',
+    minLength: 'Name is too short',
+    maxLength: 'Name is too long',
+  },
+});
+```
+
+## Custom Messages
+
+Override default error messages:
+
+```tsx
+const schema = createSSNSchema({
+  messages: {
+    required: 'Social Security Number is required for this application',
+    pattern: 'Please enter a valid 9-digit SSN',
+  },
+});
+```
+
+## Validation Patterns
+
+Pre-built regex patterns are available:
+
+```tsx
+import { patterns } from '@formkit-gov/core/patterns';
+
+// Available patterns
+patterns.SSN; // ###-##-####
+patterns.PHONE; // (###) ###-####
+patterns.ZIP_CODE; // ##### or #####-####
+patterns.EMAIL; // Standard email
+patterns.CURRENCY; // $#,###.##
+```

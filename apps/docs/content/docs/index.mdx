@@ -1,0 +1,71 @@
+# Getting Started
+
+FormKit Gov is a production-quality form system for government applications. It integrates VA Design System web components with Zod validation and React Hook Form.
+
+## Prerequisites
+
+- React 17 or higher
+- Node.js 18 or higher
+- VA Design System dependencies
+
+## Installation
+
+Install the core packages:
+
+```bash npm2yarn
+npm install @formkit-gov/react @formkit-gov/core
+```
+
+Install peer dependencies:
+
+```bash npm2yarn
+npm install react-hook-form @hookform/resolvers zod @department-of-veterans-affairs/component-library
+```
+
+## Quick Start
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form, FormField } from '@formkit-gov/react';
+import { TextInputField } from '@formkit-gov/react/components';
+import { createTextSchema } from '@formkit-gov/core/schemas';
+
+const schema = z.object({
+  firstName: createTextSchema({ maxLength: 50 }),
+  lastName: createTextSchema({ maxLength: 50 }),
+});
+
+function MyForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="firstName"
+        render={({ field, fieldState }) => (
+          <TextInputField {...field} label="First name" error={fieldState.error?.message} />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="lastName"
+        render={({ field, fieldState }) => (
+          <TextInputField {...field} label="Last name" error={fieldState.error?.message} />
+        )}
+      />
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+```
+
+## Next Steps
+
+- Explore [Components](/docs/components) for available form fields
+- Learn about [Validation](/docs/validation) with Zod schemas
+- See [Patterns](/docs/patterns) for common form implementations
