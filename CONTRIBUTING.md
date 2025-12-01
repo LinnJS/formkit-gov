@@ -280,7 +280,7 @@ Each package should have:
 
 - README.md with usage examples
 - JSDoc comments for public APIs
-- Storybook stories for components
+- [Storybook](https://storybook.formkit-gov.org) stories for components
 
 ### Docs Site
 

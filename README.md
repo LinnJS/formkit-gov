@@ -31,8 +31,9 @@
 </p>
 
 <p align="center">
-  <a href="https://formkit-gov.vercel.app">Documentation</a> •
-  <a href="https://formkit-gov.vercel.app/docs/getting-started">Getting Started</a> •
+  <a href="https://formkit-gov.org">Home</a> •
+  <a href="https://docs.formkit-gov.org">Documentation</a> •
+  <a href="https://storybook.formkit-gov.org">Storybook</a> •
   <a href="https://github.com/LinnJS/formkit-gov/tree/main/examples">Examples</a> •
   <a href="https://github.com/LinnJS/formkit-gov/blob/main/CONTRIBUTING.md">Contributing</a>
 </p>
@@ -232,14 +233,14 @@ const form = useForm({
 
 ## Documentation
 
-Visit [formkit-gov.vercel.app](https://formkit-gov.vercel.app) for full documentation:
+Visit [docs.formkit-gov.org](https://docs.formkit-gov.org) for full documentation:
 
-- [Getting Started](https://formkit-gov.vercel.app/docs/getting-started)
-- [Components](https://formkit-gov.vercel.app/docs/components)
-- [Form Patterns](https://formkit-gov.vercel.app/docs/patterns)
-- [Wizard Guide](https://formkit-gov.vercel.app/docs/wizard)
-- [OpenAPI Integration](https://formkit-gov.vercel.app/docs/openapi)
-- [API Reference](https://formkit-gov.vercel.app/docs/api)
+- [Getting Started](https://docs.formkit-gov.org/getting-started)
+- [Components](https://docs.formkit-gov.org/components)
+- [Form Patterns](https://docs.formkit-gov.org/patterns)
+- [Wizard Guide](https://docs.formkit-gov.org/wizard)
+- [OpenAPI Integration](https://docs.formkit-gov.org/openapi)
+- [API Reference](https://docs.formkit-gov.org/api)
 
 ## Browser Support
 
