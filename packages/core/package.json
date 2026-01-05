@@ -86,17 +86,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "^4.1.13"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@formkit-gov/eslint-config": "workspace:*",
     "@formkit-gov/typescript-config": "workspace:*",
     "@types/node": "^24.10.1",
-    "@vitest/coverage-v8": "^4.0.14",
+    "@vitest/coverage-v8": "^4.0.16",
     "eslint": "^9.16.0",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
-    "vitest": "^4.0.14"
+    "vitest": "^4.0.16"
   },
   "peerDependencies": {
     "zod": ">=3.20.0"
