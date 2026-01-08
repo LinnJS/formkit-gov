@@ -8,7 +8,7 @@ test.describe('TextInputField', () => {
     const textInput = page.locator('va-text-input.hydrated');
     await expect(textInput).toBeVisible();
 
-    // Verify the label is displayed (React 19 sets properties, not attributes)
+    // Verify the label is displayed
     await expect(textInput.locator('label')).toContainText('Full name');
   });
 
@@ -31,7 +31,7 @@ test.describe('TextInputField', () => {
     const textInput = page.locator('va-text-input');
     await expect(textInput).toBeVisible();
 
-    // Verify error message is displayed (React 19 sets properties, not attributes)
+    // Verify error message is displayed
     await expect(textInput.locator('span[id$="-error-message"]')).toContainText(
       'Please enter a valid email address'
     );
@@ -72,7 +72,7 @@ test.describe('SelectField', () => {
     const selectField = page.locator('va-select');
     await expect(selectField).toBeVisible();
 
-    // Verify the label is displayed (React 19 sets properties, not attributes)
+    // Verify the label is displayed
     await expect(selectField.locator('label')).toContainText('State');
   });
 
@@ -95,7 +95,7 @@ test.describe('SelectField', () => {
     const selectField = page.locator('va-select');
     await expect(selectField).toBeVisible();
 
-    // Verify error message is displayed (React 19 sets properties, not attributes)
+    // Verify error message is displayed
     await expect(selectField.locator('span[id$="-error-message"]')).toContainText(
       'Please select a state'
     );

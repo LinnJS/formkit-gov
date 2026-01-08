@@ -38,7 +38,7 @@ test.describe('TextInputField Form Integration', () => {
     // Wait for error to appear
     const textInput = page.locator('va-text-input');
 
-    // Check that error message is displayed (React 19 sets properties, not attributes)
+    // Check that error message is displayed
     await expect(textInput.locator('span[id$="-error-message"]')).toBeVisible();
   });
 });
@@ -102,7 +102,7 @@ test.describe('Complete Form Example', () => {
     // Check that all three inputs have error attributes
     const textInputs = page.locator('va-text-input');
 
-    // All three fields should have error messages displayed (React 19 sets properties, not attributes)
+    // All three fields should have error messages displayed
     await expect(textInputs.nth(0).locator('span[id$="-error-message"]')).toBeVisible();
     await expect(textInputs.nth(1).locator('span[id$="-error-message"]')).toBeVisible();
     await expect(textInputs.nth(2).locator('span[id$="-error-message"]')).toBeVisible();
@@ -175,7 +175,7 @@ test.describe('SelectField Form Integration', () => {
     // Wait for error to appear
     const selectField = page.locator('va-select');
 
-    // Check that error message is displayed (React 19 sets properties, not attributes)
+    // Check that error message is displayed
     await expect(selectField.locator('span[id$="-error-message"]')).toBeVisible();
   });
 });
