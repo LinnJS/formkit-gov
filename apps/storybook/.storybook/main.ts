@@ -34,6 +34,20 @@ const config: StorybookConfig = {
 
 export default config;
 
-function getAbsolutePath(value: string): any {
+/**
+ * Resolves the absolute path to a package's directory.
+ *
+ * Storybook 10 requires absolute paths for addon and framework configurations
+ * to support ESM module resolution. This helper uses `import.meta.resolve()`
+ * to locate package.json and returns the containing directory path.
+ *
+ * @param value - The package name to resolve (e.g., '@storybook/addon-docs')
+ * @returns The absolute filesystem path to the package directory
+ *
+ * @example
+ * getAbsolutePath('@storybook/addon-docs')
+ * // Returns: '/path/to/node_modules/@storybook/addon-docs'
+ */
+function getAbsolutePath(value: string): string {
   return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }
