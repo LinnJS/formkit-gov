@@ -51,7 +51,6 @@ describe('SSNField', () => {
     const { container } = render(<SSNField required />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('required');
   });
 
@@ -101,7 +100,6 @@ describe('SSNField', () => {
     const { container } = render(<SSNField disabled />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('disabled');
   });
 
@@ -186,7 +184,6 @@ describe('SSNField', () => {
       const input = container.querySelector('va-text-input');
       expect(input).toHaveAttribute('name', 'ssn');
       expect(input).toHaveAttribute('value', '123-45-6789');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('required');
     });
 
@@ -208,16 +205,14 @@ describe('SSNField', () => {
       const { container } = render(<SSNField />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('disabled', 'false');
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<SSNField />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('required', 'false');
+      expect(input).not.toHaveAttribute('required');
     });
   });
 

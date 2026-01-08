@@ -57,7 +57,6 @@ describe('RadioField', () => {
     );
 
     const radio = container.querySelector('va-radio');
-    // React 19: boolean true renders as presence attribute
     expect(radio).toHaveAttribute('required');
   });
 
@@ -121,11 +120,9 @@ describe('RadioField', () => {
     const radio = container.querySelector('va-radio');
     const optionElements = radio?.querySelectorAll('va-radio-option');
 
-    // React 19: boolean false renders as attribute="false"
-    expect(optionElements?.[0]).toHaveAttribute('checked', 'false');
-    // React 19: boolean true renders as presence attribute
+    expect(optionElements?.[0]).not.toHaveAttribute('checked');
     expect(optionElements?.[1]).toHaveAttribute('checked');
-    expect(optionElements?.[2]).toHaveAttribute('checked', 'false');
+    expect(optionElements?.[2]).not.toHaveAttribute('checked');
   });
 
   it('disables individual options when specified', () => {
@@ -140,11 +137,9 @@ describe('RadioField', () => {
     const radio = container.querySelector('va-radio');
     const optionElements = radio?.querySelectorAll('va-radio-option');
 
-    // React 19: boolean false renders as attribute="false"
-    expect(optionElements?.[0]).toHaveAttribute('disabled', 'false');
-    // React 19: boolean true renders as presence attribute
+    expect(optionElements?.[0]).not.toHaveAttribute('disabled');
     expect(optionElements?.[1]).toHaveAttribute('disabled');
-    expect(optionElements?.[2]).toHaveAttribute('disabled', 'false');
+    expect(optionElements?.[2]).not.toHaveAttribute('disabled');
   });
 
   it('disables all options when disabled prop is true', () => {
@@ -175,8 +170,7 @@ describe('RadioField', () => {
       const { container } = render(<RadioField label="Test" options={defaultOptions} />);
 
       const radio = container.querySelector('va-radio');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(radio).toHaveAttribute('required', 'false');
+      expect(radio).not.toHaveAttribute('required');
     });
 
     it('defaults disabled to false', () => {
@@ -185,9 +179,8 @@ describe('RadioField', () => {
       const radio = container.querySelector('va-radio');
       const optionElements = radio?.querySelectorAll('va-radio-option');
 
-      // Options should have disabled="false"
       optionElements?.forEach(option => {
-        expect(option).toHaveAttribute('disabled', 'false');
+        expect(option).not.toHaveAttribute('disabled');
       });
     });
   });
@@ -294,7 +287,6 @@ describe('RadioField', () => {
 
       const radio = container.querySelector('va-radio');
       expect(radio).toHaveAttribute('name', 'contactMethod');
-      // React 19: boolean true renders as presence attribute
       expect(radio).toHaveAttribute('required');
 
       const optionElements = radio?.querySelectorAll('va-radio-option');

@@ -58,7 +58,6 @@ describe('CurrencyField', () => {
     const { container } = render(<CurrencyField required label="Required amount" />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('required');
   });
 
@@ -94,7 +93,6 @@ describe('CurrencyField', () => {
     const { container } = render(<CurrencyField disabled label="Disabled" />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('disabled');
   });
 
@@ -163,7 +161,6 @@ describe('CurrencyField', () => {
       const input = container.querySelector('va-text-input');
       expect(input).toHaveAttribute('name', 'amount');
       expect(input).toHaveAttribute('value', '100.00');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('required');
     });
 
@@ -182,16 +179,14 @@ describe('CurrencyField', () => {
       const { container } = render(<CurrencyField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('disabled', 'false');
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<CurrencyField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('required', 'false');
+      expect(input).not.toHaveAttribute('required');
     });
 
     it('defaults currency to $', () => {

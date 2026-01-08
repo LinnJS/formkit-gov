@@ -54,7 +54,6 @@ describe('FileUploadField', () => {
     );
 
     const input = container.querySelector('va-file-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('required');
   });
 
@@ -64,7 +63,6 @@ describe('FileUploadField', () => {
     );
 
     const input = container.querySelector('va-file-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('disabled');
   });
 
@@ -90,7 +88,6 @@ describe('FileUploadField', () => {
     );
 
     const input = container.querySelector('va-file-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('multiple');
   });
 
@@ -154,7 +151,6 @@ describe('FileUploadField', () => {
 
       const input = container.querySelector('va-file-input');
       expect(input).toHaveAttribute('name', 'document');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('required');
     });
 
@@ -173,24 +169,21 @@ describe('FileUploadField', () => {
       const { container } = render(<FileUploadField label="Upload document" name="document" />);
 
       const input = container.querySelector('va-file-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('disabled', 'false');
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<FileUploadField label="Upload document" name="document" />);
 
       const input = container.querySelector('va-file-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('required', 'false');
+      expect(input).not.toHaveAttribute('required');
     });
 
     it('defaults multiple to false', () => {
       const { container } = render(<FileUploadField label="Upload document" name="document" />);
 
       const input = container.querySelector('va-file-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('multiple', 'false');
+      expect(input).not.toHaveAttribute('multiple');
     });
   });
 
@@ -201,7 +194,6 @@ describe('FileUploadField', () => {
       );
 
       const input = container.querySelector('va-file-input');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('multiple');
     });
 
@@ -209,8 +201,7 @@ describe('FileUploadField', () => {
       const { container } = render(<FileUploadField label="Upload document" name="document" />);
 
       const input = container.querySelector('va-file-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('multiple', 'false');
+      expect(input).not.toHaveAttribute('multiple');
     });
   });
 

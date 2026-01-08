@@ -47,7 +47,6 @@ describe('SelectField', () => {
     const { container } = render(<SelectField required label="Required field" />);
 
     const select = container.querySelector('va-select');
-    // React 19: boolean true renders as presence attribute
     expect(select).toHaveAttribute('required');
   });
 
@@ -55,7 +54,6 @@ describe('SelectField', () => {
     const { container } = render(<SelectField disabled label="Disabled field" />);
 
     const select = container.querySelector('va-select');
-    // React 19: boolean true renders as presence attribute
     expect(select).toHaveAttribute('disabled');
   });
 
@@ -133,16 +131,14 @@ describe('SelectField', () => {
       const { container } = render(<SelectField label="Test" />);
 
       const select = container.querySelector('va-select');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(select).toHaveAttribute('required', 'false');
+      expect(select).not.toHaveAttribute('required');
     });
 
     it('defaults disabled to false', () => {
       const { container } = render(<SelectField label="Test" />);
 
       const select = container.querySelector('va-select');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(select).toHaveAttribute('disabled', 'false');
+      expect(select).not.toHaveAttribute('disabled');
     });
 
     it('defaults value to empty string', () => {
@@ -248,7 +244,6 @@ describe('SelectField', () => {
       const select = container.querySelector('va-select');
       expect(select).toHaveAttribute('name', 'country');
       expect(select).toHaveAttribute('value', 'US');
-      // React 19: boolean true renders as presence attribute
       expect(select).toHaveAttribute('required');
     });
 
