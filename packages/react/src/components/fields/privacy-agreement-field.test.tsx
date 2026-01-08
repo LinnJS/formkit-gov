@@ -22,8 +22,7 @@ describe('PrivacyAgreementField', () => {
   it('passes checked=false to web component', () => {
     const { container } = render(<PrivacyAgreementField checked={false} />);
     const privacyAgreement = container.querySelector('va-privacy-agreement');
-    // React 18: false boolean props render as attribute="false" on custom elements
-    expect(privacyAgreement).toHaveAttribute('checked', 'false');
+    expect(privacyAgreement).not.toHaveAttribute('checked');
   });
 
   it('does not add checked attribute when checked is undefined', () => {
@@ -130,8 +129,7 @@ describe('PrivacyAgreementField', () => {
     expect(privacyAgreement).toHaveAttribute('showerror');
     expect(privacyAgreement).toHaveAttribute('name', 'agreement');
     expect(privacyAgreement).toHaveAttribute('data-testid', 'agreement-privacy');
-    // React 18: false boolean props render as attribute="false" on custom elements
-    expect(privacyAgreement).toHaveAttribute('checked', 'false');
+    expect(privacyAgreement).not.toHaveAttribute('checked');
   });
 
   it('has correct displayName', () => {

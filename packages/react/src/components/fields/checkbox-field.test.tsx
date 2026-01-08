@@ -56,8 +56,7 @@ describe('CheckboxField', () => {
   it('passes required=false to web component', () => {
     const { container } = render(<CheckboxField label="Accept terms" required={false} />);
     const checkbox = container.querySelector('va-checkbox');
-    // React 18: false boolean props render as attribute="false" on custom elements
-    expect(checkbox).toHaveAttribute('required', 'false');
+    expect(checkbox).not.toHaveAttribute('required');
   });
 
   it('passes checked prop when true', () => {
@@ -69,8 +68,7 @@ describe('CheckboxField', () => {
   it('passes checked=false to web component', () => {
     const { container } = render(<CheckboxField checked={false} label="Accept terms" />);
     const checkbox = container.querySelector('va-checkbox');
-    // React 18: false boolean props render as attribute="false" on custom elements
-    expect(checkbox).toHaveAttribute('checked', 'false');
+    expect(checkbox).not.toHaveAttribute('checked');
   });
 
   it('does not add checked attribute when checked is undefined', () => {
@@ -166,8 +164,7 @@ describe('CheckboxField', () => {
     expect(checkbox).toHaveAttribute('required');
     expect(checkbox).toHaveAttribute('name', 'agreement');
     expect(checkbox).toHaveAttribute('data-testid', 'agreement-checkbox');
-    // React 18: false boolean props render as attribute="false" on custom elements
-    expect(checkbox).toHaveAttribute('checked', 'false');
+    expect(checkbox).not.toHaveAttribute('checked');
   });
 
   it('has correct displayName', () => {
