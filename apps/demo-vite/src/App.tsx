@@ -2,7 +2,7 @@ import { AppLinks } from './components/app-links';
 
 export default function App() {
   return (
-    <main className="from-va-primary bg-linear-to-br flex min-h-screen items-center justify-center to-[#1a4480] font-sans">
+    <main className="from-va-primary flex min-h-screen items-center justify-center bg-linear-to-br to-[#1a4480] font-sans">
       <div className="max-w-[600px] p-8 text-center">
         <div className="bg-va-primary mx-auto mb-8 h-[160px] w-[160px] rounded-[32px] p-6 shadow-[0_25px_50px_rgba(0,0,0,0.3)]">
           <img alt="FormKit Gov logo" className="h-full w-full" src="/logo.svg" />
