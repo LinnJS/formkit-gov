@@ -52,24 +52,42 @@ FormKit Gov provides React components that wrap VA Design System web components 
 ## Usage Example
 
 ```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Form, FormField } from '@formkit-gov/react';
-import { TextInputField, SelectField } from '@formkit-gov/react/components';
+import { TextInputField } from '@formkit-gov/react/components';
+import { createEmailSchema } from '@formkit-gov/core/schemas';
 
-<Form form={form} onSubmit={handleSubmit}>
-  <FormField
-    control={form.control}
-    name="email"
-    render={({ field, fieldState }) => (
-      <TextInputField
-        {...field}
-        label="Email address"
-        type="email"
-        error={fieldState.error?.message}
-        required
+const schema = z.object({
+  email: createEmailSchema(),
+});
+
+function EmailForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: { email: '' },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <TextInputField
+            {...field}
+            label="Email address"
+            type="email"
+            error={fieldState.error?.message}
+            required
+          />
+        )}
       />
-    )}
-  />
-</Form>;
+      <va-button type="submit">Submit</va-button>
+    </Form>
+  );
+}
 ```
 
 For interactive examples, visit [Storybook](https://storybook.formkit-gov.org). See the [complete form example](https://storybook.formkit-gov.org/?path=/docs/examples-form--docs) for a full integration demo.

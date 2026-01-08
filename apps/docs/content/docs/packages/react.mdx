@@ -122,30 +122,42 @@ VA Design System web component wrappers with consistent APIs.
 Field components can be used standalone without React Hook Form:
 
 ```tsx
+import { useState } from 'react';
 import { TextInputField, SelectField, CheckboxField } from '@formkit-gov/react';
 
-// Text input with error
-<TextInputField
-  label="First name"
-  error="This field is required"
-  required
-/>
+function StandaloneFields() {
+  const [firstName, setFirstName] = useState('');
+  const [state, setState] = useState('');
+  const [agreed, setAgreed] = useState(false);
 
-// Select dropdown
-<SelectField
-  label="State"
-  options={[
-    { value: 'CA', label: 'California' },
-    { value: 'TX', label: 'Texas' },
-  ]}
-/>
+  return (
+    <div>
+      <TextInputField
+        label="First name"
+        value={firstName}
+        onChange={e => setFirstName(e.target.value)}
+        error={firstName ? undefined : 'This field is required'}
+        required
+      />
 
-// Checkbox
-<CheckboxField
-  label="I agree to the terms"
-  checked={agreed}
-  onChange={setAgreed}
-/>
+      <SelectField
+        label="State"
+        value={state}
+        onChange={e => setState(e.target.value)}
+        options={[
+          { value: 'CA', label: 'California' },
+          { value: 'TX', label: 'Texas' },
+        ]}
+      />
+
+      <CheckboxField
+        label="I agree to the terms"
+        checked={agreed}
+        onChange={e => setAgreed(e.target.checked)}
+      />
+    </div>
+  );
+}
 ```
 
 ## Molecular Components
@@ -160,27 +172,42 @@ Pre-composed field groups for common patterns.
 ### Full Name Field
 
 ```tsx
+import { useState } from 'react';
 import { FullNameField } from '@formkit-gov/react';
 
-<FullNameField
-  value={{ first: '', middle: '', last: '', suffix: '' }}
-  onChange={setName}
-  config={{
-    middle: { show: true },
-    suffix: { show: true },
-  }}
-/>;
+function NameForm() {
+  const [name, setName] = useState({ first: '', middle: '', last: '', suffix: '' });
+
+  return (
+    <FullNameField
+      value={name}
+      onChange={setName}
+      config={{
+        middle: { show: true },
+        suffix: { show: true },
+      }}
+    />
+  );
+}
 ```
 
 ### Address Field
 
 ```tsx
+import { useState } from 'react';
 import { AddressField } from '@formkit-gov/react';
 
-<AddressField
-  value={{ street: '', street2: '', city: '', state: '', zip: '' }}
-  onChange={setAddress}
-/>;
+function AddressForm() {
+  const [address, setAddress] = useState({
+    street: '',
+    street2: '',
+    city: '',
+    state: '',
+    zipCode: '',
+  });
+
+  return <AddressField value={address} onChange={setAddress} />;
+}
 ```
 
 ## Review Components
@@ -198,20 +225,26 @@ Components for displaying form data before submission.
 ```tsx
 import { ReviewSection, ReviewItem, ReviewList } from '@formkit-gov/react';
 
-<ReviewSection title="Personal Information" onEdit={() => goToStep(1)}>
-  <ReviewItem label="Name" value="John Doe" />
-  <ReviewItem label="Email" value="john@example.com" />
-</ReviewSection>
+function ReviewPage({ onEditStep }: { onEditStep: (step: number) => void }) {
+  return (
+    <div>
+      <ReviewSection title="Personal Information" onEdit={() => onEditStep(1)}>
+        <ReviewItem label="Name" value="John Doe" />
+        <ReviewItem label="Email" value="john@example.com" />
+      </ReviewSection>
 
-<ReviewSection title="Address" onEdit={() => goToStep(2)}>
-  <ReviewList
-    items={[
-      { label: 'Street', value: '123 Main St' },
-      { label: 'City', value: 'San Francisco' },
-      { label: 'State', value: 'CA' },
-    ]}
-  />
-</ReviewSection>
+      <ReviewSection title="Address" onEdit={() => onEditStep(2)}>
+        <ReviewList
+          items={[
+            { label: 'Street', value: '123 Main St' },
+            { label: 'City', value: 'San Francisco' },
+            { label: 'State', value: 'CA' },
+          ]}
+        />
+      </ReviewSection>
+    </div>
+  );
+}
 ```
 
 ## Field Layout Primitives

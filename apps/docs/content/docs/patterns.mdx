@@ -60,6 +60,10 @@ function ContactForm() {
 Collecting name and SSN:
 
 ```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form, FormField } from '@formkit-gov/react';
 import { FullNameField, SSNField } from '@formkit-gov/react/components';
 import { createFullNameSchema, createSSNSchema } from '@formkit-gov/core/schemas';
 
@@ -68,21 +72,38 @@ const schema = z.object({
   ssn: createSSNSchema(),
 });
 
-// In your form:
-<FormField
-  control={form.control}
-  name="fullName"
-  render={({ field, fieldState }) => (
-    <FullNameField {...field} errors={fieldState.error} />
-  )}
-/>
-<FormField
-  control={form.control}
-  name="ssn"
-  render={({ field, fieldState }) => (
-    <SSNField {...field} label="Social Security Number" error={fieldState.error?.message} required />
-  )}
-/>
+function PersonalInfoForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      fullName: { first: '', middle: '', last: '', suffix: '' },
+      ssn: '',
+    },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="fullName"
+        render={({ field, fieldState }) => <FullNameField {...field} errors={fieldState.error} />}
+      />
+      <FormField
+        control={form.control}
+        name="ssn"
+        render={({ field, fieldState }) => (
+          <SSNField
+            {...field}
+            label="Social Security Number"
+            error={fieldState.error?.message}
+            required
+          />
+        )}
+      />
+      <va-button type="submit">Submit</va-button>
+    </Form>
+  );
+}
 ```
 
 ## Address Collection
@@ -90,6 +111,10 @@ const schema = z.object({
 Using the AddressField component:
 
 ```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form, FormField } from '@formkit-gov/react';
 import { AddressField } from '@formkit-gov/react/components';
 import { createAddressSchema } from '@formkit-gov/core/schemas';
 
@@ -97,14 +122,33 @@ const schema = z.object({
   mailingAddress: createAddressSchema(),
 });
 
-// In your form:
-<FormField
-  control={form.control}
-  name="mailingAddress"
-  render={({ field, fieldState }) => (
-    <AddressField {...field} legend="Mailing address" errors={fieldState.error} />
-  )}
-/>;
+function AddressForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      mailingAddress: {
+        street: '',
+        street2: '',
+        city: '',
+        state: '',
+        zipCode: '',
+      },
+    },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="mailingAddress"
+        render={({ field, fieldState }) => (
+          <AddressField {...field} legend="Mailing address" errors={fieldState.error} />
+        )}
+      />
+      <va-button type="submit">Submit</va-button>
+    </Form>
+  );
+}
 ```
 
 ## More Examples
