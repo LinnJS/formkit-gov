@@ -4,18 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
-    "dev": "next dev -p 4001",
-    "dev:open": "open http://localhost:4001 && next dev -p 4001",
+    "build": "next build && mv out dist",
+    "dev": "next dev -p 4003 --turbopack",
+    "dev:open": "open http://localhost:4003 && next dev -p 4003 --turbopack",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "start": "next start -p 4001",
+    "start": "next start -p 4003",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@department-of-veterans-affairs/component-library": "^54.2.0",
     "@formkit-gov/react": "workspace:*",
-    "next": "^15.1.0",
+    "next": "^15.5.9",
     "nextra": "^4.2.16",
     "nextra-theme-docs": "^4.2.16",
     "react": "^18.3.1",
