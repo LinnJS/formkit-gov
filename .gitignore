@@ -48,7 +48,7 @@ Thumbs.db
 *.local
 *.cache
 .eslintcache
-.claude/settings.json
+.claude/settings.local.json
 
 # Playwright
 /test-results/
