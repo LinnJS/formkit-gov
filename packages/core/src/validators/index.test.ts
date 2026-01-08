@@ -2,8 +2,11 @@ import { describe, it, expect } from 'vitest';
 
 import {
   validateSSN,
+  validateVAFileNumber,
   validatePhoneNumber,
   validateZipCode,
+  validateDateInPast,
+  validateDateInFuture,
   formatPhoneNumber,
   formatSSN,
   maskSSN,
@@ -25,6 +28,40 @@ describe('validateSSN', () => {
 
   it('returns false for SSN starting with 9', () => {
     expect(validateSSN('900-12-3456')).toBe(false);
+  });
+});
+
+describe('validateVAFileNumber', () => {
+  it('returns true for valid 7-digit VA file number', () => {
+    expect(validateVAFileNumber('1234567')).toBe(true);
+  });
+
+  it('returns true for valid 8-digit VA file number', () => {
+    expect(validateVAFileNumber('12345678')).toBe(true);
+  });
+
+  it('returns true for valid 9-digit VA file number', () => {
+    expect(validateVAFileNumber('123456789')).toBe(true);
+  });
+
+  it('returns true for VA file number starting with C', () => {
+    expect(validateVAFileNumber('C12345678')).toBe(true);
+  });
+
+  it('returns true for VA file number starting with lowercase c', () => {
+    expect(validateVAFileNumber('c12345678')).toBe(true);
+  });
+
+  it('returns false for too few digits', () => {
+    expect(validateVAFileNumber('123456')).toBe(false);
+  });
+
+  it('returns false for too many digits', () => {
+    expect(validateVAFileNumber('1234567890')).toBe(false);
+  });
+
+  it('returns false for invalid prefix', () => {
+    expect(validateVAFileNumber('X12345678')).toBe(false);
   });
 });
 
@@ -53,6 +90,50 @@ describe('validateZipCode', () => {
 
   it('returns false for invalid ZIP', () => {
     expect(validateZipCode('1234')).toBe(false);
+  });
+});
+
+describe('validateDateInPast', () => {
+  it('returns true for date in the past', () => {
+    expect(validateDateInPast('2000-01-01')).toBe(true);
+  });
+
+  it('returns true for Date object in the past', () => {
+    const pastDate = new Date();
+    pastDate.setFullYear(pastDate.getFullYear() - 1);
+    expect(validateDateInPast(pastDate)).toBe(true);
+  });
+
+  it('returns false for date in the future', () => {
+    const futureDate = new Date();
+    futureDate.setFullYear(futureDate.getFullYear() + 1);
+    expect(validateDateInPast(futureDate)).toBe(false);
+  });
+
+  it('returns false for future date string', () => {
+    expect(validateDateInPast('2099-12-31')).toBe(false);
+  });
+});
+
+describe('validateDateInFuture', () => {
+  it('returns true for date in the future', () => {
+    expect(validateDateInFuture('2099-12-31')).toBe(true);
+  });
+
+  it('returns true for Date object in the future', () => {
+    const futureDate = new Date();
+    futureDate.setFullYear(futureDate.getFullYear() + 1);
+    expect(validateDateInFuture(futureDate)).toBe(true);
+  });
+
+  it('returns false for date in the past', () => {
+    const pastDate = new Date();
+    pastDate.setFullYear(pastDate.getFullYear() - 1);
+    expect(validateDateInFuture(pastDate)).toBe(false);
+  });
+
+  it('returns false for past date string', () => {
+    expect(validateDateInFuture('2000-01-01')).toBe(false);
   });
 });
 
