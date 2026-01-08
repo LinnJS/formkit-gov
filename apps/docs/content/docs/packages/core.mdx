@@ -1,0 +1,253 @@
+# @formkit-gov/core
+
+Framework-agnostic form primitives, Zod schemas, and validation utilities for government applications.
+
+## Installation
+
+```bash npm2yarn
+npm install @formkit-gov/core zod
+```
+
+## Features
+
+- Pre-built Zod schemas for common government form fields
+- SSN, phone number, address validation
+- Schema composition utilities
+- Plain language error messages
+- Zero framework dependencies
+
+## Schema Factories
+
+Schema factories create configurable Zod schemas with sensible defaults for government forms.
+
+### Available Schemas
+
+| Function                             | Description                         |
+| ------------------------------------ | ----------------------------------- |
+| `createTextSchema(options)`          | Basic text input validation         |
+| `createEmailSchema(options)`         | Email validation                    |
+| `createPhoneSchema(options)`         | US/International phone validation   |
+| `createSSNSchema(options)`           | Social Security Number validation   |
+| `createDateSchema(options)`          | Date validation with min/max        |
+| `createMemorableDateSchema(options)` | Separate month/day/year fields      |
+| `createAddressSchema(options)`       | US/Military/International addresses |
+| `createNameSchema(options)`          | Name validation                     |
+| `createFullNameSchema(options)`      | First/middle/last/suffix            |
+| `createCurrencySchema(options)`      | USD currency validation             |
+| `createFileSchema(options)`          | File upload validation              |
+
+### Basic Usage
+
+```typescript
+import {
+  createSSNSchema,
+  createPhoneSchema,
+  createAddressSchema,
+  createDateSchema,
+  createFullNameSchema,
+} from '@formkit-gov/core';
+import { z } from 'zod';
+
+// Create a form schema
+const veteranInfoSchema = z.object({
+  name: createFullNameSchema(),
+  ssn: createSSNSchema(),
+  phone: createPhoneSchema(),
+  dateOfBirth: createDateSchema({ pastOnly: true }),
+  address: createAddressSchema({ type: 'us' }),
+});
+
+// Validate data
+const result = veteranInfoSchema.safeParse(formData);
+if (result.success) {
+  console.log(result.data);
+} else {
+  console.log(result.error.issues);
+}
+```
+
+### Schema Options
+
+Most schema factories accept an options object for customization:
+
+```typescript
+// Text schema with options
+createTextSchema({
+  required: true, // Is field required? (default: true)
+  minLength: 2, // Minimum characters
+  maxLength: 100, // Maximum characters
+  messages: {
+    // Custom error messages
+    required: 'Please enter your name',
+    minLength: 'Name is too short',
+    maxLength: 'Name is too long',
+  },
+});
+
+// Phone schema with options
+createPhoneSchema({
+  required: false, // Optional field
+  format: 'us', // 'us' or 'international'
+});
+
+// Date schema with options
+createDateSchema({
+  pastOnly: true, // Only allow past dates
+  futureOnly: false, // Only allow future dates
+  minAge: 18, // Minimum age requirement
+});
+
+// Address schema with options
+createAddressSchema({
+  type: 'us', // 'us', 'military', or 'international'
+  requireStreet2: false,
+});
+```
+
+### Custom Error Messages
+
+Override default error messages for any schema:
+
+```typescript
+const schema = createSSNSchema({
+  messages: {
+    required: 'Social Security Number is required for this application',
+    pattern: 'Please enter a valid 9-digit SSN',
+  },
+});
+```
+
+## Patterns
+
+Pre-built regex patterns for common government form validations.
+
+### Available Patterns
+
+```typescript
+import { patterns, SSN_PATTERN, PHONE_PATTERN } from '@formkit-gov/core';
+
+// Use named exports
+if (SSN_PATTERN.test(value)) {
+  // Valid SSN format
+}
+
+// Or access via patterns object
+console.log(patterns.zipCode); // ##### or #####-####
+console.log(patterns.email); // Standard email pattern
+console.log(patterns.ssn); // ###-##-####
+console.log(patterns.phone); // (###) ###-####
+console.log(patterns.currency); // $#,###.##
+```
+
+### Pattern Reference
+
+| Pattern            | Format                  | Example           |
+| ------------------ | ----------------------- | ----------------- |
+| `SSN_PATTERN`      | `###-##-####`           | 123-45-6789       |
+| `PHONE_PATTERN`    | `(###) ###-####`        | (555) 123-4567    |
+| `ZIP_CODE_PATTERN` | `#####` or `#####-####` | 90210, 90210-1234 |
+| `EMAIL_PATTERN`    | Standard email          | user@example.com  |
+| `CURRENCY_PATTERN` | `$#,###.##`             | $1,234.56         |
+
+## Validators
+
+Utility functions for validation and formatting.
+
+### Validation Functions
+
+```typescript
+import {
+  validateSSN,
+  validatePhoneNumber,
+  validateZipCode,
+  validateMinimumAge,
+} from '@formkit-gov/core';
+
+// Validate SSN format and rules
+if (validateSSN('123-45-6789')) {
+  // Valid SSN
+}
+
+// Validate phone number
+if (validatePhoneNumber('5551234567')) {
+  // Valid phone
+}
+
+// Check minimum age
+const birthDate = new Date('2000-01-15');
+if (validateMinimumAge(birthDate, 18)) {
+  // User is 18 or older
+}
+```
+
+### Formatting Functions
+
+```typescript
+import { formatPhoneNumber, formatSSN, maskSSN } from '@formkit-gov/core';
+
+// Format phone number
+const formatted = formatPhoneNumber('5551234567');
+// Returns: (555) 123-4567
+
+// Format SSN
+const formattedSSN = formatSSN('123456789');
+// Returns: 123-45-6789
+
+// Mask SSN for display
+const masked = maskSSN('123-45-6789');
+// Returns: ***-**-6789
+```
+
+### Function Reference
+
+| Function                        | Description                    | Example Output   |
+| ------------------------------- | ------------------------------ | ---------------- |
+| `validateSSN(value)`            | Validates SSN format and rules | `true` / `false` |
+| `validatePhoneNumber(value)`    | Validates US phone format      | `true` / `false` |
+| `validateZipCode(value)`        | Validates ZIP code format      | `true` / `false` |
+| `validateMinimumAge(date, age)` | Checks minimum age requirement | `true` / `false` |
+| `formatPhoneNumber(value)`      | Formats to (XXX) XXX-XXXX      | `(555) 123-4567` |
+| `formatSSN(value)`              | Formats to XXX-XX-XXXX         | `123-45-6789`    |
+| `maskSSN(value)`                | Returns \*\*\*-\*\*-XXXX       | `***-**-6789`    |
+
+## Utilities
+
+Helper functions for working with Zod schemas and form errors.
+
+```typescript
+import { flattenZodErrors, validateWithSchema, createErrorMessages } from '@formkit-gov/core';
+
+// Create custom error message set
+const errors = createErrorMessages({
+  required: 'Please fill out this field',
+  invalid: 'This value is not valid',
+});
+
+// Validate and get flat errors for form display
+const result = validateWithSchema(schema, data);
+if (!result.success) {
+  const flatErrors = flattenZodErrors(result.errors);
+  // Returns: { 'name.first': 'First name is required', 'email': 'Invalid email' }
+}
+```
+
+## TypeScript Support
+
+All schemas and utilities are fully typed:
+
+```typescript
+import { createFullNameSchema } from '@formkit-gov/core';
+import { z } from 'zod';
+
+const nameSchema = createFullNameSchema();
+
+// Infer the type from the schema
+type FullName = z.infer<typeof nameSchema>;
+// { first: string; middle?: string; last: string; suffix?: string }
+```
+
+## Next Steps
+
+- See [Validation](/docs/validation) for common validation patterns
+- Explore [@formkit-gov/react](/docs/packages/react) for React integration
+- View [Patterns](/docs/patterns) for complete form examples

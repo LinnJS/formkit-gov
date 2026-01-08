@@ -1,0 +1,30 @@
+# Packages
+
+FormKit Gov is organized as a monorepo with specialized packages for different concerns.
+
+## Core Packages
+
+| Package                                    | Description                                | Status |
+| ------------------------------------------ | ------------------------------------------ | ------ |
+| [@formkit-gov/core](/docs/packages/core)   | Zod schemas, validators, and patterns      | Stable |
+| [@formkit-gov/react](/docs/packages/react) | React components wrapping VA Design System | Stable |
+
+## Coming Soon
+
+| Package                 | Description                   | Planned |
+| ----------------------- | ----------------------------- | ------- |
+| @formkit-gov/wizard     | Multi-step form orchestration | v0.4.0  |
+| @formkit-gov/store      | State management adapters     | v0.3.0  |
+| @formkit-gov/validators | Extended validation rules     | v0.2.0  |
+| @formkit-gov/openapi    | OpenAPI to Zod generation     | v0.5.0  |
+| @formkit-gov/test-utils | Testing utilities             | v0.2.0  |
+
+## Package Dependencies
+
+```text
+@formkit-gov/react
+  └── @formkit-gov/core (peer dependency)
+      └── zod (peer dependency)
+```
+
+All packages are designed to work together but can be used independently based on your needs.

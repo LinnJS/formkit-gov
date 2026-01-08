@@ -1,0 +1,298 @@
+# @formkit-gov/react
+
+React components wrapping VA Design System with React Hook Form integration.
+
+## Installation
+
+```bash npm2yarn
+npm install @formkit-gov/react react react-dom react-hook-form zod @hookform/resolvers @department-of-veterans-affairs/component-library
+```
+
+## Features
+
+- VA Design System web component wrappers
+- React Hook Form integration
+- Accessible form controls (WCAG 2.1 AA)
+- shadcn/ui-style composable form pattern
+- Full TypeScript support
+
+## Form Components
+
+Core form components following the shadcn/ui composable pattern:
+
+| Component         | Description                                |
+| ----------------- | ------------------------------------------ |
+| `Form`            | Form wrapper with React Hook Form context  |
+| `FormField`       | Field wrapper with React Hook Form binding |
+| `FormItem`        | Form item container                        |
+| `FormControl`     | Control wrapper for form inputs            |
+| `FormLabel`       | Accessible label component                 |
+| `FormDescription` | Field description/hint text                |
+| `FormMessage`     | Error message display                      |
+
+### Basic Form Example
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  TextInputField,
+} from '@formkit-gov/react';
+
+const schema = z.object({
+  firstName: z.string().min(1, 'First name is required'),
+  email: z.string().email('Enter a valid email address'),
+});
+
+type FormData = z.infer<typeof schema>;
+
+function MyForm() {
+  const form = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: { firstName: '', email: '' },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="firstName"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>First name</FormLabel>
+            <FormControl>
+              <TextInputField {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <TextInputField type="email" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+```
+
+## Field Components
+
+VA Design System web component wrappers with consistent APIs.
+
+| Component               | Description                           |
+| ----------------------- | ------------------------------------- |
+| `TextInputField`        | Single-line text input                |
+| `TextareaField`         | Multi-line text input                 |
+| `NumberField`           | Numeric input with validation         |
+| `CurrencyField`         | Currency input with formatting        |
+| `PhoneField`            | Phone number input with formatting    |
+| `SSNField`              | Social Security Number input (masked) |
+| `DateField`             | Date picker input                     |
+| `MemorableDateField`    | Separate month/day/year inputs        |
+| `SelectField`           | Dropdown select                       |
+| `ComboBoxField`         | Searchable dropdown with autocomplete |
+| `CheckboxField`         | Single checkbox                       |
+| `CheckboxGroupField`    | Group of checkboxes                   |
+| `RadioField`            | Radio button group                    |
+| `FileUploadField`       | File upload with validation           |
+| `PrivacyAgreementField` | Privacy agreement checkbox            |
+
+### Using Field Components Directly
+
+Field components can be used standalone without React Hook Form:
+
+```tsx
+import { TextInputField, SelectField, CheckboxField } from '@formkit-gov/react';
+
+// Text input with error
+<TextInputField
+  label="First name"
+  error="This field is required"
+  required
+/>
+
+// Select dropdown
+<SelectField
+  label="State"
+  options={[
+    { value: 'CA', label: 'California' },
+    { value: 'TX', label: 'Texas' },
+  ]}
+/>
+
+// Checkbox
+<CheckboxField
+  label="I agree to the terms"
+  checked={agreed}
+  onChange={setAgreed}
+/>
+```
+
+## Molecular Components
+
+Pre-composed field groups for common patterns.
+
+| Component       | Description                                    |
+| --------------- | ---------------------------------------------- |
+| `FullNameField` | First name, middle name, last name, and suffix |
+| `AddressField`  | Complete address with street, city, state, zip |
+
+### Full Name Field
+
+```tsx
+import { FullNameField } from '@formkit-gov/react';
+
+<FullNameField
+  value={{ first: '', middle: '', last: '', suffix: '' }}
+  onChange={setName}
+  config={{
+    middle: { show: true },
+    suffix: { show: true },
+  }}
+/>;
+```
+
+### Address Field
+
+```tsx
+import { AddressField } from '@formkit-gov/react';
+
+<AddressField
+  value={{ street: '', street2: '', city: '', state: '', zip: '' }}
+  onChange={setAddress}
+/>;
+```
+
+## Review Components
+
+Components for displaying form data before submission.
+
+| Component       | Description                      |
+| --------------- | -------------------------------- |
+| `ReviewSection` | Section container with edit link |
+| `ReviewItem`    | Single label/value display       |
+| `ReviewList`    | List of review items             |
+
+### Review Page Example
+
+```tsx
+import { ReviewSection, ReviewItem, ReviewList } from '@formkit-gov/react';
+
+<ReviewSection title="Personal Information" onEdit={() => goToStep(1)}>
+  <ReviewItem label="Name" value="John Doe" />
+  <ReviewItem label="Email" value="john@example.com" />
+</ReviewSection>
+
+<ReviewSection title="Address" onEdit={() => goToStep(2)}>
+  <ReviewList
+    items={[
+      { label: 'Street', value: '123 Main St' },
+      { label: 'City', value: 'San Francisco' },
+      { label: 'State', value: 'CA' },
+    ]}
+  />
+</ReviewSection>
+```
+
+## Field Layout Primitives
+
+Low-level layout components for custom field arrangements.
+
+| Component          | Description             |
+| ------------------ | ----------------------- |
+| `Field`            | Base field container    |
+| `FieldGroup`       | Group of related fields |
+| `FieldSet`         | Fieldset with legend    |
+| `FieldLegend`      | Legend for fieldset     |
+| `FieldLabel`       | Label element           |
+| `FieldContent`     | Content wrapper         |
+| `FieldTitle`       | Title text              |
+| `FieldDescription` | Description/hint text   |
+| `FieldError`       | Error message           |
+| `FieldSeparator`   | Visual separator        |
+
+## Integration with @formkit-gov/core
+
+Combine React components with core schemas for full validation:
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form, FormField } from '@formkit-gov/react';
+import { TextInputField, PhoneField } from '@formkit-gov/react/components';
+import { createTextSchema, createPhoneSchema } from '@formkit-gov/core/schemas';
+
+const schema = z.object({
+  name: createTextSchema({ required: true, maxLength: 100 }),
+  phone: createPhoneSchema(),
+});
+
+function ContactForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: { name: '', phone: '' },
+  });
+
+  return (
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field, fieldState }) => (
+          <TextInputField {...field} label="Your name" error={fieldState.error?.message} required />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="phone"
+        render={({ field, fieldState }) => (
+          <PhoneField {...field} label="Phone number" error={fieldState.error?.message} />
+        )}
+      />
+      <va-button type="submit">Submit</va-button>
+    </Form>
+  );
+}
+```
+
+## Accessibility
+
+All components are built with accessibility in mind:
+
+- WCAG 2.1 AA compliant
+- Proper ARIA attributes
+- Keyboard navigation support
+- Screen reader compatible
+- Error messages associated with fields
+- Focus management
+
+## Interactive Examples
+
+Visit [Storybook](https://storybook.formkit-gov.org) for interactive component demos with live code editing.
+
+## Next Steps
+
+- See [Components](/docs/components) for a quick reference
+- Explore [@formkit-gov/core](/docs/packages/core) for validation schemas
+- View [Patterns](/docs/patterns) for complete form examples

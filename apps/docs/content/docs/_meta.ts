@@ -3,4 +3,8 @@ export default {
   components: 'Components',
   validation: 'Validation',
   patterns: 'Patterns',
+  '---': {
+    type: 'separator',
+  },
+  packages: 'Packages',
 };
