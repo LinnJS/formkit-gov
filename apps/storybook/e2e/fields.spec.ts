@@ -8,8 +8,8 @@ test.describe('TextInputField', () => {
     const textInput = page.locator('va-text-input.hydrated');
     await expect(textInput).toBeVisible();
 
-    // Verify the label
-    await expect(textInput).toHaveAttribute('label', 'Full name');
+    // Verify the label is displayed (React 19 sets properties, not attributes)
+    await expect(textInput.locator('label')).toContainText('Full name');
   });
 
   test('should allow text input', async ({ page }) => {
@@ -29,9 +29,12 @@ test.describe('TextInputField', () => {
     await page.goto('/iframe.html?id=fields-textinputfield--with-error&viewMode=story');
 
     const textInput = page.locator('va-text-input');
+    await expect(textInput).toBeVisible();
 
-    // Verify error attribute is present
-    await expect(textInput).toHaveAttribute('error', 'Please enter a valid email address');
+    // Verify error message is displayed (React 19 sets properties, not attributes)
+    await expect(textInput.locator('span[id$="-error-message"]')).toContainText(
+      'Please enter a valid email address'
+    );
   });
 
   test('should be disabled when disabled prop is set', async ({ page }) => {
@@ -69,8 +72,8 @@ test.describe('SelectField', () => {
     const selectField = page.locator('va-select');
     await expect(selectField).toBeVisible();
 
-    // Verify the label
-    await expect(selectField).toHaveAttribute('label', 'State');
+    // Verify the label is displayed (React 19 sets properties, not attributes)
+    await expect(selectField.locator('label')).toContainText('State');
   });
 
   test('should allow option selection', async ({ page }) => {
@@ -90,9 +93,12 @@ test.describe('SelectField', () => {
     await page.goto('/iframe.html?id=fields-selectfield--with-error&viewMode=story');
 
     const selectField = page.locator('va-select');
+    await expect(selectField).toBeVisible();
 
-    // Verify error attribute is present
-    await expect(selectField).toHaveAttribute('error', 'Please select a state');
+    // Verify error message is displayed (React 19 sets properties, not attributes)
+    await expect(selectField.locator('span[id$="-error-message"]')).toContainText(
+      'Please select a state'
+    );
   });
 
   test('should be disabled when disabled prop is set', async ({ page }) => {

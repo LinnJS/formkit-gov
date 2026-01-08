@@ -38,8 +38,8 @@ test.describe('TextInputField Form Integration', () => {
     // Wait for error to appear
     const textInput = page.locator('va-text-input');
 
-    // Check that error attribute is present (validation error should appear)
-    await expect(textInput).toHaveAttribute('error', /.+/);
+    // Check that error message is displayed (React 19 sets properties, not attributes)
+    await expect(textInput.locator('span[id$="-error-message"]')).toBeVisible();
   });
 });
 
@@ -102,10 +102,10 @@ test.describe('Complete Form Example', () => {
     // Check that all three inputs have error attributes
     const textInputs = page.locator('va-text-input');
 
-    // All three fields should have errors
-    await expect(textInputs.nth(0)).toHaveAttribute('error', /.+/);
-    await expect(textInputs.nth(1)).toHaveAttribute('error', /.+/);
-    await expect(textInputs.nth(2)).toHaveAttribute('error', /.+/);
+    // All three fields should have error messages displayed (React 19 sets properties, not attributes)
+    await expect(textInputs.nth(0).locator('span[id$="-error-message"]')).toBeVisible();
+    await expect(textInputs.nth(1).locator('span[id$="-error-message"]')).toBeVisible();
+    await expect(textInputs.nth(2).locator('span[id$="-error-message"]')).toBeVisible();
   });
 
   test('should validate individual fields on blur', async ({ page }) => {
@@ -132,8 +132,8 @@ test.describe('Complete Form Example', () => {
     // Wait for validation
     await page.waitForTimeout(100);
 
-    // First name should have error (too short)
-    await expect(textInputs.nth(0)).toHaveAttribute('error', /.+/);
+    // First name should have error message displayed (too short)
+    await expect(textInputs.nth(0).locator('span[id$="-error-message"]')).toBeVisible();
   });
 });
 
@@ -175,7 +175,7 @@ test.describe('SelectField Form Integration', () => {
     // Wait for error to appear
     const selectField = page.locator('va-select');
 
-    // Check that error attribute is present
-    await expect(selectField).toHaveAttribute('error', /.+/);
+    // Check that error message is displayed (React 19 sets properties, not attributes)
+    await expect(selectField.locator('span[id$="-error-message"]')).toBeVisible();
   });
 });
