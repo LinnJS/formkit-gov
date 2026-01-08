@@ -1,19 +1,18 @@
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/addon-interactions',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
-  },
-  docs: {
-    autodocs: 'tag',
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
@@ -34,3 +33,21 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+/**
+ * Resolves the absolute path to a package's directory.
+ *
+ * Storybook 10 requires absolute paths for addon and framework configurations
+ * to support ESM module resolution. This helper uses `import.meta.resolve()`
+ * to locate package.json and returns the containing directory path.
+ *
+ * @param value - The package name to resolve (e.g., '@storybook/addon-docs')
+ * @returns The absolute filesystem path to the package directory
+ *
+ * @example
+ * getAbsolutePath('@storybook/addon-docs')
+ * // Returns: '/path/to/node_modules/@storybook/addon-docs'
+ */
+function getAbsolutePath(value: string): string {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}
