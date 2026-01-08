@@ -48,7 +48,6 @@ describe('MemorableDateField', () => {
     const { container } = render(<MemorableDateField required label="Date of birth" />);
 
     const input = container.querySelector('va-memorable-date');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('required');
   });
 
@@ -70,7 +69,6 @@ describe('MemorableDateField', () => {
     const { container } = render(<MemorableDateField disabled label="Disabled" />);
 
     const input = container.querySelector('va-memorable-date');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('disabled');
   });
 
@@ -85,7 +83,6 @@ describe('MemorableDateField', () => {
     const { container } = render(<MemorableDateField monthSelect label="Date" />);
 
     const input = container.querySelector('va-memorable-date');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('month-select');
   });
 
@@ -93,7 +90,6 @@ describe('MemorableDateField', () => {
     const { container } = render(<MemorableDateField uswds label="Date" />);
 
     const input = container.querySelector('va-memorable-date');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('uswds');
   });
 
@@ -139,7 +135,6 @@ describe('MemorableDateField', () => {
       const input = container.querySelector('va-memorable-date');
       expect(input).toHaveAttribute('name', 'birthDate');
       expect(input).toHaveAttribute('value', '1990-01-15');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('required');
     });
 
@@ -158,32 +153,28 @@ describe('MemorableDateField', () => {
       const { container } = render(<MemorableDateField label="Test" />);
 
       const input = container.querySelector('va-memorable-date');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('disabled', 'false');
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<MemorableDateField label="Test" />);
 
       const input = container.querySelector('va-memorable-date');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('required', 'false');
+      expect(input).not.toHaveAttribute('required');
     });
 
     it('defaults monthSelect to false', () => {
       const { container } = render(<MemorableDateField label="Test" />);
 
       const input = container.querySelector('va-memorable-date');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('month-select', 'false');
+      expect(input).not.toHaveAttribute('month-select');
     });
 
     it('defaults uswds to false', () => {
       const { container } = render(<MemorableDateField label="Test" />);
 
       const input = container.querySelector('va-memorable-date');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('uswds', 'false');
+      expect(input).not.toHaveAttribute('uswds');
     });
   });
 });

@@ -612,9 +612,9 @@ export const WithRealTimeValidation: Story = {
           form={form}
           onSubmit={onSubmit}
           // focusOnError is true by default - focus moves to first invalid field
-          onValidationError={errors => {
-            // Optional: Log validation errors for debugging
-            console.log('Validation failed:', Object.keys(errors));
+          // onValidationError can be used to handle validation errors programmatically
+          onValidationError={_errors => {
+            // Handle validation errors here (e.g., analytics, custom error display)
           }}
         >
           <div

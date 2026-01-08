@@ -76,7 +76,6 @@ describe('CheckboxGroupField', () => {
     );
 
     const checkboxGroup = container.querySelector('va-checkbox-group');
-    // React 19: boolean true renders as presence attribute
     expect(checkboxGroup).toHaveAttribute('required');
   });
 
@@ -143,10 +142,9 @@ describe('CheckboxGroupField', () => {
     const checkboxGroup = container.querySelector('va-checkbox-group');
     const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
 
-    // React 19: boolean true renders as presence attribute
     expect(checkboxElements?.[0]).toHaveAttribute('checked'); // email
     expect(checkboxElements?.[1]).toHaveAttribute('checked'); // phone
-    expect(checkboxElements?.[2]).toHaveAttribute('checked', 'false'); // mail
+    expect(checkboxElements?.[2]).not.toHaveAttribute('checked'); // mail
   });
 
   it('disables all options when disabled prop is true', () => {
@@ -162,7 +160,6 @@ describe('CheckboxGroupField', () => {
     const checkboxGroup = container.querySelector('va-checkbox-group');
     const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
 
-    // React 19: boolean true renders as presence attribute
     expect(checkboxElements?.[0]).toHaveAttribute('disabled');
     expect(checkboxElements?.[1]).toHaveAttribute('disabled');
     expect(checkboxElements?.[2]).toHaveAttribute('disabled');
@@ -187,7 +184,6 @@ describe('CheckboxGroupField', () => {
     const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
 
     expect(checkboxElements?.[0]).not.toHaveAttribute('disabled');
-    // React 19: boolean true renders as presence attribute
     expect(checkboxElements?.[1]).toHaveAttribute('disabled');
     expect(checkboxElements?.[2]).not.toHaveAttribute('disabled');
   });
@@ -213,8 +209,7 @@ describe('CheckboxGroupField', () => {
       );
 
       const checkboxGroup = container.querySelector('va-checkbox-group');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(checkboxGroup).toHaveAttribute('required', 'false');
+      expect(checkboxGroup).not.toHaveAttribute('required');
     });
 
     it('defaults disabled to false', () => {
@@ -225,7 +220,6 @@ describe('CheckboxGroupField', () => {
       const checkboxGroup = container.querySelector('va-checkbox-group');
       const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
 
-      // When disabled is false, the attribute is not set (React 19 behavior)
       expect(checkboxElements?.[0]).not.toHaveAttribute('disabled');
     });
 
@@ -237,10 +231,9 @@ describe('CheckboxGroupField', () => {
       const checkboxGroup = container.querySelector('va-checkbox-group');
       const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
 
-      // When value is empty array, no checkboxes should be checked (true)
-      expect(checkboxElements?.[0]).toHaveAttribute('checked', 'false');
-      expect(checkboxElements?.[1]).toHaveAttribute('checked', 'false');
-      expect(checkboxElements?.[2]).toHaveAttribute('checked', 'false');
+      expect(checkboxElements?.[0]).not.toHaveAttribute('checked');
+      expect(checkboxElements?.[1]).not.toHaveAttribute('checked');
+      expect(checkboxElements?.[2]).not.toHaveAttribute('checked');
     });
   });
 
@@ -385,7 +378,6 @@ describe('CheckboxGroupField', () => {
 
       const checkboxGroup = container.querySelector('va-checkbox-group');
       expect(checkboxGroup).toHaveAttribute('name', 'contactMethods');
-      // React 19: boolean true renders as presence attribute
       expect(checkboxGroup).toHaveAttribute('required');
 
       const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
@@ -425,7 +417,7 @@ describe('CheckboxGroupField', () => {
 
       const checkboxElements = checkboxGroup?.querySelectorAll('va-checkbox');
       expect(checkboxElements?.[0]).toHaveAttribute('checked'); // email
-      expect(checkboxElements?.[1]).toHaveAttribute('checked', 'false'); // phone
+      expect(checkboxElements?.[1]).not.toHaveAttribute('checked'); // phone
       expect(checkboxElements?.[2]).toHaveAttribute('checked'); // mail
     });
   });

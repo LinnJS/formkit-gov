@@ -46,7 +46,6 @@ describe('TextInputField', () => {
     const { container } = render(<TextInputField required label="Required field" />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('required');
   });
 
@@ -82,7 +81,6 @@ describe('TextInputField', () => {
     const { container } = render(<TextInputField disabled label="Disabled" />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('disabled');
   });
 
@@ -175,7 +173,6 @@ describe('TextInputField', () => {
       const input = container.querySelector('va-text-input');
       expect(input).toHaveAttribute('name', 'firstName');
       expect(input).toHaveAttribute('value', 'John');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('required');
     });
 
@@ -192,16 +189,14 @@ describe('TextInputField', () => {
       const { container } = render(<TextInputField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('disabled', 'false');
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<TextInputField label="Test" />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('required', 'false');
+      expect(input).not.toHaveAttribute('required');
     });
   });
 });

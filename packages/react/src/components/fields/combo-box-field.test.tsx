@@ -47,7 +47,6 @@ describe('ComboBoxField', () => {
     const { container } = render(<ComboBoxField required label="Required field" />);
 
     const comboBox = container.querySelector('va-combo-box');
-    // React 19: boolean true renders as presence attribute
     expect(comboBox).toHaveAttribute('required');
   });
 
@@ -55,7 +54,6 @@ describe('ComboBoxField', () => {
     const { container } = render(<ComboBoxField disabled label="Disabled field" />);
 
     const comboBox = container.querySelector('va-combo-box');
-    // React 19: boolean true renders as presence attribute
     expect(comboBox).toHaveAttribute('disabled');
   });
 
@@ -120,16 +118,14 @@ describe('ComboBoxField', () => {
       const { container } = render(<ComboBoxField label="Test" />);
 
       const comboBox = container.querySelector('va-combo-box');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(comboBox).toHaveAttribute('required', 'false');
+      expect(comboBox).not.toHaveAttribute('required');
     });
 
     it('defaults disabled to false', () => {
       const { container } = render(<ComboBoxField label="Test" />);
 
       const comboBox = container.querySelector('va-combo-box');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(comboBox).toHaveAttribute('disabled', 'false');
+      expect(comboBox).not.toHaveAttribute('disabled');
     });
 
     it('defaults value to empty string', () => {
@@ -235,7 +231,6 @@ describe('ComboBoxField', () => {
       const comboBox = container.querySelector('va-combo-box');
       expect(comboBox).toHaveAttribute('name', 'country');
       expect(comboBox).toHaveAttribute('value', 'US');
-      // React 19: boolean true renders as presence attribute
       expect(comboBox).toHaveAttribute('required');
     });
 
