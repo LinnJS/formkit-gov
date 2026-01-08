@@ -11,7 +11,7 @@
     "military",
     "va"
   ],
-  "homepage": "https://docs.formkit-gov.org/validators",
+  "homepage": "https://docs.formkit-gov.org/docs/packages/validators",
   "bugs": {
     "url": "https://github.com/LinnJS/formkit-gov/issues"
   },
