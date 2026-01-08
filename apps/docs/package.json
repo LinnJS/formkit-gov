@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build && mv out dist",
+    "build": "next build",
+    "postbuild": "pagefind --site .next/server/app --output-path out/_pagefind",
     "dev": "next dev -p 4003 --turbopack",
     "dev:open": "open http://localhost:4003 && next dev -p 4003 --turbopack",
     "lint": "eslint .",
@@ -27,6 +28,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.2",
+    "pagefind": "^1.4.0",
     "typescript": "^5.7.2"
   }
 }
