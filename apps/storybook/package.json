@@ -38,7 +38,7 @@
     "@types/react-dom": "^19.2.3",
     "axe-playwright": "^2.2.2",
     "concurrently": "^9.2.1",
-    "eslint": "^9.16.0",
+    "eslint": "^9.39.2",
     "eslint-plugin-storybook": "^10.1.11",
     "http-server": "^14.1.1",
     "i18next": "^25.7.3",
