@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "postbuild": "pagefind --site .next/server/app --output-path out/_pagefind",
+    "postbuild": "pagefind --site out --output-path out/_pagefind",
     "dev": "next dev -p 4003 --turbopack",
     "dev:open": "open http://localhost:4003 && next dev -p 4003 --turbopack",
     "lint": "eslint .",
