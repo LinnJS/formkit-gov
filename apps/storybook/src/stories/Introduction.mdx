@@ -10,6 +10,55 @@ Production-quality, open-source form system for government applications.
 FormKit Gov integrates VA Design System web components with Zod validation and React Hook Form,
 following shadcn/ui composable patterns.
 
+## Component Overview
+
+Explore the available components using the sidebar navigation. Each component includes interactive
+examples, props documentation, and accessibility information.
+
+### Field Components
+
+Individual form field wrappers for VA Design System web components:
+
+| Component                                                               | Description                             |
+| ----------------------------------------------------------------------- | --------------------------------------- |
+| [TextInputField](?path=/docs/fields-textinputfield--docs)               | Single-line text input                  |
+| [TextareaField](?path=/docs/fields-textareafield--docs)                 | Multi-line text input                   |
+| [NumberField](?path=/docs/fields-numberfield--docs)                     | Numeric input with formatting           |
+| [CurrencyField](?path=/docs/fields-currencyfield--docs)                 | Currency input with $ prefix            |
+| [PhoneField](?path=/docs/fields-phonefield--docs)                       | Phone number with formatting            |
+| [SSNField](?path=/docs/fields-ssnfield--docs)                           | Social Security Number with masking     |
+| [DateField](?path=/docs/fields-datefield--docs)                         | Date picker component                   |
+| [MemorableDateField](?path=/docs/fields-memorabledatefield--docs)       | Memorable date (month/day/year selects) |
+| [SelectField](?path=/docs/fields-selectfield--docs)                     | Dropdown select menu                    |
+| [ComboBoxField](?path=/docs/fields-comboboxfield--docs)                 | Searchable select with autocomplete     |
+| [RadioField](?path=/docs/fields-radiofield--docs)                       | Radio button group                      |
+| [CheckboxField](?path=/docs/fields-checkboxfield--docs)                 | Single checkbox                         |
+| [CheckboxGroupField](?path=/docs/fields-checkboxgroupfield--docs)       | Multiple checkboxes                     |
+| [FileUploadField](?path=/docs/fields-fileuploadfield--docs)             | File upload with validation             |
+| [PrivacyAgreementField](?path=/docs/fields-privacyagreementfield--docs) | Privacy policy acceptance               |
+
+### Molecule Components
+
+Pre-composed field groups for common patterns:
+
+| Component                                                  | Description                            |
+| ---------------------------------------------------------- | -------------------------------------- |
+| [FullNameField](?path=/docs/molecules-fullnamefield--docs) | First, middle, last, and suffix fields |
+| [AddressField](?path=/docs/molecules-addressfield--docs)   | Complete address with validation       |
+
+### Review Components
+
+Components for form review and confirmation:
+
+| Component                                                     | Description                   |
+| ------------------------------------------------------------- | ----------------------------- |
+| [ReviewComponents](?path=/docs/review-reviewcomponents--docs) | Summary display for form data |
+
+## Complete Examples
+
+See the [Form Example](?path=/docs/examples-form--docs) for a complete form implementation
+demonstrating form state, validation, and submission handling.
+
 ## Getting Started
 
 Install the packages:
@@ -68,13 +117,30 @@ function MyForm() {
 }
 ```
 
+## Accessibility
+
+All components are built on top of the VA Design System, which is designed to meet WCAG 2.1 AA
+standards. This Storybook includes the [a11y addon](https://storybook.js.org/addons/@storybook/addon-a11y)
+to help identify accessibility issues in each component story.
+
+Key accessibility features:
+
+- **ARIA attributes** - Proper labeling and state management
+- **Keyboard navigation** - Full keyboard support for all interactions
+- **Screen reader support** - Semantic HTML and announcements
+- **Error association** - Error messages linked to their fields
+- **Focus management** - Clear focus indicators and logical tab order
+
 ## Packages
 
-- **@formkit-gov/core** - Zod schemas, patterns, validators
-- **@formkit-gov/react** - React components wrapping VA Design System
+| Package                                                                 | Description                                |
+| ----------------------------------------------------------------------- | ------------------------------------------ |
+| [@formkit-gov/core](https://docs.formkit-gov.org/docs/packages/core/)   | Zod schemas, patterns, validators          |
+| [@formkit-gov/react](https://docs.formkit-gov.org/docs/packages/react/) | React components wrapping VA Design System |
 
 ## Resources
 
+- [Documentation](https://docs.formkit-gov.org/)
 - [GitHub Repository](https://github.com/LinnJS/formkit-gov)
 - [VA Design System](https://design.va.gov/)
 - [React Hook Form](https://react-hook-form.com/)

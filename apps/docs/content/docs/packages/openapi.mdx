@@ -1,0 +1,62 @@
+# @formkit-gov/openapi
+
+Generate Zod schemas and TypeScript types from OpenAPI specifications for schema federation.
+
+## Status
+
+**Coming in v0.5.0** - This package is currently in development.
+
+See the [roadmap](https://github.com/LinnJS/formkit-gov/blob/main/docs/ROADMAP.md) for release
+timeline.
+
+## Overview
+
+The openapi package enables schema federation by generating Zod schemas from your backend's OpenAPI
+specification, ensuring frontend validation matches backend requirements.
+
+## Planned Features
+
+| Feature                | Description                         |
+| ---------------------- | ----------------------------------- |
+| OpenAPI 3.0/3.1 parser | Full specification support          |
+| Zod schema generator   | Generate type-safe schemas          |
+| TypeScript types       | Generate TypeScript interfaces      |
+| CLI tool               | Command-line interface              |
+| Watch mode             | Auto-regenerate on spec changes     |
+| Reference resolution   | Handle `$ref` references            |
+| Circular references    | Proper handling of circular schemas |
+
+## Planned CLI Usage
+
+```bash
+# Generate Zod schemas from OpenAPI spec
+npx formkit-openapi generate ./openapi.yaml -o ./src/schemas
+
+# Watch mode for development
+npx formkit-openapi generate ./openapi.yaml -o ./src/schemas --watch
+
+# Validate OpenAPI specification
+npx formkit-openapi validate ./openapi.yaml
+```
+
+## Planned API Usage
+
+```typescript
+import { generateSchemas } from '@formkit-gov/openapi';
+
+const schemas = await generateSchemas('./openapi.yaml', {
+  output: './src/schemas',
+  format: 'esm',
+});
+```
+
+## Installation
+
+```bash npm2yarn
+npm install @formkit-gov/openapi
+```
+
+## Related Packages
+
+- [@formkit-gov/core](/docs/packages/core) - Generated schemas extend core patterns
+- [@formkit-gov/react](/docs/packages/react) - Use generated schemas with form components

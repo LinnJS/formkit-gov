@@ -1,0 +1,68 @@
+# @formkit-gov/wizard
+
+Multi-step form orchestration with government form patterns including save-in-progress, review, and
+confirmation pages.
+
+## Status
+
+**Coming in v0.4.0** - This package is currently in development.
+
+See the [roadmap](https://github.com/LinnJS/formkit-gov/blob/main/docs/ROADMAP.md) for release
+timeline.
+
+## Overview
+
+The wizard package provides a complete solution for building multi-step government forms with:
+
+- Step-by-step navigation
+- Progress tracking
+- Save-in-progress functionality
+- Review and confirmation pages
+- Chapter organization for complex forms
+
+## Planned Components
+
+| Component          | Description                                |
+| ------------------ | ------------------------------------------ |
+| `FormWizard`       | Main wizard container with step management |
+| `WizardStep`       | Individual step wrapper                    |
+| `WizardProgress`   | Progress indicator                         |
+| `WizardNavigation` | Back/Continue navigation                   |
+| `ReviewPage`       | Form data review before submission         |
+| `ConfirmationPage` | Post-submission confirmation               |
+
+## Planned Page Templates
+
+| Template           | Description                       |
+| ------------------ | --------------------------------- |
+| `LandingPage`      | Initial form introduction         |
+| `IntroductionPage` | Requirements and eligibility info |
+| `FormStepPage`     | Standard form step layout         |
+
+## Planned Hooks
+
+| Hook                  | Description                        |
+| --------------------- | ---------------------------------- |
+| `useWizard`           | Access wizard state and navigation |
+| `useWizardStep`       | Current step context               |
+| `useWizardNavigation` | Navigation controls                |
+
+## Planned Features
+
+- Step validation before navigation
+- Chapter organization for complex forms
+- Automatic save-in-progress with `@formkit-gov/store`
+- Customizable progress indicators
+- Keyboard navigation support
+
+## Installation
+
+```bash npm2yarn
+npm install @formkit-gov/wizard
+```
+
+## Related Packages
+
+- [@formkit-gov/react](/docs/packages/react) - Form components used within wizard steps
+- [@formkit-gov/store](/docs/packages/store) - State persistence for save-in-progress
+- [@formkit-gov/core](/docs/packages/core) - Validation schemas
