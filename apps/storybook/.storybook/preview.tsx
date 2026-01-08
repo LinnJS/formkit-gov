@@ -5,7 +5,7 @@ import {
 } from '@department-of-veterans-affairs/web-components/loader';
 import React from 'react';
 
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 // Suppress React act() warnings in Storybook environment
 // @ts-expect-error React internals
@@ -33,7 +33,7 @@ const preview: Preview = {
       },
     },
     a11y: {
-      element: '#storybook-root',
+      context: '#storybook-root',
       config: {
         rules: [
           // VA Design System web components may have known accessibility patterns
