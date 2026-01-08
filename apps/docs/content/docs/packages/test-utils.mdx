@@ -1,0 +1,68 @@
+# @formkit-gov/test-utils
+
+Testing utilities for forms built with FormKit Gov including render helpers, interaction utilities,
+and accessibility testing.
+
+## Status
+
+**Coming in v0.2.0** - This package is currently in development.
+
+See the [roadmap](https://github.com/LinnJS/formkit-gov/blob/main/docs/ROADMAP.md) for release
+timeline.
+
+## Overview
+
+The test-utils package provides testing utilities specifically designed for FormKit Gov forms,
+making it easier to write comprehensive tests for form behavior, validation, and accessibility.
+
+## Planned Features
+
+| Feature               | Description                            |
+| --------------------- | -------------------------------------- |
+| Form render helpers   | Simplified form rendering for tests    |
+| Interaction utilities | Fill forms, trigger validation, submit |
+| Accessibility testing | axe-core integration for a11y testing  |
+| Submission mocking    | Mock form submission handlers          |
+| Validation testing    | Test validation rules in isolation     |
+| Snapshot helpers      | Form state snapshot utilities          |
+
+## Planned Usage
+
+```typescript
+import { renderForm, fillField, submitForm, expectAccessible } from '@formkit-gov/test-utils';
+
+describe('ContactForm', () => {
+  it('should submit valid data', async () => {
+    const onSubmit = vi.fn();
+    const { getByLabelText } = renderForm(<ContactForm onSubmit={onSubmit} />);
+
+    await fillField(getByLabelText('Email'), 'test@example.com');
+    await submitForm();
+
+    expect(onSubmit).toHaveBeenCalledWith({ email: 'test@example.com' });
+  });
+
+  it('should be accessible', async () => {
+    const { container } = renderForm(<ContactForm />);
+    await expectAccessible(container);
+  });
+});
+```
+
+## Installation
+
+```bash npm2yarn
+npm install -D @formkit-gov/test-utils
+```
+
+## Peer Dependencies
+
+- `react` >= 17.0.0
+- `react-dom` >= 17.0.0
+- `vitest` >= 1.0.0 (optional)
+- `@testing-library/jest-dom` >= 6.0.0 (optional)
+
+## Related Packages
+
+- [@formkit-gov/react](/docs/packages/react) - Components to test
+- [@formkit-gov/core](/docs/packages/core) - Validation schemas to test

@@ -1,0 +1,54 @@
+# @formkit-gov/validators
+
+Extended validation library with government-specific rules for SSN, addresses, military dates, and
+more.
+
+## Status
+
+**Coming in v0.2.0** - This package is currently in development.
+
+See the [roadmap](https://github.com/LinnJS/formkit-gov/blob/main/docs/ROADMAP.md) for release
+timeline.
+
+## Overview
+
+The validators package extends `@formkit-gov/core` with additional government-specific validation
+rules and patterns.
+
+## Current Validation (in @formkit-gov/core)
+
+Basic validation utilities are already available in the core package:
+
+| Function               | Description                       |
+| ---------------------- | --------------------------------- |
+| `validateSSN`          | Social Security Number validation |
+| `validateVAFileNumber` | VA file number validation         |
+| `validatePhoneNumber`  | US phone number validation        |
+| `validateZipCode`      | US ZIP code validation            |
+| `validateDateInPast`   | Date in past validation           |
+| `validateDateInFuture` | Date in future validation         |
+| `validateMinimumAge`   | Age verification                  |
+
+## Planned Features
+
+This package will extend core validation with:
+
+| Feature                | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| Enhanced SSN           | ITIN support and additional validation rules |
+| Military dates         | Service date validation patterns             |
+| Address verification   | USPS address verification integration        |
+| Cross-field validation | Helpers for dependent field validation       |
+| Async validation       | Patterns for server-side validation          |
+| Custom rule builders   | Create reusable validation rules             |
+
+## Installation
+
+```bash npm2yarn
+npm install @formkit-gov/validators
+```
+
+## Related Packages
+
+- [@formkit-gov/core](/docs/packages/core) - Base validation utilities
+- [@formkit-gov/react](/docs/packages/react) - Form components with validation

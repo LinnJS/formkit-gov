@@ -1,0 +1,58 @@
+# @formkit-gov/store
+
+Pluggable state management with persistence and backend sync for form applications.
+
+## Status
+
+**Coming in v0.3.0** - This package is currently in development.
+
+See the [roadmap](https://github.com/LinnJS/formkit-gov/blob/main/docs/ROADMAP.md) for release
+timeline.
+
+## Overview
+
+The store package provides flexible state management for form persistence with:
+
+- Multiple storage adapters (session, local, memory)
+- State library integrations (Zustand, Redux, TanStack Query)
+- Backend synchronization
+- Offline support
+
+## Planned Adapters
+
+| Adapter          | Description                 |
+| ---------------- | --------------------------- |
+| `sessionStorage` | Browser session storage     |
+| `localStorage`   | Browser local storage       |
+| `memory`         | In-memory storage (testing) |
+| `zustand`        | Zustand store integration   |
+| `redux`          | Redux store integration     |
+| `tanstack-query` | TanStack Query integration  |
+| `backend`        | REST API synchronization    |
+
+## Planned Hooks
+
+| Hook                 | Description                    |
+| -------------------- | ------------------------------ |
+| `useFormPersistence` | Persist form state             |
+| `useSaveInProgress`  | Save-in-progress functionality |
+| `useAutoSave`        | Automatic form saving          |
+
+## Planned Features
+
+- Core store factory with adapter pattern
+- Conflict resolution strategies
+- Offline support utilities
+- Encryption for sensitive data
+- Expiration policies
+
+## Installation
+
+```bash npm2yarn
+npm install @formkit-gov/store
+```
+
+## Related Packages
+
+- [@formkit-gov/wizard](/docs/packages/wizard) - Multi-step forms with save-in-progress
+- [@formkit-gov/react](/docs/packages/react) - Form components
