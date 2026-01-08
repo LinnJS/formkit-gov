@@ -70,10 +70,7 @@
 ### Installation
 
 ```bash
-# Install core packages
 npm install @formkit-gov/react @formkit-gov/core zod react-hook-form @hookform/resolvers
-
-# Install VA component library
 npm install @department-of-veterans-affairs/component-library
 ```
 
@@ -83,154 +80,43 @@ npm install @department-of-veterans-affairs/component-library
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-  TextInputField,
-} from '@formkit-gov/react';
+import { Form, FormField, TextInputField, PhoneField } from '@formkit-gov/react';
+import { createEmailSchema, createPhoneSchema } from '@formkit-gov/core';
 
-// Define your schema
 const schema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Enter a valid email address'),
+  email: createEmailSchema(),
+  phone: createPhoneSchema(),
 });
 
-type FormData = z.infer<typeof schema>;
-
 function ContactForm() {
-  const form = useForm<FormData>({
+  const form = useForm({
     resolver: zodResolver(schema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-    },
+    defaultValues: { email: '', phone: '' },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-  };
-
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <FormField
-          control={form.control}
-          name="firstName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>First name</FormLabel>
-              <FormControl>
-                <TextInputField {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="lastName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Last name</FormLabel>
-              <FormControl>
-                <TextInputField {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <TextInputField type="email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
+    <Form form={form} onSubmit={data => console.log(data)}>
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <TextInputField {...field} label="Email" error={fieldState.error?.message} required />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="phone"
+        render={({ field, fieldState }) => (
+          <PhoneField {...field} label="Phone" error={fieldState.error?.message} />
+        )}
+      />
+      <va-button type="submit">Submit</va-button>
     </Form>
   );
 }
 ```
 
-### Using Pre-built Schemas
-
-```tsx
-import { createSSNSchema, createPhoneSchema, createAddressSchema } from '@formkit-gov/core';
-
-const schema = z.object({
-  ssn: createSSNSchema(),
-  phone: createPhoneSchema(),
-  address: createAddressSchema(),
-});
-```
-
-### Multi-Step Wizard
-
-```tsx
-import { FormWizard, WizardStep, ReviewPage, ConfirmationPage } from '@formkit-gov/wizard';
-import { createFormStore, createSessionStorageAdapter } from '@formkit-gov/store';
-
-const store = createFormStore({
-  formId: 'benefits-application',
-  storage: createSessionStorageAdapter(),
-});
-
-function BenefitsApplication() {
-  return (
-    <FormWizard
-      config={{
-        formId: 'benefits-application',
-        title: 'Apply for Benefits',
-        store,
-      }}
-      onSubmit={handleSubmit}
-    >
-      <WizardStep id="personal-info" title="Personal Information">
-        <PersonalInfoForm />
-      </WizardStep>
-
-      <WizardStep id="contact-info" title="Contact Information">
-        <ContactInfoForm />
-      </WizardStep>
-
-      <ReviewPage />
-      <ConfirmationPage />
-    </FormWizard>
-  );
-}
-```
-
-### OpenAPI Schema Generation
-
-```bash
-# Generate Zod schemas from your API spec
-npx @formkit-gov/openapi generate ./openapi.yaml --output ./src/schemas
-```
-
-```typescript
-// Use generated schemas
-import { VeteranInfoSchema } from './schemas';
-
-const form = useForm({
-  resolver: zodResolver(VeteranInfoSchema),
-});
-```
+See the [documentation](https://docs.formkit-gov.org/docs/patterns) for more examples.
 
 ## Documentation
 
