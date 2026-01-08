@@ -236,12 +236,16 @@ const form = useForm({
 
 Visit [docs.formkit-gov.org](https://docs.formkit-gov.org) for full documentation:
 
-- [Getting Started](https://docs.formkit-gov.org/getting-started)
-- [Components](https://docs.formkit-gov.org/components)
-- [Form Patterns](https://docs.formkit-gov.org/patterns)
-- [Wizard Guide](https://docs.formkit-gov.org/wizard)
-- [OpenAPI Integration](https://docs.formkit-gov.org/openapi)
-- [API Reference](https://docs.formkit-gov.org/api)
+- [Getting Started](https://docs.formkit-gov.org/docs/)
+- [Components](https://docs.formkit-gov.org/docs/components)
+- [Validation](https://docs.formkit-gov.org/docs/validation)
+- [Form Patterns](https://docs.formkit-gov.org/docs/patterns)
+
+### Package Documentation
+
+- [@formkit-gov/core](https://docs.formkit-gov.org/docs/packages/core) - Schemas, validators,
+  patterns
+- [@formkit-gov/react](https://docs.formkit-gov.org/docs/packages/react) - React components
 
 ## Browser Support
 
