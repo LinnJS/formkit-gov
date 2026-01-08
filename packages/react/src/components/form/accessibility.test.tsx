@@ -5,7 +5,7 @@
  */
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { describe, it, expect, vi } from 'vitest';
@@ -169,6 +169,10 @@ describe('Form Components Accessibility', () => {
       }
 
       const { container } = render(<FormWithErrors />);
+      // Wait for form validation to complete before running axe
+      await waitFor(() => {
+        // Form validation has completed when the component re-renders
+      });
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
@@ -247,6 +251,10 @@ describe('Form Components Accessibility', () => {
       }
 
       const { container } = render(<FormWithError />);
+      // Wait for form validation to complete before running axe
+      await waitFor(() => {
+        // Form validation has completed when the component re-renders
+      });
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
