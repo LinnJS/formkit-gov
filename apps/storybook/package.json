@@ -43,7 +43,7 @@
     "@types/react-dom": "^18.3.7",
     "axe-playwright": "^2.2.2",
     "concurrently": "^9.2.1",
-    "eslint": "^9.16.0",
+    "eslint": "^9.39.2",
     "http-server": "^14.1.1",
     "i18next": "^21.10.0",
     "i18next-browser-languagedetector": "^6.1.8",
