@@ -186,63 +186,63 @@ describe('DateField', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('disabled', 'false');
+      expect(dateInput).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('required', 'false');
+      expect(dateInput).not.toHaveAttribute('required');
     });
 
     it('defaults monthYearOnly to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('month-year-only', 'false');
+      expect(dateInput).not.toHaveAttribute('month-year-only');
     });
 
     it('defaults monthOptional to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('month-optional', 'false');
+      expect(dateInput).not.toHaveAttribute('month-optional');
     });
 
     it('defaults invalidDay to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('invalid-day', 'false');
+      expect(dateInput).not.toHaveAttribute('invalid-day');
     });
 
     it('defaults invalidMonth to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('invalid-month', 'false');
+      expect(dateInput).not.toHaveAttribute('invalid-month');
     });
 
     it('defaults invalidYear to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('invalid-year', 'false');
+      expect(dateInput).not.toHaveAttribute('invalid-year');
     });
 
     it('defaults enableAnalytics to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('enable-analytics', 'false');
+      expect(dateInput).not.toHaveAttribute('enable-analytics');
     });
 
     it('defaults uswds to false', () => {
       const { container } = render(<DateField label="Test" />);
 
       const dateInput = container.querySelector('va-date');
-      expect(dateInput).toHaveAttribute('uswds', 'false');
+      expect(dateInput).not.toHaveAttribute('uswds');
     });
   });
 });

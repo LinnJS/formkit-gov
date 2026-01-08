@@ -13,7 +13,7 @@ import { useFormField } from './form-context';
  */
 export interface FormControlProps {
   /** Input element to wrap */
-  children: React.ReactElement;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**
@@ -51,10 +51,10 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
     const child = React.Children.only(children);
 
     const clonedChild = React.cloneElement(child, {
+      ...child.props,
       id: formItemId,
       'aria-describedby': error ? `${formDescriptionId} ${formMessageId}` : formDescriptionId,
       'aria-invalid': !!error,
-      ...child.props,
     });
 
     return (

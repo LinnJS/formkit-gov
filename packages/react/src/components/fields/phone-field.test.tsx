@@ -76,7 +76,6 @@ describe('PhoneField', () => {
     const { container } = render(<PhoneField required label="Phone number" />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('required');
   });
 
@@ -98,7 +97,6 @@ describe('PhoneField', () => {
     const { container } = render(<PhoneField disabled label="Phone number" />);
 
     const input = container.querySelector('va-text-input');
-    // React 19: boolean true renders as presence attribute
     expect(input).toHaveAttribute('disabled');
   });
 
@@ -144,7 +142,6 @@ describe('PhoneField', () => {
       const input = container.querySelector('va-text-input');
       expect(input).toHaveAttribute('name', 'phone');
       expect(input).toHaveAttribute('value', '555-123-4567');
-      // React 19: boolean true renders as presence attribute
       expect(input).toHaveAttribute('required');
     });
 
@@ -163,16 +160,14 @@ describe('PhoneField', () => {
       const { container } = render(<PhoneField label="Phone number" />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('disabled', 'false');
+      expect(input).not.toHaveAttribute('disabled');
     });
 
     it('defaults required to false', () => {
       const { container } = render(<PhoneField label="Phone number" />);
 
       const input = container.querySelector('va-text-input');
-      // React 18: false boolean props render as attribute="false" on custom elements
-      expect(input).toHaveAttribute('required', 'false');
+      expect(input).not.toHaveAttribute('required');
     });
   });
 

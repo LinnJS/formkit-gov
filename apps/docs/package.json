@@ -13,19 +13,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@department-of-veterans-affairs/component-library": "^54.2.0",
+    "@department-of-veterans-affairs/component-library": "^54.4.1",
     "@formkit-gov/react": "workspace:*",
-    "next": "^15.5.9",
-    "nextra": "^4.2.16",
-    "nextra-theme-docs": "^4.2.16",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "^16.1.1",
+    "nextra": "^4.6.1",
+    "nextra-theme-docs": "^4.6.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@formkit-gov/eslint-config": "workspace:*",
     "@types/node": "^24.10.1",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "eslint": "^9.16.0",
     "typescript": "^5.7.2"
   }
