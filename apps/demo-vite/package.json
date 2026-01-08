@@ -15,18 +15,18 @@
   "dependencies": {
     "@formkit-gov/core": "workspace:*",
     "@formkit-gov/react": "workspace:*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@formkit-gov/eslint-config": "workspace:*",
-    "@tailwindcss/vite": "^4.1.7",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^9.16.0",
-    "tailwindcss": "^4.1.7",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.7.2",
-    "vite": "^6.3.5"
+    "vite": "^7.3.1"
   }
 }
